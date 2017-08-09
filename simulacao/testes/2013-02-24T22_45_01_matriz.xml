@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<clientes>
+  <cliente>
+    <id>e79fc298-0db9-41c7-a80b-1958fee779d8</id>
+    <latitude>-19,9365082992953</latitude>
+    <longitude>-43,9579409873267</longitude>
+    <endereco>Rua Almirante Tamandaré, 723 - Gutierrez, Belo Horizonte - Minas Gerais, 30430-150, Brazil</endereco>
+    <taxistas>
+      <taxista>
+        <id>82f9443d-13d7-4cfc-ae98-427908899f8e</id>
+        <latitude>-19,8582474164314</latitude>
+        <longitude>-43,9689710516455</longitude>
+        <endereco>Alameda das Princesas, 593-777 - São Luís, Belo Horizonte - Minas Gerais, 31275-180, Brazil</endereco>
+        <status>SemStatus</status>
+        <distancia>
+        </distancia>
+        <tempo>
+        </tempo>
+      </taxista>
+      <taxista>
+        <id>a44c75b2-6699-47b6-a8ea-e75bf11db189</id>
+        <latitude>-19,9033519821799</latitude>
+        <longitude>-43,8831070407565</longitude>
+        <endereco>Rua da Olaria, 2-156 - Caetano Furquim, Belo Horizonte - Minas Gerais, 30285-230, Brazil</endereco>
+        <status>SemStatus</status>
+        <distancia>
+        </distancia>
+        <tempo>
+        </tempo>
+      </taxista>
+    </taxistas>
+  </cliente>
+  <cliente>
+    <id>f7e332ed-abc5-434a-a7ce-0667068c3ed6</id>
+    <latitude>-19,898797939329</latitude>
+    <longitude>-43,957781771609</longitude>
+    <endereco>Rua Confrade Machado, 447 - Nova Esperança, Belo Horizonte - Minas Gerais, 31230-530, Brazil</endereco>
+    <taxistas>
+      <taxista>
+        <id>82f9443d-13d7-4cfc-ae98-427908899f8e</id>
+        <latitude>-19,8582474164314</latitude>
+        <longitude>-43,9689710516455</longitude>
+        <endereco>Alameda das Princesas, 593-777 - São Luís, Belo Horizonte - Minas Gerais, 31275-180, Brazil</endereco>
+        <status>SemStatus</status>
+        <distancia>
+        </distancia>
+        <tempo>
+        </tempo>
+      </taxista>
+      <taxista>
+        <id>a44c75b2-6699-47b6-a8ea-e75bf11db189</id>
+        <latitude>-19,9033519821799</latitude>
+        <longitude>-43,8831070407565</longitude>
+        <endereco>Rua da Olaria, 2-156 - Caetano Furquim, Belo Horizonte - Minas Gerais, 30285-230, Brazil</endereco>
+        <status>SemStatus</status>
+        <distancia>
+        </distancia>
+        <tempo>
+        </tempo>
+      </taxista>
+    </taxistas>
+  </cliente>
+</clientes>

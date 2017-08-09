@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TCC_Domain" namespace="TCC_Domain.Domain">
+    <class name="Endereco" table="ENDERECO">
+        <id name="ID" column="END_ID" type="Guid">
+            <generator class="guid" />
+        </id>
+        <property name="CEP" column="END_CEP" type="String"  not-null="true" length="8" />
+        <property name="Estado" column="UF_ID" type="int" not-null="true"  />
+        <property name="Cidade" column="END_CIDADE" type="String" not-null="true" length="50" />
+        <property name="Logradouro" column="END_LOGRADOURO" type="String" not-null="true" length="50" />
+        <property name="Numero" column="END_NUMERO" type="String" not-null="true" length="10" />
+        <property name="Complemento" column="END_COMPLEMENTO" type="String" not-null="false" length="20" />
+        <property name="Referencia" column="END_REFERENCIA" type="String" not-null="false" length="50" />
+    </class>
+</hibernate-mapping>

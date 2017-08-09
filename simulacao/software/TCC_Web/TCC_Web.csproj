@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AAC8FB4A-80E7-4C9E-9E57-80DD6DF73A76}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TCC_Web</RootNamespace>
+    <AssemblyName>TCC_Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\..\references\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NHibernate">
+      <HintPath>..\..\references\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=2.0.11.94, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\references\Npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="AreaAdministrador\Home.aspx" />
+    <Content Include="AreaCliente\Home.aspx" />
+    <Content Include="AreaTaxista\Atendimentos.aspx" />
+    <Content Include="AreaTaxista\CadastroVeiculo.aspx" />
+    <Content Include="AreaTaxista\Contrato.ascx" />
+    <Content Include="AreaTaxista\DetalheAtendimentos.ascx" />
+    <Content Include="AreaTaxista\Dispositivos.aspx" />
+    <Content Include="AreaTaxista\Home.aspx" />
+    <Content Include="AreaTaxista\Simulacao.aspx" />
+    <Content Include="AreaTaxista\TesteDispositivos.ascx" />
+    <Content Include="Autenticacao\Cadastro.aspx" />
+    <Content Include="Autenticacao\Login.aspx" />
+    <Content Include="ContactUs.aspx" />
+    <Content Include="Core\Controles\MessageBox.ascx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Docs.aspx" />
+    <Content Include="Downloads.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="images\marker_passenger.jpg" />
+    <Content Include="images\marker_passenger.png" />
+    <Content Include="images\marker_taxi.gif" />
+    <Content Include="images\marker_taxi.png" />
+    <Content Include="images\marker_taxi_green.png" />
+    <Content Include="images\marker_taxi_red.png" />
+    <Content Include="Styles\style_mobile.css" />
+    <Content Include="WebServices\ClienteRequest.svc" />
+    <Content Include="WebServices\TaxistaLocation.svc" />
+    <EmbeddedResource Include="App_LocalResources\LabelsResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LabelsResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\MensagensResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MensagensResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="images\14647-rs.jpg" />
+    <Content Include="images\3425544_371799.gif" />
+    <Content Include="images\400_F_42374496_4dtXFin1bSx46xgd3Mk1kYUsJtW4xZWr.jpg" />
+    <Content Include="images\500Taxi118 - Cópia.png" />
+    <Content Include="images\500Taxi118.png" />
+    <Content Include="images\bg-body.jpg" />
+    <Content Include="images\bg-button.jpg" />
+    <Content Include="images\bg-header.jpg" />
+    <Content Include="images\border-dashed.jpg" />
+    <Content Include="images\bottom-shadow-headliner.jpg" />
+    <Content Include="images\bottom-shadow-img.jpg" />
+    <Content Include="images\calendar.png" />
+    <Content Include="images\carregando.gif" />
+    <Content Include="images\icons.gif" />
+    <Content Include="images\logo-footer.gif" />
+    <Content Include="images\logo-footer.png" />
+    <Content Include="images\marker_blue.png" />
+    <Content Include="images\marker_brown.png" />
+    <Content Include="images\marker_green.png" />
+    <Content Include="images\marker_red.png" />
+    <Content Include="images\marker_yellow.png" />
+    <Content Include="images\sale.jpg" />
+    <Content Include="images\ui-icons_222222_256x240.png" />
+    <Content Include="images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="images\ui-icons_454545_256x240.png" />
+    <Content Include="images\ui-icons_888888_256x240.png" />
+    <Content Include="images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.6.2.js" />
+    <Content Include="Styles\fonts\corben-bold-webfont.svg" />
+    <Content Include="Styles\style.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\LabelsResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LabelsResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\MensagensResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MensagensResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaAdministrador\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaAdministrador\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaCliente\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaCliente\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaTaxista\Atendimentos.aspx.cs">
+      <DependentUpon>Atendimentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaTaxista\Atendimentos.aspx.designer.cs">
+      <DependentUpon>Atendimentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaTaxista\CadastroVeiculo.aspx.cs">
+      <DependentUpon>CadastroVeiculo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaTaxista\CadastroVeiculo.aspx.designer.cs">
+      <DependentUpon>CadastroVeiculo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaTaxista\Contrato.ascx.cs">
+      <DependentUpon>Contrato.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaTaxista\Contrato.ascx.designer.cs">
+      <DependentUpon>Contrato.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaTaxista\DetalheAtendimentos.ascx.cs">
+      <DependentUpon>DetalheAtendimentos.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaTaxista\DetalheAtendimentos.ascx.designer.cs">
+      <DependentUpon>DetalheAtendimentos.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaTaxista\Dispositivos.aspx.cs">
+      <DependentUpon>Dispositivos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaTaxista\Dispositivos.aspx.designer.cs">
+      <DependentUpon>Dispositivos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaTaxista\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaTaxista\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaTaxista\Simulacao.aspx.cs">
+      <DependentUpon>Simulacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaTaxista\Simulacao.aspx.designer.cs">
+      <DependentUpon>Simulacao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AreaTaxista\TesteDispositivos.ascx.cs">
+      <DependentUpon>TesteDispositivos.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AreaTaxista\TesteDispositivos.ascx.designer.cs">
+      <DependentUpon>TesteDispositivos.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Autenticacao\Cadastro.aspx.cs">
+      <DependentUpon>Cadastro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autenticacao\Cadastro.aspx.designer.cs">
+      <DependentUpon>Cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Autenticacao\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autenticacao\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContactUs.aspx.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContactUs.aspx.designer.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Base\Base.cs" />
+    <Compile Include="Core\Base\PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Core\Base\UserControlBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Core\Constantes\Constantes.cs" />
+    <Compile Include="Core\Controles\MessageBox.ascx.cs">
+      <DependentUpon>MessageBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Core\Controles\MessageBox.ascx.designer.cs">
+      <DependentUpon>MessageBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Extensions\Extensions.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Docs.aspx.cs">
+      <DependentUpon>Docs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Docs.aspx.designer.cs">
+      <DependentUpon>Docs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Downloads.aspx.cs">
+      <DependentUpon>Downloads.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Downloads.aspx.designer.cs">
+      <DependentUpon>Downloads.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Administrador.master.cs">
+      <DependentUpon>Administrador.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Administrador.master.designer.cs">
+      <DependentUpon>Administrador.master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Autenticacao.master.cs">
+      <DependentUpon>Autenticacao.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Autenticacao.master.designer.cs">
+      <DependentUpon>Autenticacao.master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Cliente.master.cs">
+      <DependentUpon>Cliente.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Cliente.master.designer.cs">
+      <DependentUpon>Cliente.master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Publico.master.cs">
+      <DependentUpon>Publico.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Publico.master.designer.cs">
+      <DependentUpon>Publico.master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Taxista.master.cs">
+      <DependentUpon>Taxista.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Taxista.master.designer.cs">
+      <DependentUpon>Taxista.master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebServices\ClienteRequest.svc.cs">
+      <DependentUpon>ClienteRequest.svc</DependentUpon>
+    </Compile>
+    <Compile Include="WebServices\IClienteRequest.cs" />
+    <Compile Include="WebServices\ITaxistaLocation.cs" />
+    <Compile Include="WebServices\TaxistaLocation.svc.cs">
+      <DependentUpon>TaxistaLocation.svc</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoogleMapsApi\GoogleMapsApi.csproj">
+      <Project>{61E9FC82-47B0-43C3-8749-95D3A9967060}</Project>
+      <Name>GoogleMapsApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TCC_Application\TCC_Application.csproj">
+      <Project>{7BB62CD4-6D41-4DEF-A03B-C0C58D820604}</Project>
+      <Name>TCC_Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TCC_Controller\TCC_Controller.csproj">
+      <Project>{76F52B47-0E02-4D61-A5F7-23212BD29F90}</Project>
+      <Name>TCC_Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TCC_Domain\TCC_Domain.csproj">
+      <Project>{16740438-E9B2-4A80-88C0-6E0D29D0ADB0}</Project>
+      <Name>TCC_Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TCC_Infrastructure\TCC_Infrastructure.csproj">
+      <Project>{D56BD510-47CA-4FA1-B3E5-6DBDF8EEC84A}</Project>
+      <Name>TCC_Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Master\Administrador.master" />
+    <Content Include="Master\Autenticacao.master" />
+    <Content Include="Master\Cliente.master" />
+    <Content Include="Master\Publico.master" />
+    <Content Include="Master\Site.Master" />
+    <Content Include="Master\Taxista.master" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="images\header.psd" />
+    <None Include="images\taxicab.psd" />
+    <None Include="images\xadrez.psd" />
+    <None Include="Styles\fonts\corben-bold-webfont.eot" />
+    <None Include="Styles\fonts\corben-bold-webfont.ttf" />
+    <None Include="Styles\fonts\corben-bold-webfont.woff" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>16923</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/TCC_TestSimulator</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>http://localhost:8082</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

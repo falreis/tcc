@@ -1,0 +1,22 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Master/Site.Master" AutoEventWireup="true" CodeBehind="Autenticacao.master.cs" Inherits="TCC_Web.Master.Autenticacao" %>
+<%@ Register Src="~/Core/Controles/MessageBox.ascx" TagPrefix="ctrl" TagName="MessageBox" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <ctrl:MessageBox id="MessageBox" runat="server"></ctrl:MessageBox>
+    <div id="contents">
+        <div id="main">
+	    <table width="100%">
+		    <tr>
+                <td class="left-menu" style="display:block;"></td>
+                <td>
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </div>
+</asp:Content>
+

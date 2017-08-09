@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<clientes>
+  <cliente>
+    <id>e79fc298-0db9-41c7-a80b-1958fee779d8</id>
+    <latitude>-19,921504934499</latitude>
+    <longitude>-43,9359006018662</longitude>
+    <endereco>Rua da Bahia, 751-847 - Centro, Belo Horizonte - Minas Gerais, 30160-010, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>f7e332ed-abc5-434a-a7ce-0667068c3ed6</id>
+    <latitude>-19,9069131031042</latitude>
+    <longitude>-43,8788181849075</longitude>
+    <endereco>Rua Trezentos E Vinte e Nove, 587 - Caetano Furquim, Belo Horizonte - Minas Gerais, Brazil</endereco>
+  </cliente>
+</clientes>

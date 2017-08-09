@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="27c73942-29b4-4a23-b8f3-85fa2788bb4a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/TCC_TestSimulator/WebServices/TaxistaLocation.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TaxistaLocation1.wsdl" MetadataType="Wsdl" ID="9b412f74-5c08-46d1-b355-28d8665722e5" SourceId="1" SourceUrl="http://localhost/TCC_TestSimulator/WebServices/TaxistaLocation.svc?wsdl" />
+    <MetadataFile FileName="TaxistaLocation2.xsd" MetadataType="Schema" ID="2cc652bb-6dda-4cc0-8028-382032a61699" SourceId="1" SourceUrl="http://localhost/TCC_TestSimulator/WebServices/TaxistaLocation.svc?xsd=xsd0" />
+    <MetadataFile FileName="TaxistaLocation21.xsd" MetadataType="Schema" ID="a5ebf67a-308c-4f5a-ad59-f73df9c99fd9" SourceId="1" SourceUrl="http://localhost/TCC_TestSimulator/WebServices/TaxistaLocation.svc?xsd=xsd1" />
+    <MetadataFile FileName="TaxistaLocation1.disco" MetadataType="Disco" ID="4c06ea47-31d4-42d1-806d-d0155589336b" SourceId="1" SourceUrl="http://localhost/TCC_TestSimulator/WebServices/TaxistaLocation.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

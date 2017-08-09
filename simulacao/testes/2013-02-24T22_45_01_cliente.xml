@@ -1,0 +1,303 @@
+<?xml version="1.0"?>
+<clientes>
+  <cliente>
+    <id>e79fc298-0db9-41c7-a80b-1958fee779d8</id>
+    <latitude>-19,9365082992953</latitude>
+    <longitude>-43,9579409873267</longitude>
+    <endereco>Rua Almirante Tamandaré, 723 - Gutierrez, Belo Horizonte - Minas Gerais, 30430-150, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>f7e332ed-abc5-434a-a7ce-0667068c3ed6</id>
+    <latitude>-19,898797939329</latitude>
+    <longitude>-43,957781771609</longitude>
+    <endereco>Rua Confrade Machado, 447 - Nova Esperança, Belo Horizonte - Minas Gerais, 31230-530, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>f914b24e-9492-40f6-bcf4-45452a6c3617</id>
+    <latitude>-19,9191395240535</latitude>
+    <longitude>-43,8983926321955</longitude>
+    <endereco>Rua Taquaril, 191-271 - Saudade, Belo Horizonte - Minas Gerais, 30285-380, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>b66775ae-5182-4c10-bda6-729b19a0281b</id>
+    <latitude>-19,893490971676</latitude>
+    <longitude>-43,9657892778939</longitude>
+    <endereco>Rua Phi, 75 - Caiçaras, Belo Horizonte - Minas Gerais, 30775-345, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>a604f753-8ef1-4a15-9a0e-4e91013e2ae5</id>
+    <latitude>-19,8738390926692</latitude>
+    <longitude>-43,8894705882597</longitude>
+    <endereco>MG-005 - Sabará - Minas Gerais, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>fb73379d-cd87-4d46-9e5b-01baf135efe8</id>
+    <latitude>-19,903105062139</latitude>
+    <longitude>-43,9434971184556</longitude>
+    <endereco>Rua Formiga, 423 - São Cristóvão, Belo Horizonte - Minas Gerais, 31110-430, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>c76058f2-11d2-4e50-998a-70064e37a71a</id>
+    <latitude>-19,8657902521697</latitude>
+    <longitude>-43,9143015009534</longitude>
+    <endereco>Rua Messias Floriano Borges, 30-80 - Pirajá, Belo Horizonte - Minas Gerais, 31930-755, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>73a398ce-a3d1-4d87-885b-d622625643b8</id>
+    <latitude>-19,9390032521008</latitude>
+    <longitude>-43,9015015908641</longitude>
+    <endereco>Rua Nossa Senhora de Fátima, 1030 - Favela Aglomerado da Serra, Vila Cafezal, Belo Horizonte - Minas Gerais, 30230-000, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>b12e87fa-e97e-43bb-96db-546a5d62039b</id>
+    <latitude>-19,8679438135746</latitude>
+    <longitude>-43,9549381724699</longitude>
+    <endereco>Rua Flor de Júpiter, 40-140 - Liberdade, Belo Horizonte - Minas Gerais, 31270-213, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>594773c6-0a5b-446f-8b2a-785983046c0c</id>
+    <latitude>-19,9368496906958</latitude>
+    <longitude>-43,9677380825592</longitude>
+    <endereco>Rua Camapua, 754 - Grajaú, Belo Horizonte - Minas Gerais, 30430-450, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>3f4f2768-80b5-4941-80e8-842e78e0218c</id>
+    <latitude>-19,9390383231013</latitude>
+    <longitude>-43,9743336608631</longitude>
+    <endereco>Rua Gama Cerqueira, 201 - Jardim América, Belo Horizonte - Minas Gerais, 30460-360, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>1fd2b4dd-9e3b-4e3d-9735-8645e1dc235c</id>
+    <latitude>-19,9501704278479</latitude>
+    <longitude>-43,9249205755768</longitude>
+    <endereco>Rua Odilon Braga, 705 - Anchieta, Belo Horizonte - Minas Gerais, 30310-390, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>5df9d5d5-a7d7-42fc-8f63-17fd1b10c666</id>
+    <latitude>-19,8712267621828</latitude>
+    <longitude>-43,9700448050141</longitude>
+    <endereco>Rua Professor Moacir Gomes de Freitas, 268-988 - Universidade Federal de Minas Gerais, Campus da UFMG, Belo Horizonte - Minas Gerais, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>0db0a6f6-e5a7-4cbd-a7f1-28ca76115494</id>
+    <latitude>-19,895644533081</latitude>
+    <longitude>-43,9177350486828</longitude>
+    <endereco>Rua São João de Paula, 2 - Instituto Agronômico, Belo Horizonte - Minas Gerais, 31035-340, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>319134d9-9c33-43ea-8d3e-a295c4b19f7d</id>
+    <latitude>-19,8733803235878</latitude>
+    <longitude>-43,9134795215626</longitude>
+    <endereco>Rua Neide, 1-107 - Dom Joaquim, Belo Horizonte - Minas Gerais, 31920-290, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>eeed3ebc-e00b-44e6-b016-8a87faaa94d8</id>
+    <latitude>-19,8622482188412</latitude>
+    <longitude>-43,9400302419975</longitude>
+    <endereco>Praça Albert Sabin, 20-54 - Dona Clara, Belo Horizonte - Minas Gerais, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>aef5f025-0c1e-4277-9cd4-b27b69195b42</id>
+    <latitude>-19,9400975683035</latitude>
+    <longitude>-43,9281781982878</longitude>
+    <endereco>Rua Minas Novas, 109 - Cruzeiro, Belo Horizonte - Minas Gerais, 30310-090, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>566a9d2f-3b52-4517-bd27-f14f02242ac0</id>
+    <latitude>-19,8623305255215</latitude>
+    <longitude>-43,9030924777399</longitude>
+    <endereco>Rua Décio Silveira Marques, 35 - Vila Brasília, Belo Horizonte - Minas Gerais, 31960-170, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>a1488092-0a37-4598-b308-9c65f3dbefb9</id>
+    <latitude>-19,8955149907208</latitude>
+    <longitude>-43,9426751390648</longitude>
+    <endereco>Rua Tamboril, 1288 - Concórdia, Belo Horizonte - Minas Gerais, 31130-310, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>96a86274-8f59-4f07-b758-5c08528d61f8</id>
+    <latitude>-19,9092785135496</latitude>
+    <longitude>-43,8959069508458</longitude>
+    <endereco>Rua Tebas, 288-296 - Vera Cruz, Belo Horizonte - Minas Gerais, 30285-300, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>34ed9fa9-38e8-4faf-bbc2-92cfec5b1bb6</id>
+    <latitude>-19,862118676481</latitude>
+    <longitude>-43,9023235702549</longitude>
+    <endereco>Rua Décio Silveira Marques, 73 - Vila Brasília, Belo Horizonte - Minas Gerais, 31960-170, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>35ea82e7-4d8e-479d-b800-7bbfb3b9a726</id>
+    <latitude>-19,8666376483315</latitude>
+    <longitude>-43,9173771308933</longitude>
+    <endereco>Rua Rita, 11-115 - Eymard, Belo Horizonte - Minas Gerais, 31910-700, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>84aeac7a-13f1-4f3d-8076-0db8625ac86e</id>
+    <latitude>-19,8867833674201</latitude>
+    <longitude>-43,9139435831639</longitude>
+    <endereco>Rua Sete, 396-468 - Instituto Agronômico, Belo Horizonte - Minas Gerais, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>a86d0cbd-52cf-44d2-b135-35dedd620e94</id>
+    <latitude>-19,9324602612056</latitude>
+    <longitude>-43,9617127096685</longitude>
+    <endereco>Rua Herculano de Freitas, 1514 - Alto Barroca, Belo Horizonte - Minas Gerais, 30430-120, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>8dfa2038-bb38-4733-8683-bc856a9c7b32</id>
+    <latitude>-19,9047244706988</latitude>
+    <longitude>-43,9659682367887</longitude>
+    <endereco>Rua Rosinha Sigaud, 116-188 - Caiçaras, Belo Horizonte - Minas Gerais, 30770-560, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>88fbaad1-e9f1-4858-9d87-0662f8054baa</id>
+    <latitude>-19,9158565754454</latitude>
+    <longitude>-43,8832859996512</longitude>
+    <endereco>Rua Francisco Serrão, 196-272 - Saudade, Belo Horizonte - Minas Gerais, 30295-270, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>cf3e26a4-4ac9-422c-bcc9-d7df4f948c2c</id>
+    <latitude>-19,8910904902301</latitude>
+    <longitude>-43,8782282363173</longitude>
+    <endereco>Rua Antônio Rodrigues da Costa, 555 - Casa Branca, Belo Horizonte - Minas Gerais, 31050-010, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>e4d86f10-56c0-4e86-bddf-e84d6f7454d4</id>
+    <latitude>-19,8799583854835</latitude>
+    <longitude>-43,8761004727572</longitude>
+    <endereco>BR-262 - Sabará - Minas Gerais, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>f40a3fb3-ee29-4c2c-8ccb-5ba9e88601c5</id>
+    <latitude>-19,8603065064767</latitude>
+    <longitude>-43,9714036610892</longitude>
+    <endereco>Avenida das Palmeiras, 551-619 - São Luís, Belo Horizonte - Minas Gerais, 31275-200, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>c7daf4df-6978-41c4-b3e8-891662ff5aa5</id>
+    <latitude>-19,8847242773748</latitude>
+    <longitude>-43,9163761926077</longitude>
+    <endereco>Avenida José Cândido da Silveira, 1688-1864 - União, Belo Horizonte - Minas Gerais, 31170-000, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>4cfce8a2-b855-419b-9cff-5bbc72cf24cb</id>
+    <latitude>-19,8624600678816</latitude>
+    <longitude>-43,9121206654875</longitude>
+    <endereco>Rua José Santiago da Silva, 91 - Pirajá, Belo Horizonte - Minas Gerais, 31930-810, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>c028d629-589e-4e52-9b75-6687680361c0</id>
+    <latitude>-19,8712267621828</latitude>
+    <longitude>-43,9700448050141</longitude>
+    <endereco>Rua Professor Moacir Gomes de Freitas, 268-988 - Universidade Federal de Minas Gerais, Campus da UFMG, Belo Horizonte - Minas Gerais, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>c5b3f39c-6427-4517-b2ec-34a3e3a752af</id>
+    <latitude>-19,8646136292866</latitude>
+    <longitude>-43,8942629920642</longitude>
+    <endereco>Rua Cuco, 748 - Vila Brasília, Belo Horizonte - Minas Gerais, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>2e54aabd-376a-46d1-98f3-0613826d157a</id>
+    <latitude>-19,9100786740316</latitude>
+    <longitude>-43,9412632110838</longitude>
+    <endereco>Avenida Presidente Antônio Carlos, 124-164 - Lagoinha, Belo Horizonte - Minas Gerais, 31210-000, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>cc1645fb-c162-40f7-8392-ad1504122817</id>
+    <latitude>-19,8695441345386</latitude>
+    <longitude>-43,9180201513893</longitude>
+    <endereco>Rua José Carvalho Monteiro, 15 - Fernão Dias, Belo Horizonte - Minas Gerais, 31910-380, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>255f1af1-d05e-49a8-aa91-9e787848d217</id>
+    <latitude>-19,9201987692558</latitude>
+    <longitude>-43,8945480947707</longitude>
+    <endereco>Rua Sargento João Ovídio, 174 - Baleia, Belo Horizonte - Minas Gerais, 30285-385, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>67541277-f0fb-44ea-b1d2-48282086f536</id>
+    <latitude>-19,8716976959435</latitude>
+    <longitude>-43,951219522034</longitude>
+    <endereco>Rua Beira Alta, 375 - São Francisco, Belo Horizonte - Minas Gerais, 31255-240, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>e9124573-5dab-427e-9397-6f8dd77b6357</id>
+    <latitude>-19,9180452078508</latitude>
+    <longitude>-43,9746915786526</longitude>
+    <endereco>Rua Tuiuti, 513-633 - Padre Eustáquio, Belo Horizonte - Minas Gerais, 30720-440, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>dd0a4a5c-71d7-423f-851a-3d5b73e90b93</id>
+    <latitude>-19,9204106182962</latitude>
+    <longitude>-43,9576028127143</longitude>
+    <endereco>Rua Matosinhos, 57 - Prado, Belo Horizonte - Minas Gerais, 30410-500, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>8513c899-c93a-4858-a5f2-d6dfd004a1fd</id>
+    <latitude>-19,8922198774333</latitude>
+    <longitude>-43,9704027228036</longitude>
+    <endereco>Rua Álvaro Alvim, 86 - Caiçaras, Belo Horizonte - Minas Gerais, 30775-190, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>54d8ad99-b214-e4e0-e921-ce8209196c44</id>
+    <latitude>-19,8754043426326</latitude>
+    <longitude>-43,8865936603917</longitude>
+    <endereco>MG-005 - Sabará - Minas Gerais, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>7e0e8109-97a4-b558-7700-ec8c99a901d0</id>
+    <latitude>-19,9308599402416</latitude>
+    <longitude>-43,9112456141907</longitude>
+    <endereco>Rua Rene Renault, 345 - Novo São Lucas, Belo Horizonte - Minas Gerais, 30240-520, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>2e176e47-c12d-bbad-ea3b-51727447b933</id>
+    <latitude>-19,8801702345239</latitude>
+    <longitude>-43,9745126197578</longitude>
+    <endereco>Avenida Presidente Carlos Luz, 2536-3446 - Universidade Federal de Minas Gerais, Engenho Nogueira, Belo Horizonte - Minas Gerais, 31310-250, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>e8489254-5999-535c-e2de-2c5119bc078f</id>
+    <latitude>-19,8690381297774</latitude>
+    <longitude>-43,9247416166821</longitude>
+    <endereco>Rua Angaturama, 226 - São Paulo, Belo Horizonte - Minas Gerais, 31910-220, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>5a184786-d0a9-2f44-bd63-13953e9f2097</id>
+    <latitude>-19,8666727193319</latitude>
+    <longitude>-43,8918303826204</longitude>
+    <endereco>Rua Atlético, 917 - Sabará - Minas Gerais, 34650-260, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>c0457672-7929-d062-f0d5-154f8ee02e1f</id>
+    <latitude>-19,9525709092938</latitude>
+    <longitude>-43,917556089788</longitude>
+    <endereco>Rua Comendador Viana, 506 - Mangabeiras, Belo Horizonte - Minas Gerais, 30315-060, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>fe8ead17-6667-367a-7613-97cbf0c273cb</id>
+    <latitude>-19,924835118787</latitude>
+    <longitude>-43,9133005626678</longitude>
+    <endereco>Rua Maestro Delê Andrade, 356-458 - Santa Efigênia, Belo Horizonte - Minas Gerais, 30240-590, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>38a6cb9f-ff8c-a2d9-fee8-fcc2ba71366c</id>
+    <latitude>-19,9359672235336</latitude>
+    <longitude>-43,9402092008923</longitude>
+    <endereco>Rua Tomé de Souza, 1399 - Savassi, Belo Horizonte - Minas Gerais, 30140-130, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>e6a1c580-ffa4-8602-4bd1-a8e27ee75e74</id>
+    <latitude>-19,8735921726282</latitude>
+    <longitude>-43,9371335709524</longitude>
+    <endereco>Rua Antônio Peregrino Nascimento, 494-650 - Palmares, Belo Horizonte - Minas Gerais, 31155-730, Brazil</endereco>
+  </cliente>
+  <cliente>
+    <id>a613468e-86f3-a283-9140-9f15aed2062d</id>
+    <latitude>-19,8624600678816</latitude>
+    <longitude>-43,9121206654875</longitude>
+    <endereco>Rua José Santiago da Silva, 91 - Pirajá, Belo Horizonte - Minas Gerais, 31930-810, Brazil</endereco>
+  </cliente>
+</clientes>

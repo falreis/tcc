@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TCC_Domain" namespace="TCC_Domain.Domain">
+    <class name="Rastreador" table="RASTREADOR">
+        <id name="ID" column="RAS_ID" type="Guid"></id>
+        <property name="CodigoSeguranca" column="RAS_CODIGO_SEGURANCA" type="Guid" not-null="true" />
+        <property name="Ativo" column="RAS_ATIVO" type="Boolean" not-null="true" />
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TCC_Domain" namespace="TCC_Domain.Domain">
+    <class name="ModeloVeiculo" table="MODELO_VEICULO">
+        <id name="ID" column="MDV_ID" type="int" />
+        <property name="Nome" column="MDV_NOME" type="String" not-null="true" length="50" />
+        <many-to-one name="Montadora" class="MontadoraVeiculo" column="MNV_ID" not-null="true" lazy="false"></many-to-one>
+    </class>
+</hibernate-mapping>

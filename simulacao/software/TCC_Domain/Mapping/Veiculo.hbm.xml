@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TCC_Domain" namespace="TCC_Domain.Domain">
+    <class name="Veiculo" table="VEICULO">
+        <id name="ID" column="VEI_ID" type="Guid">
+            <generator class="guid" />
+        </id>
+        <many-to-one name="Modelo" class="ModeloVeiculo" column="MDV_ID" not-null="true" lazy="false"  />
+        <property name="AnoFabricacao" column="VEI_ANO_FABRICACAO" type="int" not-null="true" />
+        <property name="AnoModelo" column="VEI_ANO_MODELO" type="int" not-null="true" />
+        <property name="CorPredominante" column="VEI_COR_PREDOMINANTE" type="String" not-null="true" length="20" />
+        <property name="Placa" column="VEI_PLACA" type="String" not-null="true" unique="true" length="7" />
+        <property name="Renavam" column="VEI_RENAVAM" type="String" not-null="true" length="20" />
+        <many-to-one name="Proprietario" class="Pessoa" column="PES_ID" not-null="true" cascade="save-update" />
+        <property name="AutorizacaoTrafego" column="VEI_AUTORIZACAO_TRAFEGO" type="String" not-null="true" length="20" />
+        <bag name="Taxistas" inverse="true" lazy="true" cascade="save-update">
+            <key column="VEI_ID" />
+            <one-to-many class="Taxista" />
+        </bag>
+        <many-to-one name="Rastreador" class="Rastreador" column="RAS_ID" not-null="true" cascade="all" lazy="false" />
+        <property name="Ativo" column="VEI_ATIVO" type="Boolean" not-null="true" />
+    </class>
+</hibernate-mapping>

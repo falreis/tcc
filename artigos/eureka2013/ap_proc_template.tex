@@ -1,0 +1,865 @@
+\documentclass[twocolumn]{atlantis-press}
+\usepackage[dvips]{graphicx}
+\usepackage[latin1]{inputenc}
+\usepackage{amssymb,amsmath,array}
+\usepackage{atlantis-press}
+\usepackage{lmodern} % Times fonts
+
+\graphicspath{ {imagens/} }
+
+%***********************************************************************
+% !!!! IMPORTANT NOTICE ON TEXT MARGINS !!!!!
+%***********************************************************************
+%
+% Please avoid using DVI2PDF or PS2PDF converters: some undesired
+% shifting/scaling may occur when using these programs
+% It is strongly recommended to use the DVIPS converters, and to submit
+% PS file. You may submit a PDF file if and only if you use ADOBE ACROBAT
+% to convert your PS file to PDF.
+
+
+
+%***********************************************************************
+% !!!! USE OF THE Atlantis Press LaTeX STYLE FILE !!!!!
+%***********************************************************************
+%
+% Some commands are inserted in the following .tex example file.  Therefore to
+% set up your Atlantis Press submission, please use this file and modify it to insert
+% your text, rather than staring from a blank .tex file.  In this way, you will
+% have the commands inserted in the right place.
+
+
+\begin{document}
+
+\title{Serviço Baseado em Localização Geográfica para melhoria do atendimento de táxis}
+
+\begin{aug}
+\author[1]{Felipe A. L. Reis}
+\author[2]{Marconi A. Pereira}
+\author[1]{Paulo E. M. Almeida}
+\affilation[1]{CEFET-MG - Centro Federal de Educação Tecnológica de Minas Gerais, Belo Horizonte, MG, Brazil}
+\affilation[2]{UFSJ - Universidade Federal de São João Del-Rei, Ouro Branco, MG, Brazil}
+\end{aug}
+
+%
+%
+\maketitle
+
+%
+%
+\begin{abstract}
+Uma solução para aumento da eficiência operacional 
+dos sistemas de táxi é o uso de serviços baseados 
+em localização (LBS), a fim de escolher o melhor taxista 
+disponível para atendimento a uma requisição. 
+Nesse trabalho são avaliados diferentes 
+algoritmos de escolha do melhor táxi, quando se 
+conhece a posição geográfica de taxistas e passageiros. 
+Nos testes realizados, em um sistema estacionário, 
+observou-se, por meio de simulação, a diminuição do tempo 
+de espera e da distância percorrida de táxis escolhidos 
+por algoritmos LBS, em relação ao uso do método broadcasting, 
+usado atualmente para escolha do taxi responsável por um 
+atendimento.
+
+\emph{\textbf{\textit{(99 palavras (max 100) - lembrar ao traduzir)}}}
+\end{abstract}
+
+%
+%
+\begin{keywords}
+Serviços baseados em localização (LBS), transporte de táxi 
+urbano, roteamento em tempo real, problemas de atribuição.
+\end{keywords}
+
+%
+%
+\section{Introduction}
+%
+Táxi é um meio de transporte em áreas urbanas que oferece 
+agilidade e conforto no atendimento ao público. Esse tipo 
+de transporte é uma das alternativas ao sistema de transporte 
+coletivo em diversas cidades. O transporte por táxis sofre 
+influência de diferentes fatores, que alteram a dispobibilidade 
+de serviços. Entre eles podemos citar:
+%
+\begin{itemize}
+	\item Eventos tais como shows, festas e congressos geram 
+	uma forte procura em um ponto específico, geralmente 
+	concentrada num horário (encerramento do evento);
+	\item Dias chuvosos motivam as pessoas, que geralmente andam 
+	a pé ou ônibus, a usar o táxi, o que gera uma grande demanda 
+	pulverizada, isto é, não há uma concentração de usuarios num 
+	ponto específico.
+	\item Determinados horários onde ha pico de tráfego, tais como 
+	no início e fim de expediente.
+	\item Proximidade de feriados, no qual os usuarios optam 
+	por deslocar-se até as rodoviárias ou aeroportos
+\end{itemize}
+%
+Além dos problemas citados, o funcionamento do serviço de táxi, 
+em geral, é pouco satisfatório quanto à sua eficiência operacional. 
+As razões para isso estão relacionadas ao modo como os táxis são 
+organizados - agendamento de serviço por ligações telefônicas, 
+atendimento a usuários que estão nas ruas e pontos de táxi 
+\cite{CHENG_QU}.
+
+A ineficiência é justificada pela falta de metodologia no 
+atendimento às requisições, sua demanda pulverizada e ao fato 
+da maioria das solicitações seguir o modelo de busca aleatório, 
+onde taxistas e usuários procuram-se mutuamente, sem um método 
+em especial.
+
+Em busca da melhoria efetiva nos serviços prestados, é 
+necessário que haja um balanço entre a disponibilidade, o 
+número de requisições por regiões e informações detalhadas 
+sobre tráfegos e rotas de acesso. Para isso, seria 
+necessária a criação de modelos que descrevessem o comportamento 
+dos serviços de táxi. Entretanto, devido a suas próprias 
+características, como a quantidade de taxistas autônomos e a 
+demanda estocástica em diferentes localizações, a criação 
+desses modelos de funcionamento é inviável, até mesmo para 
+representações de tamanho médio \cite{CHENG_QU}.
+
+Uma solução alternativa para o cenário apresentado é o uso de 
+rastreadores nos veículos, permitindo a utilização de serviços 
+baseados em localização (LBS - Location Based Services) para 
+aumento da eficiência operacional: o conhecimento da localização 
+geográfica de taxistas e passageiros permite atendimentos mais 
+eficientes.
+
+A aplicação de tecnologias de posicionamento global para 
+requisição de táxis já foi oferecido e estudado em \cite{LIAO} 
+e \cite{XU_ET_AL}. Nesses sistemas, a solicitação de serviço de 
+táxi é realizada por meio de centrais telefônicas de atendimento 
+ao cliente. Nelas, o cliente informa a sua localização e o 
+operador identifica, na frota de táxis, aqueles veículos mais 
+próximos, solicitando que algum deles possa atender ao passageiro. 
+Após o retorno, com a confirmação de um taxista, o usuário é 
+informado sobre o táxi que realizará o atendimento.
+
+O trabalho aqui descrito busca avaliar o ganho dos algoritmos 
+baseados em GPS em relação ao método broadcasting - utilizado, 
+hoje, no despacho de veículos. Nesse trabalho, busca-se também 
+analisar como a distância do taxista influencia no tempo de 
+espera de um cliente e os tempos de execução dos algoritmos 
+propostos. Um outro objetivo do trabalho é medir a alteração 
+do tempo de espera por táxis quando há diminuição da oferta 
+de serviços, de acordo com cada um dos algoritmos estudados.
+
+%
+%
+\section{Background}
+%
+Os serviços de táxis estão presentes em diferentes localidades 
+mundiais. Grandes centros contam, normalmente, com uma 
+infraestrutura desses serviços, a fim de atender à demanda 
+populacional e aos turistas, que passeiam ou realizam negócios 
+nessas cidades.
+
+Os serviços de taxi, em geral, possuem baixa eficiência operacional, 
+com cerca de 50\% do tempo disponível desperdiçado na espera por 
+passageiros \cite{CHENG_QU}. Desse modo, a concentração de 
+estudos, normalmente, tem como objetivo melhorar a eficiência dos 
+serviços, sem aumentar custos \cite{CHENG_QU}.
+
+O uso de localizações geográficas, obtidos por meio de rastreadores, 
+recentemente foi incorporado ao sistema de despacho \cite{XU_ET_AL}.
+A partir do conhecimento da posição geográfica de um cliente ou usuário, 
+é possível determinar, de forma mais precisa, informações sobre 
+produtos e opções de serviço que interessam a esse possível consumidor 
+\cite{RAO_MINAKAKIS}. 
+
+Existem diferentes técnicas para busca de clientes, desde 
+métodos de busca aléatório até métodos baseados em GPS, onde 
+se conhece a localização de taxistas e passageiros. 
+Nesse último método, é possível escolher o melhor veículo da frota 
+para atender a cada requisição de maneira mais eficiente. 
+Segundo \cite {XU_ET_AL}, o modo de despacho baseado em GPS 
+será aquele usado com maior eficiência para atender demandas de taxi, 
+quando se conhece a posição de passageiros e taxistas.
+
+Em geral, sistemas de localização monitoram a posição de taxistas 
+por meio de rastreadores veículares. Nos artigos \cite{LIAO} e 
+\cite{XU_ET_AL} foram indicados sistemas reais que armazenam a 
+posição absoluta de taxistas e, a partir de requisições a uma 
+central telefônica, escolhem o melhor veículo responsável pelo 
+atendimento. 
+
+Devido ao crescimento do uso de smartphones no mundo 
+\textbf{\textit{verifcar fonte!!}}, além da possível manutenção dessa 
+tendência pelos próximos anos \textbf{\textit{verifcar fonte!!}}, pode-se 
+dizer que é possível construir sistemas que utilizam rastreadores GSP / A-GPS 
+integrados a dispositivos móveis, a fim de localizar veículos e clientes. 
+A partir de requisições oriundas desses dispositivos, o conhecimento da 
+localização de taxistas e passageiros torna-se natural e pode-se
+de fornecer serviços de taxi com maior eficiência.
+
+%
+%
+\section{Algorithms}
+%
+\subsection{GPS-based algorithm with lower estimated time for service}
+%
+Uma das soluções para escolha do melhor taxista responsável 
+por uma requisição é o desenvolvimento de um algoritmo que 
+sempre selecione o veículo cuja estimativa de tempo de 
+atendimento é a menor possível.
+
+Para isso, devemos estimar o tempo de deslocamento de cada 
+um dos taxistas em relação ao cliente, baseado na rota 
+real entre o táxi e o passageiro. Existe, no entanto, 
+um problema nessa solução simplificada: o custo para avaliação 
+de todos os taxistas torna o processamento de uma requisição 
+muito lento, devido a complexidade dos algoritmos de roteamento.
+
+A fim de diminuir o tempo de resposta, uma solução simples, que 
+diminui o tempo de resposta, sem afetar a qualidade do algoritmo é 
+pré-processar os taxistas disponíveis para atendimento a uma 
+requisição. O filtro considera que existe uma certa 
+linearidade entre a distância e o tempo de atendimento.
+
+Através desse critério, podemos classificar o taxistas de acordo 
+com sua distância euclidiana até o cliente. O primeiro passo é 
+selecionar taxistas em uma faixa de distância máxima. Esse 
+taxistas são avaliados quanto ao menor tempo de 
+atendimento possível. Caso não sejam encontrados taxistas 
+dentro da faixa de distância mínima tomada como limite inicial 
+para filtro, o algoritmo procede do seguinte modo:
+%
+\begin{enumerate}
+	\item Aumenta a faixa de distância mínima para 
+	encontrar taxistas;
+	\begin{enumerate}
+		\item Caso seja encontrado ao menos um taxista nessa nova 
+		faixa, ocorre o processamento para escolha do melhor veículo;
+		\item Caso não sejam encontrados taxistas, aumenta-se 
+		novamente a faixa de distância;
+		\begin{enumerate}
+			\item Caso seja encontrado ao menos um taxista, 
+			ocorre novo processamento sobre os táxis encontrados;
+			\item Caso contrário, o sistema conclui que não 
+			há taxistas próximos e coloca o cliente na fila de espera;
+		\end{enumerate}
+	\end{enumerate}
+\end{enumerate}
+%
+Podemos compreender melhor essa situação com auxílio da figura 
+\ref{fig:circulos}. Em resumo, os taxistas são buscados primeiramente 
+na região verde dos círculos concêntricos 
+\textbf{\textit{(substituir por hachurada 1)}}. 
+Caso não sejam encontrados, busca-se na região amarela 
+\textbf{\textit{(substituir por hachurada 2)}} e, em sequência, caso 
+seja necessário, na região vermelha 
+\textbf{\textit{(substituir por hachurada 3)}}. 
+Se nenhum taxista for encontrado, o algoritmo coloca o cliente na 
+fila de espera.
+%
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.6]{circulos.eps}
+	\caption{Método para filtro de taxistas avaliados pelo sistema, de acordo a distância até o cliente.}
+	\label{fig:circulos}
+\end{figure}
+%
+Através do conceito de círculos definidos acima, podemos 
+limitar a distância máxima que um taxi será avaliado para 
+atedimento a um cliente. A limitação de distância máxima 
+têm como objetivo impedir que taxistas a uma distância 
+considerável do cliente sejam definidos como responsáveis 
+por um atendimento, uma vez tanto a distância percorrida pelo 
+taxista quanto o tempo de espera do cliente serão longos.
+
+Caso o filtro, ainda assim, encontre um número grande de taxistas 
+aptos para atendimento, o sitema filtra os N taxistas mais 
+próximos, reduzindo ainda mais o processamento. Dentre esses 
+taxistas restantes, aquele com o menor tempo previsto para atendimento 
+será definido como responsável pela requisição.
+
+No artigo aqui descrito, a fim de emcapsular o processo de estimativa 
+de tempo de requisição, foi utilizado a API do Google Maps para obtenção 
+da menor rota real.
+
+%
+\subsection{GPS-based algorithm with Euclidean distance}
+%
+Um algoritmo alternativo ao descrito na seção anterior é a 
+utilização apenas da distância euclidiana como critério de 
+escolha do melhor taxista. 
+
+Analisando esse método, no entanto, em uma situação real, 
+a distância euclidiana pode se mostrar ineficiente, uma vez 
+que um táxi mais próximo, segundo esse critério, poderá 
+demorar mais para deslocar-se até o cliente do que um táxi 
+ligeiramente mais distante, mas que apresente uma rota 
+diferente. Podemos verificar um exemplo dessa situação na 
+figura \ref{fig:rota_taxista_cliente}. 
+%
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.6]{rota_taxista_cliente.eps}
+	\caption{Exemplo de rotas entre taxistas e um cliente.}
+	\label{fig:rota_taxista_cliente}
+\end{figure}
+%
+Nessa imagem, podemos ver que apesar do Taxista 1 estar mais 
+próximo ao Cliente 1 que o Taxista 2, utilizando o critério de 
+distância Euclidiana, o Taxista 2 deverá percorrer uma distância 
+menor que a do Taxista 1 para atender a solicitação.
+
+Apesar dos problemas discutidos na acima, a solução possui 
+gasto computacional consideravelmente inferior e pode 
+apresentar bons resultados, em um caso médio. 
+
+No algortimo construído nesse trabalho, de modo semelhante ao 
+método com menor tempo estimado de atendimento, foi definida uma 
+distância máxima, por meio de distância euclidiana, para que um 
+taxista seja avaliado pelo sistema - taxistas muito longe do cliente 
+são descartados.
+
+%
+\subsection{Broadcasting method}
+%
+O método broadcasting é aquele utilizado atualmente para 
+escolha do taxista responsável por atender um cliente após 
+o telefonema à central. Nele, o atendente comunica, por rádio, 
+aos taxistas, a localização do passageiro. Um dos taxistas 
+próximos ao cliente confirma que está disponível e é tomado 
+como responsável pelo atendimento.
+
+No método broadcasting não há garantias que o taxista mais 
+próximo será o responsável pela requisição, tampouco que o 
+sistema é otimizado para atendimento às solicitações: o taxista 
+que primeiro responde a demanda é aquele que realizará o 
+atendimento. Podemos concluir que a escolha do taxista é 
+realizada, de certa forma, de modo aleatório, uma vez que o 
+primeiro taxista, em uma região próxima ao cliente, que responda 
+ao rádio será designado para atendê-lo.
+
+Para simular essa característica, foi criado um algoritmo que 
+simula esse comportamento. Nele, após a solicitação de um 
+cliente, o algoritmo seleciona um conjunto de taxistas próximos 
+(limitando a distância do mesmo modo que nos algoritmos baseados 
+em GPS) e sorteia um taxista responsável. Através do sorteio, 
+pode-se representar a seleção do taxista que se candidatou 
+para atendimento.
+
+%
+%
+\section{Tests and Results}
+%
+O mecanismo de simulação desenvolvido para teste dos 
+algoritmos aqui descritos é classificado como Simulação 
+a Eventos Discretos.
+
+Os testes foram executados para todos os algoritmos sob 
+as mesas condições. Cada método definiu o melhor taxista para 
+atendimento, segundo seus próprios critérios. O tempo de 
+deslocamento de cada taxista foi computado em cada um dos 
+algoritmos.
+
+Para calcular o tempo médio de atendimento, foi utilizado o 
+Google Maps API, a fim de estimar o tempo de deslocamento 
+entre taxista e cliente, uma vez que a simulação real do 
+procedimento é considerada, hoje, inviável. Essa estimativa 
+foi definida como tempo para atendimento. O simulador não 
+considerou nos testes informações de tráfego.
+
+%
+\subsection{Taxi distribution}
+%
+Para definir a distribuição de demandas de atedimento na área 
+utilizada como representação de uma cidade, foi construído um 
+gerador de posicionamento de taxistas e passageiros. 
+
+Nele, considera-se que a probabilidade de ocorrência de um 
+evento em uma área periférica da cidade é inferior à 
+probabilidade na região central. Essa distribuição considera 
+que um único ponto atrai maior quantidade de requisições de 
+serviço. Em cidades de grande porte, vários locais possuem 
+concentração de requisições, não havendo um ponto único de 
+maior concentração de serviços.No entanto, essas características 
+comuns a centros urbanos são complexas de serem modeladas, 
+principalmente quando relacionadas a demanda estocástica por 
+serviços de táxi \cite{CHENG_QU}.
+
+Os taxistas, do mesmo modo que as demandas, não foram 
+distribuídos uniformemente. Utilizando o mesmo algoritmo das 
+demandas, os taxistas ocupam majoritariamente a região central 
+do sistema. As regiões periféricas têm menos táxis disponíveis, 
+e de acordo com o algoritmo de requisição, menos chamados para 
+atendimento. A distribuição dos taxis pela cidade, em relação 
+ao ponto central da cidade pode ser visto na figura 
+\ref{fig:histograma}.
+%
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.6]{histograma.eps}
+	\caption{Histograma contendo a distribuição dos taxistas em relação ao ponto central.}
+	\label{fig:histograma}
+\end{figure}
+%
+%
+\subsection{Service flow}
+%
+A fim de representar de forma mais plausível a dinâmica nos 
+sistemas reais, construiu-se um simulador para representar a 
+movimentação de taxistas pela cidade. Como o sistema é 
+construído sobre eventos discretos, esses movimentos ocorrem 
+apenas após o processamento de uma requisição.
+
+O simulador tem como característica a manutenção da razão 
+aproximada entre a quantidade de táxis ocupados e o número 
+total de veículos. Com isso, os testes mantêm-se em um estado 
+estacionário, sem tendência ao crescimento ou decrescimento 
+da oferta em relação ao número de passageiros. 
+
+A manutenção de táxis em um estado estacionário garante 
+que o tempo de espera mantenha-se uniforme. Essa analogia 
+deriva da relação proposta por \cite{YANG_WONG}, onde o 
+tempo de espera por táxi é diretamente relacionado à 
+quantidade de horas vagas dos taxistas.
+
+Outra característica do simulador é quanto à alteração dos 
+estados dos taxistas. Em uma situação real, em um pequeno 
+intervalo de tempo, é possível que sejam iniciados e finalizados 
+atendimentos em pontos distintos da cidade. Isso ocorre devido 
+ao número de requisições realizadas diariamento e devido à 
+quantidade de taxistas e passageiros existentes. O simulador, 
+após o evento de processamento de uma requisição, representa 
+esse comportamento modificando a disponibilidade alguns taxistas.
+
+Devemos informar que a elasticidade da demanda de 
+serviços foi ignorada pelo simulador. Na prática, há variação da 
+quantidade de solicitações devido a dias da semana, condições 
+climáticas, vésperas de feriados, entre outros. Porém, durante 
+a simulação, os testes foram realizados sob condições homogêneas, 
+de modo que não há variação na oferta de serviços. Supõe-se, 
+então, que o algoritmo foi executado fora de um horário de pico 
+e que a quantidade de solicitações nesse horário manteve-se 
+inalterada.
+
+Como resumo do procedimento utilizado para realização 
+dos testes, é possível descrever todo o procedimento 
+na seguinte sequência:
+%
+\begin{enumerate}
+	\item O sistema define um número N de táxis e os coloca 
+	de modo aleatório na cidade;
+	\item Cerca de metade dos táxis são marcados como ocupados;
+	\item Os taxistas movem-se aleatoriamente pela cidade, em 
+	eventos discretos sem alterar consideravelmente sua 
+	posição atual;
+	\item Alguns taxistas têm seu status alterado de "Ocupado"
+	para "Livre" e vice-versa, simulando o início/final 
+	de atendimentos;
+	\item O algoritmo de teste simula uma requisição de um 
+	passageiro;
+	\item O sistema de despacho de veículos escolhe o melhor 
+	taxista, de acordo com o algoritmo utilizado;
+	\item O sistema marca o taxista como ocupado, evitando 
+	que ele seja responsável por outros atendimentos;
+	\item Se o número de requisições propostas no teste ainda 
+	não tiver sido atingido, o sistema volta ao passo 3. 
+	Caso contrário, o sistema contabiliza os tempos médios para 
+	atendimento e o tempo de processamento de cada um dos 
+	algoritmos.
+\end{enumerate}
+%
+%
+\subsection{Tests conditions}
+%
+O município de Belo Horizonte (Brasil) foi definido como local 
+onde os testes seriam executados, simulando uma condição real. 
+Devido à existência de maior área urbanizada no centro da cidade, 
+com baixo número de grandes áreas verdes e com ampla malha viária, 
+optou-se pela distribuição dos taxistas e das requisições na 
+área central e adjacências.
+
+Além da localização geográfica real onde os testes foram 
+executados, foram realizadas adequações ao modelo, de modo a 
+simular condições próximas à média existente na cidade. 
+Como valores de configuração do do modelo, temos:
+%
+\begin{itemize}
+	\item Taxa de ocupacao media dos taxis: 50\%;
+	\item Probabilidade de taxis a leste do ponto inicial: 50\%;
+	\item Probabilidade de taxis a norte do ponto inicial: 50\%;
+	\item Numeros de taxis avaliados nos circulos proximos ao cliente: 7;
+	\item Raios de busca dos circulos: 0,7km, 1,2km e 1,5km;
+	\item Probabilidade de movimentacao de um taxista: 90\%;
+	\item Probabilidade maxima da alteracao do status de um 
+	taxista ("Livre" para "Ocupado" ou vice-versa): 10\%.	
+\end{itemize}
+%
+No primeiro teste, utilizando condições médias encontadas 
+na cidade, definiu-se uma representação na qual 300 táxis 
+foram distribuídos em uma área de aproximadamente 34,84 km2. 
+A  com uma taxa média de 8,61 táxis por km2, ou seja, 
+um táxi a cada 0,12 km2.
+
+Em um segundo teste, optou-se por restringir o número de 
+táxis, de modo a analisar a influência da disponibilidade de 
+serviços. Para isso, colocou-se na mesma área apenas 200 
+taxistas, com uma taxa de ocupação média de 5,74 táxis por km2.
+
+%
+\subsection{Results}
+%
+
+Os resultados dos testes descritos nessa seção foram 
+submetidos à análise de variância (One-way ANOVA) 
+seguida do teste de Tukey, para comparação múltipla 
+das médias. Foi adotado intervalo de confiança de 95\%, 
+sendo as diferenças consideradas significativas quando 
+o valor P<0,05. Para análise estatística foi utilizado 
+o software Graph Pad Prism (versão 5.01).
+
+A fim de reduzir o nome dos algoritmos nos gráficos 
+dessa seção, utilizou-se o padrão de nomenclatura descrito 
+na tabela \ref{tab:nomenclatura_algoritmos}.
+%
+\begin{table}
+  \centering
+  \begin{tabular}{c|c|c|c|}
+    \hline
+    %& Tempo de Espera & Distância Percorrida & Tempo de Processamento \\
+    & Tempo & Distancia & Process. \\
+    \hline
+    %GPS Estimativa Tempo Mínimo & GPS-T & GPS-D & GPS-P \\
+    %GPS Distância Euclidiana & EUC-T & EUC-D & EUC-P \\
+    %Broadcasting & BRC-T & BRC-D & BRC-P \\
+    (1) & GPS-T & GPS-D & GPS-P \\
+    (2) & EUC-T & EUC-D & EUC-P \\
+    (3) & BRC-T & BRC-D & BRC-P \\
+    \hline
+  \end{tabular}
+  \caption{Padrão de nomenclatura dos algoritmos para os testes.}
+  \label{tab:nomenclatura_algoritmos}
+\end{table}
+%
+\textbf{\textit{Corrigir tabela (os valores estavam ficando por 
+cima da coluna do lado)}}
+
+\textbf{\textit{
+\begin{enumerate}
+	\item GPS-based algorithm with lower estimated time for service
+	\item GPS-based algorithm with Euclidean distance
+	\item Broadcasting method
+\end{enumerate}
+}}
+
+\subsection{Test I}
+%
+O primeiro resultado obtido pelas execuções é o tempo 
+médio de espera dos clientes até o atendimento. O gráfico 
+correspondente aos tempos para atendimento pode ser 
+visto na figura \ref{fig:tempo_300}. 
+%
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.6]{tempo_300.eps}
+	\caption{Tempo médio de espera dos clientes nas amostras, por tipo de requisição.}
+	\label{fig:tempo_300}
+\end{figure}
+%
+O algoritmo baseado em GPS com Menor Estimativa do Tempo para 
+Atendimento obteve valores mais baixos, quando comparado 
+aos algoritmos GPS com Distância Euclidiana e Broadcasting. 
+Portanto pode-se inferir, de acordo com os testes realizados, 
+que este o algoritmo apresenta menor tempo de espera médio 
+para os clientes. Esses resultados foram obtidos com 95\% 
+de confiança e mostram que existe uma diferença estatisticamente 
+significativa, que favorece o algoritmo GPS com Menor Estimativa 
+do Tempo para Atendimento.
+
+As informações correspondentes a distância média percorrida 
+pelos taxistas nas amostras pode ser vista na figura 
+\ref{fig:distancia_300}.
+%
+\begin{figure}[!h]
+	\centering
+	\includegraphics{distancia_300.eps}
+	\caption{Distância média de espera dos taxistas nas amostras, por tipo de requisição.}
+	\label{fig:distancia_300}
+\end{figure}
+%
+Pode-se observar, que a distância média percorrida pelos 
+taxistas no algoritmo GPS é menor que as distâncias 
+encontradas nos algoritmos EUC e BRC.
+
+De acordo com os resultados obtidos, é possível correlacionar o 
+tempo médio de espera e a distância percorrida pelos taxistas. 
+Como já discutido, o tempo médio para atendimento está relacionado à 
+distância que o taxista deve percorrer até o cliente: quanto mais 
+longe o taxista, maior o tempo que o cliente deverá esperar até 
+ser atendido. Como os testes propostos não consideram trânsito, 
+o que poderia causar variação na distância em relação ao tempo 
+de espera, é possível correlacionar essas duas métricas, 
+conforme a figura \ref{fig:correlacao_300}.
+%
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{correlacao_300.eps}
+	\caption{Correlação entre o tempo de atendimento e a distância percorrida.}
+	\label{fig:correlacao_300}
+\end{figure}
+%
+Por fim, deve-se avaliar o tempo de execução dos algoritmos, 
+para que seja possível medir sua eficiência na busca pelo 
+melhor taxista disponível para atender as requisições. A 
+figura \ref{fig:execucao_300} indica o tempo médio de 
+processamento dos algoritmos.
+%
+\begin{figure}[h!]
+	\centering
+	\includegraphics{execucao_300.eps}
+	\caption{Tempo médio de execução dos algoritmos.}
+	\label{fig:execucao_300}
+\end{figure}
+%
+A análise dos dados da figura \ref{fig:execucao_300} 
+mostra que os algoritmos GPS com Distância Euclidiana 
+e Broadcasting possuem tempo de processamento significativamente 
+inferior aos obtidos na execução do algoritmo baseado 
+em GPS com Menor Estimativa do Tempo para Atendimento.
+
+Apesar dos valores de processamento do algoritmo GPS serem 
+significativamente superiores aos algoritmos BRC e EUC, pode-se 
+observar que seu valor absoluto é baixo, quando considerado seu 
+uso em uma aplicação real. Devido a características do algoritmo, 
+onde o número de taxistas processados é limitado de acordo com 
+restrições do algoritmo e, levando-se em conta que o maior custo 
+computacional é gasto nas chamadas de web service, pode-se dizer 
+que o tempo de processamento manter-se-á estável, mesmo com o 
+aumento do número de taxistas existentes no sistema.
+
+%
+\subsection{Test II: Decrease of taxi avalability}
+%
+No segundo teste, buscou-se diminuir a oferta de taxistas 
+em relação à primeira simulação. Para isso, reduziu-se o número 
+de taxistas disponíveis na mesma área da cidade. Nesse segundo 
+experimento, a disponibilidade de taxista foi de 1 veículo a 
+cada 0,17 km2.
+
+Para avaliar a alteração do desempenho causado pela modificação 
+dos testes, podemos novamente comparar os tempos de atendimento 
+médio entre os algoritmos. O resultado dessa comparação pode 
+ser visto na figura \ref{fig:tempo_200}.
+%
+\begin{figure}[h!]
+	\centering
+	\includegraphics{tempo_200.eps}
+	\caption{Tempo médio de espera dos taxistas nas amostras, por tipo de requisição.}
+	\label{fig:tempo_200}
+\end{figure}
+%
+No segundo experimento, pode-se observar que, do mesmo modo que 
+o primeiro teste, com 95\% de confiança, o algoritmo GPS com 
+Menor Estimativa do Tempo para Atendimento demonstrou tempo de 
+espera significativamente menor que os algoritmos GPS com 
+Distância Euclidiana e Broadcasting, para o caso médio.
+
+As informações correspondentes a distância média percorrida pelos 
+taxistas em ambos os testes podem ser vista na figura
+\ref{fig:distancia_200}
+%
+\begin{figure}[h!]
+	\centering
+	\includegraphics{distancia_200.eps}
+	\caption{Distância média dos taxistas nas amostras, por tipo de requisição.}
+	\label{fig:distancia_200}
+\end{figure}
+%
+Observa-se, assim como no primeiro teste, que a distância 
+média percorrida pelos taxistas no algoritmo GPS com 
+Menor Estimativa do Tempo para Atendimento é menor que as 
+distâncias encontradas nos algoritmos GPS com Distância 
+Euclidiana e Broadcasting.
+
+%
+%
+\section{Discussion}
+%
+Como critério para escolha do melhor algoritmo, dentre aqueles 
+avaliados nesse artigo, foi analisada a contribuição de cada 
+um deles na diminuição do tempo médio de espera para atendimento 
+e o tempo de gasto para escolha do melhor taxista. 
+
+No critério de diminuição do tempo de espera por atendimento, podemos 
+verificar que os algoritmos baseados em GPS tiveram diminuição 
+do tempo de atendimento em pelo menos 20\% em relação 
+ao método broadcasting. A partir de uma avaliação mais cuidadosa, 
+é possível constatar que a diminuição média no primeiro 
+teste, obtida para o método GPS com Menor Tempo Estimado de Atendimento 
+foi de 52,8\%, enquanto que o método GPS com Distância Euclidiana 
+obteve redução média de 26,1\% em relação ao método broadcasting.
+
+No segundo teste onde há menor disponibilidade de serviços, 
+os resultados do software mostraram-se mais elevados que no primeiro 
+experimento, sendo que a variação média para o algoritmo  
+baseado em GPS com Menor Tempo Estimado de Atendimento foi de 
+51,3\%, enquanto que no método com Distância Euclidiana foi de 27,1\%. 
+
+De acordo com os resultados mostrados na figura \ref{fig:correlacao_300}, 
+pode-se observar que existe uma relação direta entre a 
+distância percorrida pelo taxista e o tempo de espera do passageiro.
+Deve-se lembrar que a interdependência entre a distância 
+percorrida pelo taxista e o tempo de espera mostra-se uniforme, 
+pois não foram consideradas informações de trânsito nos testes. 
+
+Em uma situação real, as informações de trânsito causariam 
+modificações relevantes nos resultados encontrados, pois uma 
+rota mais rápida poderia ser maior, quando considerada a 
+velocidade da via no momento. 
+
+Em casos de retenção de trânsito é possível realizar duas analises 
+distintas conforme a condição de tráfego:
+%
+\begin{enumerate}
+	\item Em retenções isoladas, a velocidade das vias congestionadas 
+	têm seu valor alterado sensivelmente e pode haver alteração 
+	na linearidade entre distância e tempo para atendimento;
+	\item Em retenções generalizadas, como horários de pico, há uma 
+	diminuição geral da velocidade de todas as rotas e não se 
+	pode afirmar que os ganhos de alteração de rota sejam justificados 
+	em todos os casos. Com isso, nessas situações de pico, 
+	há possibilidade de que exista amanutenção da distância como 
+	fator de relação direta para o tempo de atendimento.
+\end{enumerate}
+%
+Quanto à avaliação do tempo de resposta dos algoritmos, com a
+definição do melhor veículo disponível para atendimento, 
+pode-se verificar, de acordo com os resultados, que o tempo de 
+execução do algoritmo de GPS com Distância Euclidiana é bastante 
+semelhante ao algoritmo broadcasting, com valor desprezível. O 
+tempo de execução do algoritmo GPS com Menor Estimativa do Tempo 
+para Atendimento é, por sua vez, muito mais lento, com tempo 
+de resposta médio em 3,8s.
+
+Um software que demore a responder a uma requisição poderá 
+comprometer o resultado final do algoritmo, uma vez que um 
+taxista poderá se deslocar pela cidade, alterando aquele que seria o 
+melhor veículo responsável por uma requisição. Além disso, apesar da 
+situação ter sido desconsiderada nos testes, em casos onde a demora 
+de execução é significativa, há aumento da probabilidade do taxista 
+atender a solicitação de um cliente que está na rua, sob a condição 
+do método \textit{random-search} \cite{XU_ET_AL}, onde taxistas e 
+clientes se buscam aleatoriamente, ficando indisponível.
+
+Ao analisar os resultados dos testes de GPS em relação ao método 
+broadcasting, deve-se adotar cautela na avaliação do último. 
+Como é sabido, o método broadcasting parte da interação entre 
+taxistas e atendentes da central telefônica, não sendo executado 
+nenhum algoritmo. Pode-se estimar que os contatos por rádio entre 
+taxistas e atendentes gastam um tempo maior que os 3,8 segundos 
+necessários para o processamento do método GPS com Menor Tempo Estimado
+para Atendimento. Desse modo, apesar do resultado ser lento em 
+relação ao método com Distância Euclidiana, os valores estão 
+dentro de uma faixa aceitável de espera. Considerando que um veículo 
+move-se em velocidade máxima de 60km/h nas ruas da cidade, a 
+distância máxima que o veículo terá se deslocado em relação à 
+posição original é de 63,3m, quando considerado apenas o 
+tempo médio de resposta do sistema.
+
+%
+%
+\section{Conclusion}
+%
+A partir do trabalho, constatou-se a melhora do tempo até o 
+atendimento com o uso de algoritmos baseados em localização, 
+o que indica uma tendência a resultados bem sucedidos na 
+prática. Além disso, o trabalho indicou numericamente a 
+existência da melhoria dos serviços, quando utilizados métodos 
+de avaliação GPS em relação ao método broadcasting, 
+como era previsto, de acordo com \cite{XU_ET_AL}.
+
+Ao melhorar o tempo de espera por serviços e indicar a 
+correlação entre a distância percorrida e o tempo para atendimento, 
+podemos indicar um possível aumento da eficiência nos atendimentos 
+de táxi. Pode-se inferir também que haverá redução da quantidade 
+de quilômetros percorridos pelos taxistas até o atendimento de 
+uma requisição, tornando o trajeto mais econômico para o taxista.
+
+A análise de tempo de processamento computacional das soluções 
+indica que os algoritmos desenvolvidos possuem baixo tempo 
+de resposta. Devido as suas características, bem como os tempos 
+de processamentos encontrados nas simulações, pode-se afirmar 
+que as soluções apresentadas têm viabilidade prática, quanto ao 
+tempo de resposta do sistema.
+
+%
+%
+\section{Future Work}
+%
+Em trabalhos futuros é possível melhorar os modelos criados, 
+tornando-os mais próximos a realidade e considerar diferentes 
+condições de ambiente a fim de produzir resultados mais precisos. 
+A avaliação de fatores externos ao fluxo de táxi, como chuvas 
+ou eventos, de modo semelhante ao indicado em \cite{LIN_ZENG} 
+para previsão de horários de chegada de ônibus, podem ser 
+utilizados pelo algoritmo para resultados mais precisos.
+Além disso, é possível verificar o comportamento do tráfego em dias 
+normais e preparar o algoritmo para considerar o horário, entre 
+outras condições, como critério na escolha do melhor táxi, 
+de modo a diminuir o tempo de atendimento.
+
+
+% ****************************************************************************
+% BIBLIOGRAPHY AREA
+% ****************************************************************************
+
+
+
+% IF YOU DO NOT USE BIBTEX, USE THE FOLLOWING SAMPLE SCHEME FOR THE REFERENCES
+% ----------------------------------------------------------------------------
+\begin{thebibliography}{9}
+
+\bibitem{CHENG_QU} S. Cheng and X. Qu, X. A Service Choice Model for Optimizing Taxi Service Delivery,
+\emph {Research Collection School of Information Systems}, v. 209, 2009.
+
+\bibitem{LIAO} Z. Liao. Real-Time Taxi Dispatching Using Global Positioning Systems. 
+\emph {Communications of ACM}, v. 46, n. 5, may 2009.
+
+\bibitem{XU_ET_AL} Z. Xu, et al. Investigating the Value of Location Information in Taxi Dispatching Services: A case study of DaZhong Taxi. \emph {PACIS 2005 Proceedings}, v. 111, 2005.
+
+\bibitem{RAO_MINAKAKIS} B. Rao and L. Minakakis Evolution of Mobile Location-based Services. \emph{Communications of the ACM - Mobile computing opportunities and challenges}, New York, NY, USA, v. 46 , n. 12, p. 61 - 65, December 2003. ISSN 0001-0782.
+
+\bibitem{YANG_WONG} H. Yang and S. C. Wong. A Network Model of Urban Taxi Services. \emph{Transport Research Board-B}, v. 32, n. 4, p. 235-246, 1998.
+
+\bibitem{LIN_ZENG} W.-H. Lin and J. Zeng. An experimental study on real-time bus arrival - Time prediction with GPS data. \emph{Transportation Research Record}, n. 1666, p. 101-109, 1999. ISSN ISSN: 0361-1981, ISBN 0309070619.
+
+%% For books
+%\bibitem{Haykin_book} S. Haykin, editor. \emph{Unsupervised Adaptive Filtering vol. 1: Blind Source Separation}, John Willey ans Sons, New York, 2000.
+
+%% For articles
+%\bibitem{DelfosseLoubaton_article}N. Delfosse and P. Loubaton, Adaptibe blind separation of sources: A deflation approach, \emph{Signal Processing}, 45:59--83, Elsevier, 1995.
+
+%% For paper in proceedings published as serie books (LNCS,...)
+%\bibitem{CrucCichAmari_bookproceedings} S. Cruces, A. Cichocki and S. Amari, The minimum entropy and cumulants based contrast functions for blind source extraction. In J. Mira and A. Prieto, editors, proceedings of the 6$^{th}$ \emph{international workshop on artificial neural networks} ({IWANN} 2001), Lecture Notes in Computer Science 2085, pages 786-793, Springer-Verlag, 2001.
+
+%% For paper in conference proceedings
+%\bibitem{VrinsArchambeau_proceedings} F. Vrins, C. Archambeau and M. Verleysen,Towards a local separation performances estimator using common ICA contrast functions? In M. Verleysen, editor, \emph{proceedings of the $12^{th}$ European Symposium on Artificial Neural Networks} ({ESANN} 2004), d-side pub., pages 211--216, April 28--30, Bruges (Belgium), 2004.
+
+%% For Technical Report
+%\bibitem{Stone_TechRep} J. V. Stone and J. Porrill, Under\-complete independent component\vadjust{\eject} analysis for signal separation and dimension reduction. Technical Report, Psychology Department, Sheffield University, Sheffield, S10 2UR, England, October 1997.
+
+\end{thebibliography}
+% ----------------------------------------------------------------------------
+
+% IF YOU USE BIBTEX,
+% - DELETE THE TEXT BETWEEN THE TWO ABOVE DASHED LINES
+% - UNCOMMENT THE NEXT TWO LINES AND REPLACE 'Name_Of_Your_BibFile'
+
+%\bibliographystyle{unsrt}
+%\bibliography{Name_Of_Your_BibFile}
+
+
+
+% ****************************************************************************
+% END OF BIBLIOGRAPHY AREA
+% ****************************************************************************
+
+\end{document}
+

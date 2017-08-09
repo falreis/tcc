@@ -1,0 +1,169 @@
+\NeedsTeXFormat{LaTeX2e}
+\def\get@CVSdate#1Id: #2,v #3 #4 #5 #6 #7${#4}%$
+\def\@version{\get@CVSdate$Id: atlantis-press.sty,v 1.1 2007/04/03 09:30:23 deimi Exp $}
+\ProvidesPackage{atlantis-press}[\@version, Atlantic Press]
+
+
+%% Frontmatter
+%\let\xauthor\author
+%\let\author\relax
+%\def\affilation##1{##1}
+%\def\author##1{##1}%
+%\expandafter\gdef\xxx\aut\bgroup%
+\let\sv@author\author
+\def\sv@x{}
+\def\authorsep{~}
+\def\autaffilsep{1pc}
+\let\author@fmt\bfseries
+\let\affil@fmt\relax
+\def\author{\@ifnextchar[\@@author{\@@author[]}}
+\def\affilation{\@ifnextchar[\@@affilation{\@@affilation[]}}
+\def\@@author[#1]#2{\g@addto@macro\sv@x{\bgroup
+    \bgroup\author@fmt #2\egroup$^{#1}$\egroup\authorsep }}
+\def\@@affilation[#1]#2{\g@addto@macro\sv@x{\\[\autaffilsep]\gdef\autaffilsep
+   {0pt}\bgroup$^{#1}$\bgroup\affil@fmt #2\egroup\egroup}}
+\newenvironment{aug}{}{\sv@author{\sv@x}}
+
+
+
+
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip\z@
+  \vskip -\topskip
+  \vskip -1.8\baselineskip
+\null
+  \begin{center}%
+  \let \footnote \thanks
+    {\fontsize{20}{24}\selectfont  \textbf \@title \par}%
+    \vskip 1em % Set distance between title and authors paragraph
+    {
+%% remove next line: normal font for authors
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+       \fontsize{11}{13}\selectfont\bfseries\@author
+      \end{tabular}\par}%
+    \vskip 1em%
+%% remove next line: no date
+%%  {\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+
+
+\def\keywordsname{Keywords}
+\def\keywordsnamesep{:~}
+\newenvironment{keywords}{\bigskip\noindent\bgroup\bfseries\keywordsname\egroup\keywordsnamesep\ignorespaces}{}
+
+
+
+%% Sectioning
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\normalfont\normalsize\bfseries\raggedright}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries\raggedright}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\itshape\raggedright}}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                    {3.25ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\itshape\raggedright}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {3.25ex \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                      {\normalfont\normalsize\bfseries\raggedright}}
+
+
+\def\@seccntformat#1{\csname the#1\endcsname.\enskip}
+%%
+
+
+%% Figure, Table
+\def\@makecaption@size{\small}
+\renewenvironment{figure}
+               {\let\@makecaption\figure@makecaption
+                \@float{figure}}
+               {\end@float}
+\long\def\figure@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{\@makecaption@size #1: #2}%
+  \ifdim \wd\@tempboxa >\hsize
+    #1: #2\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\box\@tempboxa\hfill}%
+  \fi
+  \vskip\belowcaptionskip}
+
+
+%% Lists
+\def\itemize@parsep{\z@}
+\def\itemize@itemsep{\z@}
+\def\itemize{%
+  \ifnum \@itemdepth >\thr@@\@toodeep\else
+    \advance\@itemdepth\@ne
+    \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+    \expandafter
+    \list
+      \csname\@itemitem\endcsname
+      {\def\makelabel##1{\hss\llap{##1}}%
+	     \itemsep \itemize@itemsep
+	     \parsep \itemize@parsep
+      }%
+  \fi}
+
+\def\enumerate@parsep{\z@}
+\def\enumerate@itemsep{\z@}
+\def\enumerate{%
+  \ifnum \@enumdepth >\thr@@\@toodeep\else
+    \advance\@enumdepth\@ne
+    \edef\@enumctr{enum\romannumeral\the\@enumdepth}%
+      \expandafter
+      \list
+        \csname label\@enumctr\endcsname
+        {\usecounter\@enumctr\def\makelabel##1{\hss\llap{##1}}%
+	     \itemsep \enumerate@itemsep
+	     \parsep \enumerate@parsep
+}%
+  \fi}
+
+% thebibliography
+\renewenvironment{thebibliography}[1]
+     {\section*{\refname
+       \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+	    \itemsep\z@
+	    \parsep\z@
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+
+
+% URL 
+\IfFileExists{url.sty}{%
+\RequirePackage{url}%
+\urlstyle{rm}}
+{}
+
+% Latin Modern
+\IfFileExists{lmodern.sty}{\RequirePackage[T1]{fontenc}\RequirePackage{lmodern}}
+\endinput

@@ -1,0 +1,36 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Master/Site.Master" AutoEventWireup="true" CodeBehind="Taxista.master.cs" Inherits="TCC_Web.Master.Taxista" %>
+<%@ Register Src="~/Core/Controles/MessageBox.ascx" TagPrefix="ctrl" TagName="MessageBox" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <ctrl:MessageBox id="MessageBox" runat="server"></ctrl:MessageBox>
+    <div id="contents">
+        <div id="main">
+	    <table width="100%">
+		    <tr>
+			    <td class="left-menu">
+                    <br />
+                    <p style="line-height: 10px; padding:0;">
+                    <span class="titulo">Menu</span>
+                    <asp:Menu ID="MenuLateral" runat="server" IncludeStyleBlock="true" EnableViewState="false">
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/AreaTaxista/Home.aspx" Text="Home"/>
+                            <asp:MenuItem NavigateUrl="~/AreaTaxista/Atendimentos.aspx" Text="Atendimentos"/>
+                            <asp:MenuItem NavigateUrl="~/AreaTaxista/Dispositivos.aspx" Text="Dispositivos" />
+                            <asp:MenuItem NavigateUrl="~/AreaTaxista/CadastroVeiculo.aspx" Text="Veículo" />
+                            <asp:MenuItem NavigateUrl="~/AreaTaxista/Simulacao.aspx" Text="Simulação" />
+                        </Items>
+                    </asp:Menu>
+                    <asp:LinkButton ID="lkbSair" runat="server" Text="Sair" CausesValidation="false"></asp:LinkButton>
+                    </p>
+                </td>
+                <td style="padding-left:30px;">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </div>
+</asp:Content>

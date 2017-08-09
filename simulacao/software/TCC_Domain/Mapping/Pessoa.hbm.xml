@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TCC_Domain" namespace="TCC_Domain.Domain">
+    <class name="Pessoa" table="PESSOA">
+        <id name="ID" column="PES_ID" type="Guid">
+            <generator class="guid" />
+        </id>
+        <property name="TipoPessoa" column="TPE_ID" type="int" not-null="true" />
+        <many-to-one name="Endereco" class="Endereco" column="END_ID" not-null="true" cascade="all" />
+        <bag name="Telefones" inverse="true" lazy="true" cascade="save-update">
+            <key column="PES_ID" />
+            <one-to-many class="Telefone"  />
+        </bag>
+        <property name="Ativo" column="PES_ATIVO" type="Boolean" not-null="true" />
+
+        <joined-subclass name="PessoaFisica" table="PESSOA_FISICA">
+            <key column="PFI_ID"></key>
+            <property name="Nome" column="PFI_NOME" type="String" not-null="true" length="50" />
+            <property name="Apelido" column="PFI_APELIDO" type="String" not-null="true" length="20" />
+            <property name="CPF" column="PFI_CPF" type="String" not-null="true" unique="true" length="11" />
+            <property name="RG" column="PFI_RG" type="String" not-null="true" length="20" />
+            <property name="Sexo" column="SEX_ID" type="int" not-null="true" />
+            <property name="DataNascimento" column="PFI_DATA_NASCIMENTO" type="DateTime" not-null="true" />
+            <property name="EstadoCivil" column="ECI_ID" type="int" not-null="true" />
+            <property name="Profissao" column="PFI_PROFISSAO" type="String" not-null="false" length="50" />
+        </joined-subclass>
+
+        <joined-subclass name="PessoaJuridica" table="PESSOA_JURIDICA">
+            <key column="PJU_ID"></key>
+            <property name="RazaoSocial" column="PJU_RAZAO_SOCIAL" type="String" not-null="true" length="100" />
+            <property name="NomeFantasia" column="PJU_NOME_FANTASIA" type="String" not-null="true" length="50" />
+            <property name="CNPJ" column="PJU_CNPJ" type="String" not-null="true" length="14" />
+            <property name="InscricaoEstadual" column="PJU_INSCRICAO_ESTADUAL" type="String" not-null="false" length="20" />
+            <property name="RamoAtividade" column="RAT_ID" type="int" not-null="false" />
+            <property name="Site" column="PJU_SITE" type="String" not-null="false" />
+            <property name="NomeResponsavel" column="PJU_NOME_RESPONSAVEL" type="String" not-null="true" length="50" />
+            <property name="SetorResponsavel" column="PJU_SETOR_RESPONSAVEL" type="String" not-null="false" length="50" />
+            <property name="CargoResponsavel" column="PJU_CARGO_RESPONSAVEL" type="String" not-null="false" length="50" />
+            <property name="EmailResponsavel" column="PJU_EMAIL_RESPONSAVEL" type="String" not-null="true" length="50" />
+            <property name="SexoResponsavel" column="SEX_ID_RESPONSAVEL" type="int" not-null="false" />
+        </joined-subclass>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<taxistas>
+  <taxista>
+    <id>82f9443d-13d7-4cfc-ae98-427908899f8e</id>
+    <latitude>-19,8582474164314</latitude>
+    <longitude>-43,9689710516455</longitude>
+    <endereco>Alameda das Princesas, 593-777 - São Luís, Belo Horizonte - Minas Gerais, 31275-180, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>a44c75b2-6699-47b6-a8ea-e75bf11db189</id>
+    <latitude>-19,9033519821799</latitude>
+    <longitude>-43,8831070407565</longitude>
+    <endereco>Rua da Olaria, 2-156 - Caetano Furquim, Belo Horizonte - Minas Gerais, 30285-230, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+</taxistas>

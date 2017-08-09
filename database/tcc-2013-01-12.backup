@@ -1,0 +1,2027 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.1.4
+-- Dumped by pg_dump version 9.1.4
+-- Started on 2013-01-12 15:36:12
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 184 (class 3079 OID 11639)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2030 (class 0 OID 0)
+-- Dependencies: 184
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- TOC entry 196 (class 1255 OID 30242)
+-- Dependencies: 5 576
+-- Name: newid(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION newid() RETURNS character varying
+    LANGUAGE plpgsql SECURITY DEFINER
+    AS $$ 
+DECLARE 
+  v_seed_value varchar(32); 
+BEGIN 
+select 
+md5( 
+inet_client_addr()::varchar || 
+timeofday() || 
+inet_server_addr()::varchar || 
+to_hex(inet_client_port()) 
+) 
+into v_seed_value; 
+
+return (substr(v_seed_value,1,8) || '-' || 
+        substr(v_seed_value,9,4) || '-' || 
+        substr(v_seed_value,13,4) || '-' || 
+        substr(v_seed_value,17,4) || '-' || 
+        substr(v_seed_value,21,12)); 
+END; 
+$$;
+
+
+ALTER FUNCTION public.newid() OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 179 (class 1259 OID 21669)
+-- Dependencies: 5
+-- Name: cliente; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE cliente (
+    cli_id uuid NOT NULL,
+    stc_id integer
+);
+
+
+ALTER TABLE public.cliente OWNER TO postgres;
+
+--
+-- TOC entry 172 (class 1259 OID 21624)
+-- Dependencies: 5
+-- Name: endereco; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE endereco (
+    end_id uuid NOT NULL,
+    end_cep character varying(8) NOT NULL,
+    uf_id integer NOT NULL,
+    end_cidade character varying(50) NOT NULL,
+    end_logradouro character varying(50) NOT NULL,
+    end_numero character varying(10) NOT NULL,
+    end_complemento character varying(20),
+    end_referencia character varying(50)
+);
+
+
+ALTER TABLE public.endereco OWNER TO postgres;
+
+--
+-- TOC entry 162 (class 1259 OID 19069)
+-- Dependencies: 5
+-- Name: estado_civil; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE estado_civil (
+    eci_id integer NOT NULL,
+    eci_nome character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.estado_civil OWNER TO postgres;
+
+--
+-- TOC entry 170 (class 1259 OID 21614)
+-- Dependencies: 5
+-- Name: localizacao; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE localizacao (
+    loc_id uuid NOT NULL,
+    loc_data timestamp without time zone NOT NULL,
+    ras_id uuid NOT NULL,
+    loc_latitude double precision NOT NULL,
+    loc_longitude double precision NOT NULL
+);
+
+
+ALTER TABLE public.localizacao OWNER TO postgres;
+
+--
+-- TOC entry 171 (class 1259 OID 21619)
+-- Dependencies: 5
+-- Name: modelo_veiculo; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE modelo_veiculo (
+    mdv_id integer NOT NULL,
+    mdv_nome character varying(50) NOT NULL,
+    mnv_id integer NOT NULL
+);
+
+
+ALTER TABLE public.modelo_veiculo OWNER TO postgres;
+
+--
+-- TOC entry 181 (class 1259 OID 21679)
+-- Dependencies: 5
+-- Name: montadora_veiculo; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE montadora_veiculo (
+    mnv_id integer NOT NULL,
+    mnv_nome character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.montadora_veiculo OWNER TO postgres;
+
+--
+-- TOC entry 174 (class 1259 OID 21639)
+-- Dependencies: 5
+-- Name: pessoa; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE pessoa (
+    pes_id uuid NOT NULL,
+    tpe_id integer NOT NULL,
+    end_id uuid NOT NULL,
+    pes_ativo boolean NOT NULL
+);
+
+
+ALTER TABLE public.pessoa OWNER TO postgres;
+
+--
+-- TOC entry 175 (class 1259 OID 21644)
+-- Dependencies: 5
+-- Name: pessoa_fisica; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE pessoa_fisica (
+    pfi_id uuid NOT NULL,
+    pfi_nome character varying(50) NOT NULL,
+    pfi_apelido character varying(20) NOT NULL,
+    pfi_cpf character varying(11) NOT NULL,
+    pfi_rg character varying(20) NOT NULL,
+    sex_id integer NOT NULL,
+    pfi_data_nascimento timestamp without time zone NOT NULL,
+    eci_id integer NOT NULL,
+    pfi_profissao character varying(50)
+);
+
+
+ALTER TABLE public.pessoa_fisica OWNER TO postgres;
+
+--
+-- TOC entry 176 (class 1259 OID 21651)
+-- Dependencies: 5
+-- Name: pessoa_juridica; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE pessoa_juridica (
+    pju_id uuid NOT NULL,
+    pju_razao_social character varying(100) NOT NULL,
+    pju_nome_fantasia character varying(50) NOT NULL,
+    pju_cnpj character varying(14) NOT NULL,
+    pju_inscricao_estadual character varying(20),
+    rat_id integer,
+    pju_site character varying(255),
+    pju_nome_responsavel character varying(50) NOT NULL,
+    pju_setor_responsavel character varying(50),
+    pju_cargo_responsavel character varying(50),
+    pju_email_responsavel character varying(50) NOT NULL,
+    sex_id_responsavel integer
+);
+
+
+ALTER TABLE public.pessoa_juridica OWNER TO postgres;
+
+--
+-- TOC entry 163 (class 1259 OID 19074)
+-- Dependencies: 5
+-- Name: ramo_atividade; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE ramo_atividade (
+    rat_id integer NOT NULL,
+    rat_nome character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.ramo_atividade OWNER TO postgres;
+
+--
+-- TOC entry 177 (class 1259 OID 21659)
+-- Dependencies: 5
+-- Name: rastreador; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE rastreador (
+    ras_id uuid NOT NULL,
+    ras_codigo_seguranca uuid NOT NULL,
+    ras_ativo boolean NOT NULL
+);
+
+
+ALTER TABLE public.rastreador OWNER TO postgres;
+
+--
+-- TOC entry 183 (class 1259 OID 21961)
+-- Dependencies: 5
+-- Name: requisicao; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE requisicao (
+    req_id uuid NOT NULL,
+    tax_id uuid,
+    cli_id uuid,
+    req_data_requisicao boolean NOT NULL,
+    req_data_inicio boolean NOT NULL,
+    req_data_fim boolean NOT NULL,
+    str_id integer NOT NULL
+);
+
+
+ALTER TABLE public.requisicao OWNER TO postgres;
+
+--
+-- TOC entry 164 (class 1259 OID 19079)
+-- Dependencies: 5
+-- Name: sexo; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE sexo (
+    sex_id integer NOT NULL,
+    sex_nome character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.sexo OWNER TO postgres;
+
+--
+-- TOC entry 165 (class 1259 OID 19089)
+-- Dependencies: 5
+-- Name: status_cliente; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE status_cliente (
+    stc_id integer NOT NULL,
+    stc_nome character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.status_cliente OWNER TO postgres;
+
+--
+-- TOC entry 182 (class 1259 OID 21956)
+-- Dependencies: 5
+-- Name: status_requisicao; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE status_requisicao (
+    str_id integer NOT NULL,
+    str_nome character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.status_requisicao OWNER TO postgres;
+
+--
+-- TOC entry 166 (class 1259 OID 19094)
+-- Dependencies: 5
+-- Name: status_taxista; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE status_taxista (
+    stt_id integer NOT NULL,
+    stt_nome character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.status_taxista OWNER TO postgres;
+
+--
+-- TOC entry 180 (class 1259 OID 21674)
+-- Dependencies: 5
+-- Name: taxista; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE taxista (
+    tax_id uuid NOT NULL,
+    tax_cnh character varying(20),
+    tax_numero_licenca character varying(20),
+    vei_id uuid,
+    stt_id integer
+);
+
+
+ALTER TABLE public.taxista OWNER TO postgres;
+
+--
+-- TOC entry 173 (class 1259 OID 21629)
+-- Dependencies: 5
+-- Name: telefone; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE telefone (
+    tel_id uuid NOT NULL,
+    tel_ddd character varying(2) NOT NULL,
+    tel_numero character varying(10) NOT NULL,
+    tel_permitir_sms boolean,
+    pes_id uuid NOT NULL
+);
+
+
+ALTER TABLE public.telefone OWNER TO postgres;
+
+--
+-- TOC entry 167 (class 1259 OID 19099)
+-- Dependencies: 5
+-- Name: tipo_pessoa; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tipo_pessoa (
+    tpe_id integer NOT NULL,
+    tpe_nome character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.tipo_pessoa OWNER TO postgres;
+
+--
+-- TOC entry 168 (class 1259 OID 19104)
+-- Dependencies: 5
+-- Name: tipo_usuario; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tipo_usuario (
+    tus_id integer NOT NULL,
+    tus_nome character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.tipo_usuario OWNER TO postgres;
+
+--
+-- TOC entry 161 (class 1259 OID 19064)
+-- Dependencies: 5
+-- Name: uf; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE uf (
+    uf_id integer NOT NULL,
+    uf_nome character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.uf OWNER TO postgres;
+
+--
+-- TOC entry 178 (class 1259 OID 21664)
+-- Dependencies: 5
+-- Name: usuario; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE usuario (
+    usr_id uuid NOT NULL,
+    tus_id integer NOT NULL,
+    pes_id uuid,
+    usr_login character varying(50) NOT NULL,
+    usr_senha character varying(50) NOT NULL,
+    usr_email character varying(50) NOT NULL,
+    usr_ativo boolean NOT NULL
+);
+
+
+ALTER TABLE public.usuario OWNER TO postgres;
+
+--
+-- TOC entry 169 (class 1259 OID 21607)
+-- Dependencies: 5
+-- Name: veiculo; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE veiculo (
+    vei_id uuid NOT NULL,
+    mdv_id integer NOT NULL,
+    vei_ano_fabricacao integer NOT NULL,
+    vei_ano_modelo integer NOT NULL,
+    vei_cor_predominante character varying(20) NOT NULL,
+    vei_placa character varying(7) NOT NULL,
+    vei_renavam character varying(20) NOT NULL,
+    pes_id uuid,
+    vei_autorizacao_trafego character varying(20) NOT NULL,
+    ras_id uuid NOT NULL,
+    vei_ativo boolean NOT NULL
+);
+
+
+ALTER TABLE public.veiculo OWNER TO postgres;
+
+--
+-- TOC entry 2020 (class 0 OID 21669)
+-- Dependencies: 179
+-- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY cliente (cli_id, stc_id) FROM stdin;
+8513c899-c93a-4858-a5f2-d6dfd004a1fd	1
+3f4f2768-80b5-4941-80e8-842e78e0218c	1
+35ea82e7-4d8e-479d-b800-7bbfb3b9a726	1
+c5b3f39c-6427-4517-b2ec-34a3e3a752af	1
+cc1645fb-c162-40f7-8392-ad1504122817	1
+255f1af1-d05e-49a8-aa91-9e787848d217	1
+67541277-f0fb-44ea-b1d2-48282086f536	1
+e9124573-5dab-427e-9397-6f8dd77b6357	1
+dd0a4a5c-71d7-423f-851a-3d5b73e90b93	1
+e79fc298-0db9-41c7-a80b-1958fee779d8	1
+f7e332ed-abc5-434a-a7ce-0667068c3ed6	1
+f914b24e-9492-40f6-bcf4-45452a6c3617	1
+b66775ae-5182-4c10-bda6-729b19a0281b	1
+a604f753-8ef1-4a15-9a0e-4e91013e2ae5	1
+fb73379d-cd87-4d46-9e5b-01baf135efe8	1
+c76058f2-11d2-4e50-998a-70064e37a71a	1
+73a398ce-a3d1-4d87-885b-d622625643b8	1
+b12e87fa-e97e-43bb-96db-546a5d62039b	1
+594773c6-0a5b-446f-8b2a-785983046c0c	1
+1fd2b4dd-9e3b-4e3d-9735-8645e1dc235c	1
+5df9d5d5-a7d7-42fc-8f63-17fd1b10c666	1
+0db0a6f6-e5a7-4cbd-a7f1-28ca76115494	1
+319134d9-9c33-43ea-8d3e-a295c4b19f7d	1
+eeed3ebc-e00b-44e6-b016-8a87faaa94d8	1
+aef5f025-0c1e-4277-9cd4-b27b69195b42	1
+566a9d2f-3b52-4517-bd27-f14f02242ac0	1
+a1488092-0a37-4598-b308-9c65f3dbefb9	1
+96a86274-8f59-4f07-b758-5c08528d61f8	1
+34ed9fa9-38e8-4faf-bbc2-92cfec5b1bb6	1
+84aeac7a-13f1-4f3d-8076-0db8625ac86e	1
+a86d0cbd-52cf-44d2-b135-35dedd620e94	1
+8dfa2038-bb38-4733-8683-bc856a9c7b32	1
+88fbaad1-e9f1-4858-9d87-0662f8054baa	1
+cf3e26a4-4ac9-422c-bcc9-d7df4f948c2c	1
+e4d86f10-56c0-4e86-bddf-e84d6f7454d4	1
+f40a3fb3-ee29-4c2c-8ccb-5ba9e88601c5	1
+c7daf4df-6978-41c4-b3e8-891662ff5aa5	1
+4cfce8a2-b855-419b-9cff-5bbc72cf24cb	1
+c028d629-589e-4e52-9b75-6687680361c0	1
+2e54aabd-376a-46d1-98f3-0613826d157a	1
+\.
+
+
+--
+-- TOC entry 2013 (class 0 OID 21624)
+-- Dependencies: 172
+-- Data for Name: endereco; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY endereco (end_id, end_cep, uf_id, end_cidade, end_logradouro, end_numero, end_complemento, end_referencia) FROM stdin;
+85b5bb62-e113-478f-a8e7-951165aa2008	31030410	13	Belo Horizonte	Rua João Gualberto Filho	255	402	
+f6ebf77b-d2e9-482d-8512-0420b6fb799b	31030410	1	Belo Horizonte	Rua João Gualberto Filho	255	402	sem referencia
+682210ba-a407-4860-b962-c1db7744a3ee	12312321	1	PT	PT	123	12	
+669731e5-2283-4995-b34b-9f185b01fc28	12312312	13	PT	PT	123	402	
+2d2ef2fd-4a06-46f3-9da0-171ed6c14cd9	12321321	5	PT	PT	123	12	sem referencia
+e55b8aa2-d8fe-4d3a-974c-462779a80b31	23123123	7	PT	PT	13	13	
+e3b77c75-b72f-4193-9be4-b8edcfd24643	12983219	24	PT	PT	123	13	13
+d38ca7c2-5d50-4a3f-b7fe-c4fdb58804c4	12398218	1	PT	PT	13	13	13
+1fa12b9d-3d02-408f-a0d0-bb7bad7e9fcf	09439594	19	PT	13	13	PT	
+842775bf-f10b-4ac5-8c9e-0cf5ac353341	02139213	5	PT	13	13	13	
+5e077833-3f3b-4945-bc5f-08b1962e851e	23948032	5	PT	13	255	402	sem referencia
+87f5c1fd-137d-4fbf-aa37-97ecc5036155	29382138	17	Garanhuns	PT	13	PT	13
+8bde643a-d228-4841-9241-8fd51afc53ee	31001000	13	Belo Horizonte	Rua 1	1		
+087e1d84-36e7-4603-ac4a-0baac72ef8bb	00121123	13	Belo Horizonte	Rua 2	2		
+35377187-f742-49c2-9ed5-b1c48b3a1a1d	98384310	13	Belo Horizonte	Rua 3	3		
+f8f45fc3-2964-48d6-823c-752b88ae18e1	30948231	13	Belo Horizonte	Rua 4	4		
+300ef179-983b-4442-aa40-511a9e0e1f8d	12345678	13	Belo Horizonte	Rua 5	5		
+37dfbb1d-9dc9-4064-968e-47a2c1877918	31242341	13	Belo Horizonte	Rua 6	6		
+480b1bec-d0d7-4f06-9fd8-a98e75600d15	93148132	13	Belo Horizonte	Rua 7	7		
+04b3fddf-381f-43e4-9b48-537fef04fea1	10923448	13	Belo Horizonte	Rua 6	8		
+ebee1e05-550a-405c-bd68-f3c35b4a3a77	91384983	13	Belo Horizonte	Rua 9	9		
+08f1d1bd-e3aa-4368-991b-6a9801d025a4	12390128	13	Belo Horizonte	Rua 10	10		
+d21f702a-7bd2-4412-ac6a-b06a40529967	12483928	13	Belo Horizonte	Rua 11	11		
+3177c12f-0463-459c-8721-731164dc99d2	12312312	13	Belo Horizonte	Rua 12	12		
+c4506dc5-9a96-423a-a53c-74423f163dc8	12312312	13	Belo Horizonte	Rua 13	13		
+3198ff7e-8ac1-4846-a15e-3fb217e59ac2	21312312	13	Belo Horizonte	Rua 14	14		
+bf8539f9-d4cc-40e0-99e5-6b0d826f6d74	13123213	13	Belo Horizonte	Rua 15	15		
+54d767ff-a1fc-4934-8417-86554890587b	12312312	13	Belo Horizonte	Rua 16	16		
+a4cdd00a-5a7d-4c70-8063-7ab21ae5141f	12321321	13	Belo Horizonte	Rua 17	17		
+536c1b7a-7403-4d61-aa68-c0e69e22c311	12312312	13	Belo Horizonte	Rua 18	18		
+9671e377-2788-4585-ac4e-0b781210d454	12321312	13	Belo Horizonte	Rua 19	19		
+d13becd5-645b-4d6f-8d3c-b774afc51632	21313254	13	Belo Horizonte	Rua 20	20		
+b382855d-cf4f-44b8-aa32-910021929c44	19321830	13	Belo Horizonte	Av2	2		
+837acda0-0e6c-49b0-825f-0569b16f22ae	12312838	13	Belo Horizonte	Av3	3		
+719bce3a-423b-4cc1-937e-5c8d1131c4a3	21038128	13	Belo Horizonte	Av4	4		
+0cb090d3-96f0-4d65-b23c-d811c94f6611	12321312	13	Belo Horizonte	Av5	5		
+90cca8d7-1d3d-4ba0-8304-88aa199a0918	23120928	13	Belo Horizonte	Av6	6		
+2fe0cfaa-abf6-4d9a-bb9c-55e00311d149	32413213	13	Belo Horizonte	Av7	7		
+99c3fa8b-58b3-4b65-b739-ec9c059605f2	12809372	13	Belo Horizonte	Av8	8		
+7f024b02-b7ba-4032-8c8f-e0228b3f0ab4	14123432	13	Belo Horizonte	Av9	9		
+5c059b94-eb60-4a76-8d8f-2622b9c1b2b3	10938021	13	Belo Horizonte	Av10	10		
+68e4557c-0c16-4bc7-988c-39318f6a9f42	21849234	13	Belo Horizonte	Av11	11		
+41b7959f-f5f6-4e4e-af04-82481435f16d	21390841	13	Belo Horizonte	Av12	12		
+d0244c16-2e03-44e5-8d27-8c6c7089f3fe	39841983	13	Belo Horizonte	Av13	13		
+677e6460-1975-486d-9b73-91da15e90e2d	10741320	13	Belo Horizonte	Av14	14		
+33a8cb27-3c24-4f29-8cb2-cb581f0444c4	94129831	13	Belo Horizonte	Av15	15		
+7259a5ee-aca2-4161-a607-88ff23541a09	19203213	13	Belo Horizonte	Av16	16		
+2ec7df9b-64e6-4179-a7a7-f8be9768302f	08121032	13	Belo Horizonte	Av17	17		
+ae1f31cb-ed38-4a3b-9489-42b8f6103ed0	09824183	13	Belo Horizonte	Av18	18		
+7b4902b4-373a-484d-bd57-e9cbd18b5340	12931231	13	Belo Horizonte	Av19	19		
+2ab37485-c555-472b-b97d-be51508f25b9	17312301	13	Belo Horizonte	Av20	20		
+70e0b938-d093-401f-8653-cefd066c0116	90283021	13	Belo Horizonte	Av21	21		
+b7e3a522-73cc-48c9-a4fb-60dec04ad183	12398120	13	Belo Horizonte	Av22	22		
+24294cc2-da71-4268-9a84-d2b1504b9c06	21321938	13	Belo Horizonte	Av23	23		
+0316f092-29ff-47de-8163-fc79062bba43	12314321	13	Belo Horizonte	Av24	24		
+3107628f-f397-4475-87d3-cd3c5a252562	92384314	13	Belo Horizonte	Av25	25		
+3381c321-5a92-4390-a6b4-ef8da98eb934	19823123	13	Belo Horizonte	Av26	26		
+4b5156e9-3f53-4002-b3f9-56235ab883ad	39012830	13	Belo Horizonte	Av27	27		
+0b5945c3-e497-409f-b74d-b19838b7ce3e	92841328	13	Belo Horizonte	Av28	28		
+090d6dcb-4b01-4663-8da6-e954139489d8	29382131	13	Belo Horizonte	Av29	29		
+4fab8333-69c4-4992-a248-f128f9d43677	21093809	13	Belo Horizonte	Av30	30		
+84f67250-ee86-45da-b4c0-28e317898f08	32131231	13	Belo Horizonte	Av31	31		
+1f701e5b-17ff-4515-a927-dc620e81ddd8	82173830	13	Belo Horizonte	Av32	32		
+0fce37ca-01c6-43b8-9310-18bb6ab6d8c5	12398902	13	Belo Horizonte	Av33	33		
+46441429-1135-4203-9a76-1ecdf768e305	09820132	13	Belo Horizonte	Av34	34		
+49edc847-4106-41a7-8104-f19d398b69ce	98208392	13	Belo Horizonte	Av35	35		
+8a8a6851-6c7f-49fd-9dd6-b0081e51190f	12382131	13	Belo Horizonte	Av36	36		
+6d0833c0-eaf2-4281-9f1d-8afb9463ba08	93821931	13	Belo Horizonte	Av37	37		
+4d951d15-a99d-43ca-80d0-b15be1b300b8	19830921	13	Belo Horizonte	Av38	38		
+25b76718-f9b3-4038-8738-f2cf7b495695	9189321	13	Belo Horizonte	Av39	39		
+3c072927-cba2-452a-b4ed-f90da5c7cd8b	92183032	13	Belo Horizonte	Av40	40		
+\.
+
+
+--
+-- TOC entry 2003 (class 0 OID 19069)
+-- Dependencies: 162
+-- Data for Name: estado_civil; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY estado_civil (eci_id, eci_nome) FROM stdin;
+1	Solteiro
+2	Casado
+3	Separado
+4	Divorciado
+5	Viuvo
+\.
+
+
+--
+-- TOC entry 2011 (class 0 OID 21614)
+-- Dependencies: 170
+-- Data for Name: localizacao; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY localizacao (loc_id, loc_data, ras_id, loc_latitude, loc_longitude) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2012 (class 0 OID 21619)
+-- Dependencies: 171
+-- Data for Name: modelo_veiculo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY modelo_veiculo (mdv_id, mdv_nome, mnv_id) FROM stdin;
+1	Martin	1
+2	A3	2
+3	A1	2
+4	R8	2
+5	A8	2
+6	TT	2
+7	A4	2
+8	Q7	2
+9	A7	2
+10	Q5	2
+11	A5	2
+12	A6	2
+13	S3	2
+14	RS6	2
+15	RS5	2
+16	TTS	2
+17	S6	2
+18	Continental GT	3
+19	X1	4
+20	X6	4
+21	X5	4
+22	Z4	4
+23	X3	4
+24	M5	4
+25	Série 1	4
+26	Série 5	4
+27	Série 3	4
+28	Série 7	4
+29	M3 Sedan	4
+30	M1 Coupe	4
+31	Cargo	5
+32	Family	5
+33	Alsvin	5
+34	Benni	5
+35	Benni Mini	5
+36	Utility	5
+37	QQ	6
+38	Face	6
+39	Tiggo	6
+40	Cielo Hatch	6
+41	Cielo Sedan	6
+42	Camaro	7
+43	Malibu	7
+44	Agile	7
+45	Captiva	7
+46	Celta	7
+47	Classic	7
+48	Montana	7
+49	Prisma	7
+50	Tracker	7
+51	Omega	7
+52	Blazer	7
+53	S10	7
+54	Vectra	7
+55	Zafira	7
+56	Meriva	7
+57	Opala	7
+58	Monza	7
+59	Corsa Sedan	7
+60	Chevette	7
+61	Corsa Hatch	7
+62	Vectra GT	7
+63	Astra Hatch	7
+64	Kadett	7
+65	Astra Sedan	7
+66	Maverick	7
+67	300C	8
+68	PT Cruiser	8
+69	Town & Country	8
+70	300C Country	8
+71	C3	9
+72	Aircross	9
+73	C4	9
+74	C5	9
+75	C4 Pallas	9
+76	C4 Picasso	9
+77	Xsara Picasso	9
+78	C3 Picasso	9
+79	Jumper	9
+80	C3 XTR	9
+81	C5 Tourer	9
+82	Grand C4 Picasso	9
+83	Jumper Furgão	9
+84	Jumper Mini Bus	9
+85	Jumper Vetrato	9
+86	Journey	10
+87	Ram Pickup	10
+88	M100	11
+89	Plutus	11
+90	Hafei Zhingyi Furgão	11
+91	Hafei Zhingyi Picape	11
+92	Hafei Zhingyi Van	11
+93	California	12
+94	458 Italia	12
+95	F430	12
+96	599	12
+97	612 Scaglietti	12
+98	F355	12
+99	612	12
+100	F360 Modena	12
+101	Bravo	13
+102	Uno	13
+103	Punto	13
+104	500	13
+105	Stilo	13
+106	Idea	13
+107	Strada	13
+108	Linea	13
+109	Palio	13
+110	Doblo	13
+111	Siena	13
+112	Ducato	13
+113	Palio Weekend	13
+114	Uno Mille	13
+115	Palio Adventure	13
+116	Fiorino Furgão	13
+117	Doblo Cargo	13
+118	Uno Furgão	13
+119	Ka	14
+120	Fiesta	14
+121	Focus	14
+122	Fusion	14
+123	Edge	14
+124	Ranger	14
+125	Ecosport	14
+126	Courier	14
+127	Fiesta Sedan	14
+128	New Fiesta	14
+129	Focus Sedan	14
+130	F0250	14
+131	F0350	14
+132	F04000	14
+133	Courier Van	14
+134	Towner Furgão	15
+135	Towner Passageiro	15
+136	Towner Pickup	15
+137	Civic	16
+138	Fit	16
+139	City	16
+140	Accord	16
+141	Civic SI	16
+142	CR0V	16
+143	i30	17
+144	ix35	17
+145	Sonata	17
+146	Tucson	17
+147	HR	17
+148	Azera	17
+149	Santa Fé	17
+150	Veracruz	17
+151	i30CW	17
+152	Daily	18
+153	Strallis	18
+154	J3	19
+155	J5	19
+156	J6	19
+157	J3 Turin	19
+158	XF	20
+159	X0Type	20
+160	XJ6	20
+161	XJ5	20
+162	XK Series	20
+163	Cherokee	21
+164	Grand Cherokee	21
+165	Cerato	22
+166	Picanto	22
+167	Sorento	22
+168	Cadenza	22
+169	Bongo	22
+170	Carens	22
+171	Mohave	22
+172	Carnival	22
+173	K2500	22
+174	Magnetis	22
+175	Soul	22
+176	Gallardo	23
+177	Gallardo Spyder	23
+178	Defender	24
+179	Freelander	24
+180	Dicovery	24
+181	Range Rover	24
+182	Mahindra Chassi	25
+183	Mahindra Pickup	25
+184	Mahindra SUV	25
+185	Quattroporte	26
+186	Grancabrio	26
+187	GranTurismo	26
+188	GranSport	26
+189	Coupé	26
+190	C200	27
+191	Classe B	27
+192	Classe C	27
+193	Sprinter	27
+194	CLK	27
+195	Classe E	27
+196	Classe S	27
+197	Classe G	27
+198	Classe M	27
+199	Classe R	27
+200	Classe CL	27
+201	Classe GL	27
+202	Classe GLK	27
+203	Classe C Touring	27
+204	Classe CLC	27
+205	Classe CLS	27
+206	Calsse SLK	27
+207	Classe E Cabrio	27
+208	Classe E Coupé	27
+209	Classe E Touring	27
+210	Classe SL	27
+211	Cooper	28
+212	Countryman	28
+213	Cabrio	28
+214	Cooper Clubman	28
+215	Asx	29
+216	Outlander	29
+217	L200	29
+218	L200 Triton	29
+219	Pajero TR4\t	29
+220	Lancer Evolution	29
+221	Pajero Sport	29
+222	Pajero Full	29
+223	L200 Outdoor	29
+224	Pajero Dakar	29
+225	L200 Savana	29
+226	L200 GL	29
+227	Air Track	29
+228	Pajero Full 3D	29
+229	Pajero HD	29
+230	L200 Triton RS	29
+231	Livina	30
+232	Frontier	30
+233	Tiida	30
+234	Sentra	30
+235	350z	30
+236	March	30
+237	Grand Livina	30
+238	XTRAIL	30
+239	207	31
+240	307	31
+241	3008	31
+242	408	31
+243	207 Passion	31
+244	Hoggar	31
+245	407	31
+246	Partner	31
+247	207 SW	31
+248	307 Sedan	31
+249	Boxer	31
+250	307 CC	31
+251	407 SW	31
+252	Cayenne	32
+253	Panamera	32
+254	911	32
+255	Cayman	32
+256	Boxster	32
+257	911 Turbo	32
+258	911 Carrera	32
+259	911 Cabrio	32
+260	Sandero	33
+261	Fluence	33
+262	Logan	33
+263	Symbol	33
+264	Master	33
+265	Scenic	33
+266	Kangoo	33
+267	Megane Grand Tour	33
+268	Grand Scenic	33
+269	Megane Sedan	33
+270	Kangoo Express	33
+271	Clio Hatch	33
+272	Fortwo	34
+273	Actyon	35
+274	Kyron	35
+275	Actyon Sports	35
+276	Rexton	35
+277	C200	35
+278	Impreza	36
+279	Forester	36
+280	Tribeca	36
+281	Legacy	36
+282	Outback	36
+283	Impreza Sedan	36
+284	SX4	37
+285	Jimny	37
+286	Grand Vitara	37
+287	Corolla	38
+288	Camry	38
+289	RAV4	38
+290	Hilux SW4	38
+291	Hilux Cabine Simples	38
+292	Hilux Cabine Dupla	38
+293	Land Cruiser Prado	38
+294	Corolla Fielder	38
+295	T4	39
+296	Gol	40
+297	Fox	40
+298	Amarok	40
+299	Tiguan	40
+300	Golf	40
+301	Voyage	40
+302	Eos	40
+303	Jetta	40
+304	Bora	40
+305	Touareg	40
+306	Saveiro	40
+307	Kombi	40
+308	Parati	40
+309	Passat	40
+310	Crossfox	40
+311	Fusca	40
+312	SpaceFox	40
+313	New Beetle	40
+314	Polo Sedan	40
+315	Passat CC	40
+316	Polo Hatch	40
+317	Jetta Variant	40
+318	Kombi Furgão	40
+319	Passar Variant	40
+320	C30	41
+321	XC60	41
+322	S60	41
+323	XC70	41
+324	S40	41
+325	XC90	41
+326	C70	41
+327	S80	41
+328	V50	41
+\.
+
+
+--
+-- TOC entry 2022 (class 0 OID 21679)
+-- Dependencies: 181
+-- Data for Name: montadora_veiculo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY montadora_veiculo (mnv_id, mnv_nome) FROM stdin;
+1	Aston
+2	Audi
+3	Bentley
+4	Bmw
+5	Chana
+6	Chery
+7	Chevrolet
+8	Chrysler
+9	Citroen
+10	Dodge
+11	Effa
+12	Ferrari
+13	Fiat
+14	Ford
+15	Hafei
+16	Honda
+17	Hyundai
+18	Iveco
+19	Jac Motors
+20	Jaguar
+21	Jeep
+22	Kia
+23	Lamborghini
+24	Land Rover
+25	Mahindra
+26	Maserati
+27	Mercedes
+28	Mini
+29	Mitsubishi
+30	Nissan
+31	Peugeot
+32	Porsche
+33	Renault
+34	Smart
+35	Ssangyong
+36	Subaru
+37	Suzuki
+38	Toyota
+39	Toyota
+40	Troller
+41	Volvo
+\.
+
+
+--
+-- TOC entry 2015 (class 0 OID 21639)
+-- Dependencies: 174
+-- Data for Name: pessoa; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pessoa (pes_id, tpe_id, end_id, pes_ativo) FROM stdin;
+fef8ef01-01a3-4950-ba49-0504627ceec1	1	85b5bb62-e113-478f-a8e7-951165aa2008	t
+3fe10203-e1b8-4229-97fd-eb0c68f72184	2	f6ebf77b-d2e9-482d-8512-0420b6fb799b	t
+bbbc18fb-cede-4e0f-89a9-42cb73a7e7c1	1	682210ba-a407-4860-b962-c1db7744a3ee	t
+a68cc65e-f9fe-47ec-8349-7a4c97422944	1	669731e5-2283-4995-b34b-9f185b01fc28	t
+c747283b-1181-4cb8-b07a-c8b66c81cd65	1	2d2ef2fd-4a06-46f3-9da0-171ed6c14cd9	t
+cd01949b-f67a-40cd-9b08-2458020aea43	1	e55b8aa2-d8fe-4d3a-974c-462779a80b31	t
+d0c6c8cf-fbaa-4cfc-9d31-83c21b0f7a4b	1	e3b77c75-b72f-4193-9be4-b8edcfd24643	t
+923039c0-1613-486d-8ef6-78f299ff105f	1	d38ca7c2-5d50-4a3f-b7fe-c4fdb58804c4	t
+85a22268-f925-480a-8ad4-6f9d932220a9	1	1fa12b9d-3d02-408f-a0d0-bb7bad7e9fcf	t
+3fde0706-d370-4188-b2ea-42c1c27bddfc	1	842775bf-f10b-4ac5-8c9e-0cf5ac353341	t
+9175d07f-86d6-4dfa-af5e-062bf6b8202e	1	5e077833-3f3b-4945-bc5f-08b1962e851e	t
+4de9f08e-5434-40a8-b3e3-9014892efe91	1	87f5c1fd-137d-4fbf-aa37-97ecc5036155	t
+80385406-6226-4097-bc4d-08a7e100f76b	1	8bde643a-d228-4841-9241-8fd51afc53ee	t
+a24ff5ae-c3df-4f92-84b9-16ed10bc533f	1	087e1d84-36e7-4603-ac4a-0baac72ef8bb	t
+9e93964c-aa38-4bf5-8329-4a512a3742d7	1	35377187-f742-49c2-9ed5-b1c48b3a1a1d	t
+3a4ef49c-5792-4b8e-b1c4-e7a1f1baa4b7	1	f8f45fc3-2964-48d6-823c-752b88ae18e1	t
+e79d3e6c-0c51-41bc-9506-07ad5b48a012	1	300ef179-983b-4442-aa40-511a9e0e1f8d	t
+610c675a-845b-4af6-bd33-86bff32d16ca	1	37dfbb1d-9dc9-4064-968e-47a2c1877918	t
+3df2da8e-28ea-45f6-b82b-7aa29db797bd	1	480b1bec-d0d7-4f06-9fd8-a98e75600d15	t
+152bd964-51fa-4878-82cd-08b7b33a035d	1	04b3fddf-381f-43e4-9b48-537fef04fea1	t
+85a73cb7-3022-4b8a-87d2-b7ab47441951	1	ebee1e05-550a-405c-bd68-f3c35b4a3a77	t
+f26d5f33-21d3-425e-af04-a4f4e81a42ae	1	08f1d1bd-e3aa-4368-991b-6a9801d025a4	t
+49baeaeb-9209-4f8f-a0bd-71c12d50cf0f	1	d21f702a-7bd2-4412-ac6a-b06a40529967	t
+145a5579-1e2b-45f5-9024-5b3b6be2ba83	1	3177c12f-0463-459c-8721-731164dc99d2	t
+baa6cb01-fc4b-4b5a-babc-e728c8f12fe6	1	c4506dc5-9a96-423a-a53c-74423f163dc8	t
+b4f6b32b-96c1-4b16-9d9a-cf45c660e72d	1	3198ff7e-8ac1-4846-a15e-3fb217e59ac2	t
+54a4d003-91d8-47e2-8b3f-bce36a0a8d0d	1	bf8539f9-d4cc-40e0-99e5-6b0d826f6d74	t
+0265c60f-df52-40d8-bbfd-a1961248aea9	1	54d767ff-a1fc-4934-8417-86554890587b	t
+fb7742cd-3014-41cc-93af-e9fbeb9ae42a	1	a4cdd00a-5a7d-4c70-8063-7ab21ae5141f	t
+54937738-49c6-47ed-a98c-90f131659322	1	536c1b7a-7403-4d61-aa68-c0e69e22c311	t
+b44292ad-f5a9-4e60-942e-6eb962296846	1	9671e377-2788-4585-ac4e-0b781210d454	t
+1640d288-47b4-4d74-85dd-1ea62c945bf8	1	d13becd5-645b-4d6f-8d3c-b774afc51632	t
+665d04fd-c333-4cea-add4-1d7e8bdcfb51	1	b382855d-cf4f-44b8-aa32-910021929c44	t
+7b0f7724-984e-4aff-9b91-d30131b79bf3	1	837acda0-0e6c-49b0-825f-0569b16f22ae	t
+f62f7410-447a-4222-b35c-66d7bb61ab3f	1	719bce3a-423b-4cc1-937e-5c8d1131c4a3	t
+16d99d51-f9e3-40d2-b4e9-fc50b613e916	1	0cb090d3-96f0-4d65-b23c-d811c94f6611	t
+41c46949-5f24-4deb-bb39-40091b85570f	1	90cca8d7-1d3d-4ba0-8304-88aa199a0918	t
+89b0417b-7246-4ebb-999b-afa5277e2588	1	2fe0cfaa-abf6-4d9a-bb9c-55e00311d149	t
+a1b40d58-6d5f-474a-9c4a-6f8a441c85e1	1	99c3fa8b-58b3-4b65-b739-ec9c059605f2	t
+988f3a15-7c53-40e9-867b-4d2d172e1865	1	7f024b02-b7ba-4032-8c8f-e0228b3f0ab4	t
+fc916375-d6e9-45f4-af9d-c3b0cd3976f5	1	5c059b94-eb60-4a76-8d8f-2622b9c1b2b3	t
+e7cfd6b0-59c8-47ae-96cf-651f7c5d2193	1	68e4557c-0c16-4bc7-988c-39318f6a9f42	t
+06d5565b-ef5f-4e0b-ac88-df199d24e56b	1	41b7959f-f5f6-4e4e-af04-82481435f16d	t
+36d6db0b-80c2-4222-92ae-ba7adc7195e9	1	d0244c16-2e03-44e5-8d27-8c6c7089f3fe	t
+7688c861-acdb-4ad4-9e86-63d997381d04	1	677e6460-1975-486d-9b73-91da15e90e2d	t
+a532f3cc-44f1-404f-8432-1c0fd8256e5a	1	33a8cb27-3c24-4f29-8cb2-cb581f0444c4	t
+3c87a096-0df3-4548-9046-88550277b853	1	7259a5ee-aca2-4161-a607-88ff23541a09	t
+b1c4eda6-33c6-4a6a-902a-132f39392677	1	2ec7df9b-64e6-4179-a7a7-f8be9768302f	t
+a52254e5-c98c-46a8-bb96-c62369becf66	1	ae1f31cb-ed38-4a3b-9489-42b8f6103ed0	t
+57cc59bf-1c0e-4863-b5f1-f61d59dba213	1	7b4902b4-373a-484d-bd57-e9cbd18b5340	t
+4bf6b2e8-d79d-4ef9-8937-2a841664f58f	1	2ab37485-c555-472b-b97d-be51508f25b9	t
+3800de33-25bc-4c76-b639-270964ce7ad9	1	70e0b938-d093-401f-8653-cefd066c0116	t
+878964ef-ca2b-49dd-aa74-2a88c2ef7bca	1	b7e3a522-73cc-48c9-a4fb-60dec04ad183	t
+e2d0e0c7-0769-47c6-9847-0822f864361a	1	24294cc2-da71-4268-9a84-d2b1504b9c06	t
+587977ce-ee0a-46f4-aed5-328b664a2159	1	0316f092-29ff-47de-8163-fc79062bba43	t
+0e853a2f-ebac-40d1-a8eb-a4b74412f474	1	3107628f-f397-4475-87d3-cd3c5a252562	t
+d092011b-ebf3-46ae-a52c-74e259bf8546	1	3381c321-5a92-4390-a6b4-ef8da98eb934	t
+bf65755c-8d5e-4bef-aff1-372d4733af6b	1	4b5156e9-3f53-4002-b3f9-56235ab883ad	t
+32c23b99-805b-4392-b3d2-2d5c63ffb2d2	1	0b5945c3-e497-409f-b74d-b19838b7ce3e	t
+902cc399-4b82-4731-bca1-9a6d5906ad5d	1	090d6dcb-4b01-4663-8da6-e954139489d8	t
+a26ee076-bc96-4cb1-b4e4-3df7b91c4e90	1	4fab8333-69c4-4992-a248-f128f9d43677	t
+9afb6682-d7ea-45fc-af21-a19e7ea74a64	1	84f67250-ee86-45da-b4c0-28e317898f08	t
+823edb7e-f03d-4def-a240-23f1b706e858	1	1f701e5b-17ff-4515-a927-dc620e81ddd8	t
+21e38fc0-90e0-4d66-8297-ec981a1d475c	1	0fce37ca-01c6-43b8-9310-18bb6ab6d8c5	t
+5cf03c3b-409f-4c4d-859e-43097a184952	1	46441429-1135-4203-9a76-1ecdf768e305	t
+42e4f85d-2bd9-40d5-90e8-ea5f6556a99b	1	49edc847-4106-41a7-8104-f19d398b69ce	t
+4b94314e-729f-4207-bf62-f92fc43f9bc6	1	8a8a6851-6c7f-49fd-9dd6-b0081e51190f	t
+b37b7421-bbcf-4d9a-93bc-8e3b7a54dcb2	1	6d0833c0-eaf2-4281-9f1d-8afb9463ba08	t
+89915f57-9f3f-41ca-9d72-21a6d8b9fcae	1	4d951d15-a99d-43ca-80d0-b15be1b300b8	t
+ac8e48ff-9c17-4844-be90-8d950321738c	1	25b76718-f9b3-4038-8738-f2cf7b495695	t
+d27cc6d6-99ef-4088-8638-d58698a15857	1	3c072927-cba2-452a-b4ed-f90da5c7cd8b	t
+\.
+
+
+--
+-- TOC entry 2016 (class 0 OID 21644)
+-- Dependencies: 175
+-- Data for Name: pessoa_fisica; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pessoa_fisica (pfi_id, pfi_nome, pfi_apelido, pfi_cpf, pfi_rg, sex_id, pfi_data_nascimento, eci_id, pfi_profissao) FROM stdin;
+fb7742cd-3014-41cc-93af-e9fbeb9ae42a	Taxista17	Taxista17	46672384707	46672384707	1	1981-11-11 00:00:00	3	Taxista
+fef8ef01-01a3-4950-ba49-0504627ceec1	Felipe Reis	freud	08599529676	MG14292150	2	1988-04-12 00:00:00	1	Analista Desenvolvedor
+bbbc18fb-cede-4e0f-89a9-42cb73a7e7c1	Delubio Soares	Delubio	21229457372	DS	2	1970-01-01 00:00:00	2	Tesoureiro Ladrão
+a68cc65e-f9fe-47ec-8349-7a4c97422944	Zé Dirceu	Dirceu	42962956599	122321312	2	1955-05-12 00:00:00	3	Lider de Quadrilha
+c747283b-1181-4cb8-b07a-c8b66c81cd65	Silvio Pereira	Silvinho Pereira	47907565723	123123	2	1966-01-01 00:00:00	2	Motorista de LandRover
+cd01949b-f67a-40cd-9b08-2458020aea43	Zé Genoino	Genoino	13439401328	123123	2	1970-02-12 00:00:00	3	Lider de Partido
+d0c6c8cf-fbaa-4cfc-9d31-83c21b0f7a4b	Marcos Valério	Valerio	21305043859	123123	2	1980-05-05 00:00:00	2	Operador de Quadrilha
+923039c0-1613-486d-8ef6-78f299ff105f	Duda Mendonça	Duda	13294385439	123123	2	1978-03-03 00:00:00	2	Publicitário Mensaleiro
+85a22268-f925-480a-8ad4-6f9d932220a9	Luis Gushiken	Japa	12938430985	123123	2	1959-12-05 00:00:00	3	Coordenador de roubo
+3fde0706-d370-4188-b2ea-42c1c27bddfc	Valdemar Costa Neto	Valdemar	1984908534	123123	2	1977-12-31 00:00:00	1	Comerciante Corrupto
+9175d07f-86d6-4dfa-af5e-062bf6b8202e	Roberto Jefferson	Roberto Jefferson	83490325943	123123	2	1980-05-15 00:00:00	3	Gagüeta
+4de9f08e-5434-40a8-b3e3-9014892efe91	Presidente Lula	Lula	93824324823	123123	2	1950-09-12 00:00:00	3	Presidente
+80385406-6226-4097-bc4d-08a7e100f76b	Taxista1	Taxista1	38340633201	383.406.332-01	2	1988-01-12 00:00:00	1	Taxista
+a24ff5ae-c3df-4f92-84b9-16ed10bc533f	Taxista2	Taxista2	82577806779	82577806779	2	1988-02-12 00:00:00	2	Taxista
+9e93964c-aa38-4bf5-8329-4a512a3742d7	Taxista3	Taxista3	83023170550	83023170550	1	1999-03-03 00:00:00	4	Taxista
+3a4ef49c-5792-4b8e-b1c4-e7a1f1baa4b7	Taxista4	Taxista4	55679859750	55679859750	2	1970-04-04 00:00:00	5	Taxista
+e79d3e6c-0c51-41bc-9506-07ad5b48a012	Taxista5	Taxista5	52954547545	52954547545	2	1991-01-01 00:00:00	3	Taxista
+610c675a-845b-4af6-bd33-86bff32d16ca	Taxista6	Taxista6	46154085796	52954547545	2	1940-01-01 00:00:00	2	Taxista
+3df2da8e-28ea-45f6-b82b-7aa29db797bd	Taxista7	Taxista7	85577668239	85577668239	2	1988-12-12 00:00:00	3	Taxista
+152bd964-51fa-4878-82cd-08b7b33a035d	Taxista8	Taxista8	51263779654	51263779654	2	1966-03-12 00:00:00	3	Taxista
+85a73cb7-3022-4b8a-87d2-b7ab47441951	Taxista9	Taxista9	51113376287	51113376287	1	1986-08-12 00:00:00	4	Taxista
+f26d5f33-21d3-425e-af04-a4f4e81a42ae	Taxista10	Taxista10	45172164111	45172164111	2	1956-11-28 00:00:00	5	Taxista
+49baeaeb-9209-4f8f-a0bd-71c12d50cf0f	Taxista11	Taxista11	65771175781	65771175781	2	1975-10-29 00:00:00	3	Taxista
+145a5579-1e2b-45f5-9024-5b3b6be2ba83	Taxista12	Taxista12	47933221742	47933221742	2	1977-07-22 00:00:00	3	Taxista
+baa6cb01-fc4b-4b5a-babc-e728c8f12fe6	Taxista13	Taxista13	77968441668	77968441668	2	1976-05-15 00:00:00	3	Taxista
+b4f6b32b-96c1-4b16-9d9a-cf45c660e72d	Taxista14	Taxista14	35621189612	35621189612	2	1979-05-05 00:00:00	3	Taxista
+54a4d003-91d8-47e2-8b3f-bce36a0a8d0d	Taxista15	Taxista15	69477353515	69477353515	2	1981-02-02 00:00:00	3	Taxista
+0265c60f-df52-40d8-bbfd-a1961248aea9	Taxista16	Taxista16	08576344530	08576344530	1	1977-09-04 00:00:00	3	Taxista
+54937738-49c6-47ed-a98c-90f131659322	Taxista18	Taxista18	61179040023	61179040023	1	1968-12-13 00:00:00	3	Taxista
+b44292ad-f5a9-4e60-942e-6eb962296846	Taxista19	Taxista19	30301881910	30301881910	2	1955-08-29 00:00:00	3	Taxista
+1640d288-47b4-4d74-85dd-1ea62c945bf8	Taxista20	Taxista21	26733269791	26733269791	2	1983-07-22 00:00:00	3	Taxista
+665d04fd-c333-4cea-add4-1d7e8bdcfb51	Cliente 2	Cliente 2	51735847186	51735847186	2	1990-01-10 00:00:00	3	Desenvolvedor
+7b0f7724-984e-4aff-9b91-d30131b79bf3	Cliente 3	Cliente 3	21936639637	51735847186	1	1978-02-10 00:00:00	3	Taxista
+f62f7410-447a-4222-b35c-66d7bb61ab3f	Cliente 4	Cliente 4	50766631613	50766631613	1	1989-09-19 00:00:00	3	dskjfls
+16d99d51-f9e3-40d2-b4e9-fc50b613e916	Cliente 5	Cliente 5	82787383432	82787383432	2	1965-05-13 00:00:00	3	fsdfasfs
+41c46949-5f24-4deb-bb39-40091b85570f	Cliente 6	Cliente 6	42876554275	42876554275	2	1999-09-23 00:00:00	1	kjsdfklsdf
+89b0417b-7246-4ebb-999b-afa5277e2588	Cliente 7	Cliente 7	81776839501	81776839501	2	1956-08-18 00:00:00	1	sdfasdfs
+a1b40d58-6d5f-474a-9c4a-6f8a441c85e1	Cliente 8	Cliente 8	65242383542	65242383542	1	1983-09-22 00:00:00	1	fsdgfdgs
+988f3a15-7c53-40e9-867b-4d2d172e1865	Cliente 9	Cliente 9	77240705471	77240705471	2	1982-02-28 00:00:00	1	djshfjsdfkj
+fc916375-d6e9-45f4-af9d-c3b0cd3976f5	Cliente 10	Cliente 10	96721331896	96721331896	2	1987-05-10 00:00:00	4	dsfasdf
+e7cfd6b0-59c8-47ae-96cf-651f7c5d2193	Cliente 11	Cliente 11	41738334589	41738334589	1	1978-07-26 00:00:00	5	hfkjasd
+06d5565b-ef5f-4e0b-ac88-df199d24e56b	Cliente 12	Cliente 12	56686728756	56686728756	1	1946-12-12 00:00:00	5	dkjlfs
+36d6db0b-80c2-4222-92ae-ba7adc7195e9	Cliente 13	Cliente 13	27627177448	27627177448	1	1985-04-29 00:00:00	2	Desenvolvedor
+7688c861-acdb-4ad4-9e86-63d997381d04	Cliente 14	Cliente 14	20025670778	20025670778	2	1984-10-18 00:00:00	4	Desenvolvedor
+a532f3cc-44f1-404f-8432-1c0fd8256e5a	Cliente 15	Cliente 15	14123985173	14123985173	2	1977-01-14 00:00:00	2	Desenvolvedor
+3c87a096-0df3-4548-9046-88550277b853	Cliente 16	Cliente 16	51448438594	51448438594	2	1969-10-19 00:00:00	1	Desenvolvedor
+b1c4eda6-33c6-4a6a-902a-132f39392677	Cliente 17	Cliente 17	58443111674	58443111674	2	1983-04-19 00:00:00	5	Desenvolvedor
+a52254e5-c98c-46a8-bb96-c62369becf66	Cliente 18	Cliente 18	73282471505	73282471505	1	1989-07-23 00:00:00	1	Desenvolvedor
+57cc59bf-1c0e-4863-b5f1-f61d59dba213	Cliente 19	Cliente 19	34948905445	34948905445	1	1977-01-28 00:00:00	1	Desenvolvedor
+4bf6b2e8-d79d-4ef9-8937-2a841664f58f	Cliente 20	Cliente 20	64188888745	64188888745	1	1944-06-28 00:00:00	1	Desenvolvedor
+3800de33-25bc-4c76-b639-270964ce7ad9	Cliente 21	Cliente 21	36825895117	368258.5117	1	1971-08-27 00:00:00	1	Desenvolvedor
+878964ef-ca2b-49dd-aa74-2a88c2ef7bca	Cliente 22	Cliente 22	28232009160	28232009160	1	1972-04-29 00:00:00	1	Desenvolvedor
+e2d0e0c7-0769-47c6-9847-0822f864361a	Cliente 23	Cliente 23	25160283269	25160283269	1	1988-06-26 00:00:00	1	Desenvolvedor
+587977ce-ee0a-46f4-aed5-328b664a2159	Cliente 24	Cliente 24	22249429405	22249429405	1	1988-01-30 00:00:00	1	Desenvolvedor
+0e853a2f-ebac-40d1-a8eb-a4b74412f474	Cliente 25	Cliente 25	13930728443	13930728443	1	1955-02-02 00:00:00	1	Desenvolvedor
+d092011b-ebf3-46ae-a52c-74e259bf8546	Cliente 26	Cliente 26	85811235623	85811235623	2	1974-08-08 00:00:00	1	Desenvolvedor
+bf65755c-8d5e-4bef-aff1-372d4733af6b	Cliente 27	Cliente 27	07464683501	07464683501	2	1945-04-09 00:00:00	1	Desenvolvedor
+32c23b99-805b-4392-b3d2-2d5c63ffb2d2	Cliente 28	Cliente 28	61814351825	61814351825	1	1967-05-05 00:00:00	1	Desenvolvedor
+902cc399-4b82-4731-bca1-9a6d5906ad5d	Cliente 29	Cliente 29	76386742435	76386742435	1	1987-07-06 00:00:00	2	Desenvolvedor
+a26ee076-bc96-4cb1-b4e4-3df7b91c4e90	Cliente 30	Cliente 30	68367859898	68367859898	2	1990-09-28 00:00:00	1	Desenvolvedor
+9afb6682-d7ea-45fc-af21-a19e7ea74a64	Cliente 31	Cliente 31	05966186464	05966186464	2	1999-01-15 00:00:00	1	Desenvolvedor
+823edb7e-f03d-4def-a240-23f1b706e858	Cliente 32	Cliente 32	33678381286	33678381286	2	1970-08-18 00:00:00	1	Desenvolvedor
+21e38fc0-90e0-4d66-8297-ec981a1d475c	Cliente 33	Cliente 33	15342253748	15342253748	2	1984-06-16 00:00:00	1	Desenvolvedor
+5cf03c3b-409f-4c4d-859e-43097a184952	Cliente 34	Cliente 34	11234623307	11234623307	2	1966-09-16 00:00:00	1	Desenvolvedor
+42e4f85d-2bd9-40d5-90e8-ea5f6556a99b	Cliente 35	Cliente 35	64264541336	64264541336	2	1976-02-18 00:00:00	1	Desenvolvedor
+4b94314e-729f-4207-bf62-f92fc43f9bc6	Cliente 36	Cliente 36	88536311207	88536311207	2	1975-05-16 00:00:00	1	Desenvolvedor
+b37b7421-bbcf-4d9a-93bc-8e3b7a54dcb2	Cliente 37	Cliente 37	08357182399	08357182399	2	1978-03-17 00:00:00	1	Desenvolvedor
+89915f57-9f3f-41ca-9d72-21a6d8b9fcae	Cliente 38	Cliente 38	85231663786	85231663786	1	1966-01-19 00:00:00	1	Desenvolvedor
+ac8e48ff-9c17-4844-be90-8d950321738c	Cliente 39	Cliente 39	12572411768	12572411768	1	1944-11-01 00:00:00	1	Desenvolvedor
+d27cc6d6-99ef-4088-8638-d58698a15857	Cliente 40	Cliente 40	40432350624	40432350624	1	1984-07-17 00:00:00	1	Desenvolvedor
+\.
+
+
+--
+-- TOC entry 2017 (class 0 OID 21651)
+-- Dependencies: 176
+-- Data for Name: pessoa_juridica; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pessoa_juridica (pju_id, pju_razao_social, pju_nome_fantasia, pju_cnpj, pju_inscricao_estadual, rat_id, pju_site, pju_nome_responsavel, pju_setor_responsavel, pju_cargo_responsavel, pju_email_responsavel, sex_id_responsavel) FROM stdin;
+3fe10203-e1b8-4229-97fd-eb0c68f72184	Cliente1	cli1	75742039000183	INSC01	1	http://www.webdomum.com.br	Felipe Reis	TI	Analista Desenvolvedor	falreis@gmail.com	1
+\.
+
+
+--
+-- TOC entry 2004 (class 0 OID 19074)
+-- Dependencies: 163
+-- Data for Name: ramo_atividade; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY ramo_atividade (rat_id, rat_nome) FROM stdin;
+1	Academia de Esportes / Artes Marciais
+2	Açúcar e Álcool
+3	Administração e Participação
+4	Agências de Turismo / Viagem
+5	Agricultura / Pecuária / Silvicultura
+6	Alimentos
+7	Arquitetura / Paisagismo / Urbanismo
+8	Automação
+9	Automotivo
+10	Bancário / Financeiro
+11	Bebidas
+12	Bens de Capital
+13	Bens de Consumo (Outros)
+14	Borracha
+15	Café
+16	Calçados
+17	Comércio
+18	Comunicação
+19	Construção Civil
+20	Consultoria Geral
+21	Contabilidade/ Auditoria
+22	Corretagem
+23	Cosméticos
+24	Diversão/ Entretenimento
+25	Educação/ Idiomas
+26	Eletrônica/ Eletroeletrônica/ Eletrodomésticos
+27	Embalagens
+28	Energia/ Eletricidade
+29	Engenharia
+30	Equipamentos industriais
+31	Equipamentos médicos / precisão
+32	Estética
+33	Eventos
+34	Farmacêutica
+35	Financeiras
+36	Gráfica/ Editoras
+37	Importação/ Exportação
+38	Incorporadora
+39	Indústrias
+40	Informática
+41	Internet/ Sites
+42	Jornais
+43	Jurídica
+44	Logística / Armazéns
+45	Madeiras
+46	Materiais de Construção
+47	Material de Escritório
+48	Mecânica/ Manutenção
+49	Metalúrgica / Siderúrgica
+50	Mineração
+51	Móveis e Artefatos de decoração
+52	Órgãos públicos
+53	Outros
+54	Papel e Derivados
+55	Petroquímico/ Petróleo
+56	Plásticos
+57	Prestadora de Serviços
+58	Publicidade / Propaganda
+59	Recursos Humanos
+60	Relações Públicas
+61	Representação Comercial
+62	Restaurante/ Industrial/ Fast Food
+63	Saúde
+64	Segurança Patrimonial
+65	Seguros/ Previdência Privada
+66	Sindicatos / Associações / ONGs
+67	Supermercado / Hipermercado
+68	Telecomunicações
+69	Telemarketing/ Call Center
+70	Têxtil/ Couro
+71	Transportes
+72	Turismo/ Hotelaria
+73	Veiculos / Concessionárias / Auto Peças
+74	Veterinária
+\.
+
+
+--
+-- TOC entry 2018 (class 0 OID 21659)
+-- Dependencies: 177
+-- Data for Name: rastreador; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY rastreador (ras_id, ras_codigo_seguranca, ras_ativo) FROM stdin;
+0373b353-c6ce-456b-8967-cb7befb34300	30690bd1-ca5d-440f-848b-9bb779ddebda	t
+253d556e-4607-4846-aeaa-cddb11ea4e15	f47f7dd6-a873-4e9d-a241-1c3e7bbc8c26	t
+1d3da9f2-1553-49e1-99bf-331bfc7ce1ec	7d3d68aa-233b-47b0-b247-2783b77a4ca4	t
+6ee7646f-ae4e-4a8c-82cd-9f5cd0e6a295	ec5190fb-cca6-4824-8ce4-e11a6be6e7cd	t
+9d20e076-28dd-4a79-868d-de04d4f90f77	33ab675b-3979-4b70-8b76-0c2a1100877e	t
+14c6f176-a99d-46d7-820a-616301460cfe	e82862f3-1e47-4ada-8159-78209b9e50d9	t
+e72226aa-2522-4eeb-84e5-e1d1f0acdd9e	178583e8-a78a-4f5c-a629-62c6f1340c83	t
+131cb5e2-b075-44f0-b724-837245ae2684	471866e0-04f7-404c-adc2-cf896eaf4687	t
+9ff625e3-b9b7-4faa-b89e-080eb3adadda	b0745b9b-6e36-411d-a152-d0dd3513b9e6	t
+55e85a6a-b699-4548-8b47-b7662d86a996	10fd53d7-2b00-4864-ad5c-150f99410007	t
+334c0dab-cc40-4102-b327-cf6f940b40ef	c865982c-ca0e-4e21-a605-3f0534ef8e27	t
+143e1a9a-b35e-4f0d-8844-8052f2f57434	cb9b6567-dab3-4abc-abf7-f5f9094ba0fd	t
+5acb3d4f-95f8-4497-9e7a-7683cb154a93	100fdaaa-b35c-46a8-b876-7405692014ca	t
+07c134ce-2310-4d06-859d-d3b6c012a793	be5f22d9-4939-4c2e-b37b-8b334795bf16	t
+0bcbaede-6c64-48ad-8a02-b206e606a24d	423bfa25-5149-401c-b4c3-6b62e19b5a14	t
+a5b12651-d4fe-436e-bbb8-e28cac112d47	0618cc95-8577-481b-a552-f90f2ad3ec92	t
+2bb7401e-92fa-4dc5-998b-c1d22a2f90be	b3b4f18c-d3dd-4c9c-b87c-fe254cbc4d90	t
+5fb473c8-ae57-458b-9a0c-2a9b07b17aa1	d149f418-990e-42ac-9b38-96a808a14462	t
+75864359-97d2-409a-ac7c-77b46b4b7779	9d611181-0cc5-4adc-83f0-dfdb2744c0fb	t
+21701c09-97c1-4a5a-a505-0dd680d734e4	ef0d5992-9e07-494d-9f96-9affaa142074	t
+9b18ddce-8637-42d3-a77c-ed279510d9d4	141ae05e-52c9-4fcd-9ec3-11bd2d394fbe	t
+7e9fce26-bd72-4ada-af67-d62e7ad43e00	d7596e4e-896d-49e1-aa10-81aa593c8243	t
+cc54eb20-9706-4267-a376-235ab83665af	d1fb2f52-c6b5-4739-819e-7c2255155d57	t
+2e14159e-458b-4860-965c-2291ebec57f7	cd357170-8c9f-43e7-bc42-cc94abfabc63	t
+17e5b5ea-9e17-4f0e-80c9-3bf6de606433	efed0cd8-1aa7-4a54-b45c-df306df7aa22	t
+c83cecf8-aac3-4eaf-a7fd-be3a7f4fa83f	cb64f7f4-2dd4-416a-923a-7749aff5d166	t
+cefb357a-c6fc-4a96-828a-782e250a1f43	56c5b2be-bbbe-4d6b-b058-738e7c8b0898	t
+c4898181-489e-4623-8a5d-3a59d17a6255	b742ba34-b067-4d85-96a0-6846f72d6213	t
+dced5459-9faf-479e-af0f-d66d7cfc4941	dbe903be-f902-4403-ad1b-16d916d0a42b	t
+5711600f-38e9-4b89-a3f6-d5e89075b1e1	ef2f96e8-21c3-4235-beab-fb002679f8aa	t
+faa6360d-986b-4e5c-9f7c-69cb7f27149a	e17bb626-fb16-4b1a-8271-36b173b319f0	t
+\.
+
+
+--
+-- TOC entry 2024 (class 0 OID 21961)
+-- Dependencies: 183
+-- Data for Name: requisicao; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY requisicao (req_id, tax_id, cli_id, req_data_requisicao, req_data_inicio, req_data_fim, str_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2005 (class 0 OID 19079)
+-- Dependencies: 164
+-- Data for Name: sexo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY sexo (sex_id, sex_nome) FROM stdin;
+1	Feminino
+2	Masculino
+\.
+
+
+--
+-- TOC entry 2006 (class 0 OID 19089)
+-- Dependencies: 165
+-- Data for Name: status_cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY status_cliente (stc_id, stc_nome) FROM stdin;
+1	Sem Status
+2	Aguardando Atendimento
+3	Em Atendimento
+0	Pendente
+\.
+
+
+--
+-- TOC entry 2023 (class 0 OID 21956)
+-- Dependencies: 182
+-- Data for Name: status_requisicao; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY status_requisicao (str_id, str_nome) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2007 (class 0 OID 19094)
+-- Dependencies: 166
+-- Data for Name: status_taxista; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY status_taxista (stt_id, stt_nome) FROM stdin;
+1	Sem Status
+2	TaxiLivre
+3	Aguardando Confirmação Requisição
+4	Em Atendimento
+5	Suspenso
+6	Fora Circulacao
+0	Pendente
+\.
+
+
+--
+-- TOC entry 2021 (class 0 OID 21674)
+-- Dependencies: 180
+-- Data for Name: taxista; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY taxista (tax_id, tax_cnh, tax_numero_licenca, vei_id, stt_id) FROM stdin;
+4916d9d1-1c01-4984-a860-9f7ef85bc5bc	1287329	238470932	fb7238fb-cc5b-4d3b-8d56-0b1df82d0460	1
+ff8dc1bc-7e39-418b-a3f6-fa65c63e06af	218307912	12083712	fe635903-85a9-46eb-9150-ab6d7f72fbf9	1
+888da1ed-e81a-467d-9750-f8fa6a1c2c46	12739128	2376982374	ad9be629-a5b8-4f0e-aa9b-f4374b5a7ae1	1
+231b827f-3377-4616-8063-b50b2715994c	1273981271239	18739123182	357a3144-9462-4637-95f5-7eb434713842	1
+09ca3b54-2328-441f-bf89-c1af4a950e68	271396128731	217361928	749a4dec-310f-4b50-bf6c-d02cf0314674	1
+3dfeb0a2-012b-486b-a8f1-e6a59db51dda	18371293	123821301	8f1f145c-be28-40a8-b134-9f7b28f52a93	1
+454f76d1-5f3d-4b91-b7d6-58a6973894bf	128371023	2183712093	fa6d3793-c4df-41ba-baea-f00d93ffb3e6	1
+9eb7a533-6c2c-43a4-b6b1-e9e085b0c3e0	03888213750	0987654321	a1a0271d-5739-40ec-b488-26adc1d39546	1
+82f9443d-13d7-4cfc-ae98-427908899f8e	03888213750	0987654321	62a77c30-fd0d-4051-b0c6-67393379fba6	1
+7b5de409-9ecb-4f9a-984b-86992c0015d7	03888213750	0987654321	914c241c-9fa5-455d-88ef-6d451587bf07	1
+0c8e97e1-25d5-4c67-a705-5e27d2be3485	03888213750	0987654321	e1558cf5-f0bc-4a16-9de5-e1ad2902f145	1
+ee8d7fdc-4ba5-472d-af11-4c796e7aa01a	03888213750	0987654321	5fd57f59-ac8b-4025-92a7-70c37aa8bda8	1
+764da812-3d6a-46c9-9506-a52658250e40	03888213750	0987654321	91b832fe-3be5-448f-b6bc-9fc8297ef999	1
+a44c75b2-6699-47b6-a8ea-e75bf11db189	03888213750	0987654321	8f0a3e01-ade2-4297-b9d9-ae706c228701	1
+673a1f88-f907-4210-ab6f-6f13c377ac89	03888213750	0987654321	3bd14709-51ce-4d37-a5d3-56e92a948927	1
+e0143bec-0dee-43a0-9310-b764c05c2af5	03888213750	0987654321	ec33c8c2-4153-4390-8436-39c1968f3372	1
+8009b1ec-c2df-46af-a427-0d40a3bbb7b7	03888213750	0987654321	5e92e084-c303-42e7-9b7a-7f748266f7c1	1
+e7870ebd-693c-4c60-9715-a12094e706b3	03888213750	0987654321	eff864f6-cd68-4c81-9b02-1946b93e50c3	1
+5568a815-64b2-40f3-9e53-3d2ebe861bd2	213102943	120983901-34	4032ea01-fb45-4bd4-beb6-e11311b301bf	1
+61af6260-2c27-4e73-92ed-3bcc458aef2f	12897403927421	124192873	a2dd1956-d516-4556-b36e-8db45a2476da	1
+51401738-13d3-4a63-8440-1ae299a963c4	21839021831	247892374023	ee6186d3-d16d-4a2c-b21d-20b033d174bc	1
+ee8ad882-544a-4740-b5b9-9f0111c55f63	18749832	84-832414938-	507a8be5-41fa-47b0-8d47-82b5d95fd617	1
+161cffac-b55a-4279-a5af-8549903c1fe9	18423984-12	12487233	5e92560a-e846-46cd-bad3-f481aaa06d30	1
+9c8d38a2-05ef-45af-82cf-2894810dde5d	12378213	1827382173	a7be96dd-f338-4eca-9f12-59918c101fca	1
+780df98a-b194-42be-8791-b61fc3cd9c47	8237921	128379201	48bad0e8-14b1-44d8-871a-e4c8de9b0fe6	1
+6d77f433-503b-4d35-932f-dff6ab9fdb67	72312873	17239812	56af1000-0abf-4229-be49-801da2437f87	1
+8ed973bd-c805-4e7c-b8aa-3730842a56e9	127836218731	1273123	4a9aeb4c-0d17-4c35-9090-d771dd4f79de	1
+2caf3cea-dd6c-4d6a-a57c-f8e8432d4ae8	21837021	18378219	a0d4f417-69da-4554-a1d5-cee400098080	1
+4bc572db-36c8-404e-9959-caeefd56ce77	127312983	127321983	83812e9f-0945-464e-a843-37f8cbbb93eb	1
+2ded530f-3e0d-494b-ba4e-31515c9ab78d	12783921	18237012	dbe73028-9266-4333-8a56-bee4da131480	1
+b4546e6d-0f02-40d7-97af-c1627d003958	182372CN30	1823792	ddc613d3-e75f-4ad8-9842-b2048ab60ee1	1
+\.
+
+
+--
+-- TOC entry 2014 (class 0 OID 21629)
+-- Dependencies: 173
+-- Data for Name: telefone; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY telefone (tel_id, tel_ddd, tel_numero, tel_permitir_sms, pes_id) FROM stdin;
+0c05927c-dbb5-46ac-9110-dabacaf66131	31	34612321	f	fef8ef01-01a3-4950-ba49-0504627ceec1
+83467ba6-6adb-442f-95d3-eecf65e4a23f	31	97136818	f	fef8ef01-01a3-4950-ba49-0504627ceec1
+e5892fc2-2cef-45ae-9557-487391a4bc91	31	33333333	f	3fe10203-e1b8-4229-97fd-eb0c68f72184
+054013cd-6576-41a1-983a-592c1268ea12	71	23948384	f	bbbc18fb-cede-4e0f-89a9-42cb73a7e7c1
+c92ad410-9266-4239-8116-4a7468f1e198	83	48529485	f	c747283b-1181-4cb8-b07a-c8b66c81cd65
+92d257fd-91ab-4caf-9fe8-3b168789ed96	23	12323123	f	cd01949b-f67a-40cd-9b08-2458020aea43
+9f689487-4f65-46a3-bc29-f1009a3b5f5b	09	18392839	f	d0c6c8cf-fbaa-4cfc-9d31-83c21b0f7a4b
+769ffb42-a8de-41ff-89ad-b60ff848a15d	98	12308120	f	d0c6c8cf-fbaa-4cfc-9d31-83c21b0f7a4b
+d8c9a2fa-6b4f-485f-9d77-4bc0d7e1f953	31	90493242	f	923039c0-1613-486d-8ef6-78f299ff105f
+d0aa2289-5dac-423b-9ed4-e7b05bfa0918	42	34320492	t	9175d07f-86d6-4dfa-af5e-062bf6b8202e
+68cb0ccd-2858-41e9-9aca-09b5bf6ca5c8	12	32131232	f	4de9f08e-5434-40a8-b3e3-9014892efe91
+39753028-94d6-48b6-966a-84ba4950cc6d	12	31231231	f	4de9f08e-5434-40a8-b3e3-9014892efe91
+5af729ce-b1c5-44e9-a521-b5608d5f1823	12	31231231	f	4de9f08e-5434-40a8-b3e3-9014892efe91
+\.
+
+
+--
+-- TOC entry 2008 (class 0 OID 19099)
+-- Dependencies: 167
+-- Data for Name: tipo_pessoa; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tipo_pessoa (tpe_id, tpe_nome) FROM stdin;
+1	Pessoa Física
+2	Pessoa Jurídica
+\.
+
+
+--
+-- TOC entry 2009 (class 0 OID 19104)
+-- Dependencies: 168
+-- Data for Name: tipo_usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tipo_usuario (tus_id, tus_nome) FROM stdin;
+1	Taxista
+2	Cliente
+3	Administrador
+\.
+
+
+--
+-- TOC entry 2002 (class 0 OID 19064)
+-- Dependencies: 161
+-- Data for Name: uf; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY uf (uf_id, uf_nome) FROM stdin;
+1	Acre
+2	Alagoas
+3	Amapá
+4	Amazonas
+5	Bahia
+6	Ceará
+7	Distrito Federal
+8	Espírito Santo
+9	Goiás
+10	Maranhão
+11	Mato Grosso
+12	Mato Grosso do Sul
+13	Minas Gerais
+14	Pará
+15	Paraíba
+16	Paraná
+17	Pernambuco
+18	Piauí
+19	Rio de Janeiro
+20	Rio Grande do Norte
+21	Rio Grande do Sul
+22	Rondônia
+23	Rorâima
+24	São Paulo
+25	Santa Catarina
+26	Sergipe
+27	Tocantins
+\.
+
+
+--
+-- TOC entry 2019 (class 0 OID 21664)
+-- Dependencies: 178
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY usuario (usr_id, tus_id, pes_id, usr_login, usr_senha, usr_email, usr_ativo) FROM stdin;
+51401738-13d3-4a63-8440-1ae299a963c4	1	9e93964c-aa38-4bf5-8329-4a512a3742d7	taxista3@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista3@webdomum.com.br	f
+9eb7a533-6c2c-43a4-b6b1-e9e085b0c3e0	1	fef8ef01-01a3-4950-ba49-0504627ceec1	falreis@gmail.com	E10ADC3949BA59ABBE56E057F20F883E	falreis@gmail.com	f
+ee8ad882-544a-4740-b5b9-9f0111c55f63	1	3a4ef49c-5792-4b8e-b1c4-e7a1f1baa4b7	taxista4@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista4@webdomum.com.br	f
+82f9443d-13d7-4cfc-ae98-427908899f8e	1	bbbc18fb-cede-4e0f-89a9-42cb73a7e7c1	delubio@falreis.eng.br	202CB962AC59075B964B07152D234B70	delubio@webdomum.com.br	f
+7b5de409-9ecb-4f9a-984b-86992c0015d7	1	a68cc65e-f9fe-47ec-8349-7a4c97422944	dirceu@falreis.eng.br	202CB962AC59075B964B07152D234B70	dirceu@webdomum.com.br	f
+0c8e97e1-25d5-4c67-a705-5e27d2be3485	1	c747283b-1181-4cb8-b07a-c8b66c81cd65	silvinho@falreis.eng.br	202CB962AC59075B964B07152D234B70	silvinho@webdomum.com.br	f
+ee8d7fdc-4ba5-472d-af11-4c796e7aa01a	1	cd01949b-f67a-40cd-9b08-2458020aea43	genoino@falreis.eng.br	202CB962AC59075B964B07152D234B70	genoino@webdomum.com.br	f
+764da812-3d6a-46c9-9506-a52658250e40	1	d0c6c8cf-fbaa-4cfc-9d31-83c21b0f7a4b	marcosvalerio@falreis.eng.br	202CB962AC59075B964B07152D234B70	marcosvalerio@webdomum.com.br	f
+a44c75b2-6699-47b6-a8ea-e75bf11db189	1	923039c0-1613-486d-8ef6-78f299ff105f	duda@falreis.eng.br	202CB962AC59075B964B07152D234B70	duda@webdomum.com.br	f
+673a1f88-f907-4210-ab6f-6f13c377ac89	1	85a22268-f925-480a-8ad4-6f9d932220a9	gushiken@falreis.eng.br	202CB962AC59075B964B07152D234B70	gushiken@webdomum.com.br	f
+e0143bec-0dee-43a0-9310-b764c05c2af5	1	3fde0706-d370-4188-b2ea-42c1c27bddfc	costaneto@falreis.eng.br	202CB962AC59075B964B07152D234B70	costaneto@webdomum.com.br	f
+8009b1ec-c2df-46af-a427-0d40a3bbb7b7	1	9175d07f-86d6-4dfa-af5e-062bf6b8202e	robertojefferson@falreis.eng.br	202CB962AC59075B964B07152D234B70	robertojefferson@webdomum.com.br	f
+e7870ebd-693c-4c60-9715-a12094e706b3	1	4de9f08e-5434-40a8-b3e3-9014892efe91	lula@falreis.eng.br	202CB962AC59075B964B07152D234B70	lula@webdomum.com.br	f
+8513c899-c93a-4858-a5f2-d6dfd004a1fd	2	3fe10203-e1b8-4229-97fd-eb0c68f72184	cliente1@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente1@falreis.eng.br	f
+5568a815-64b2-40f3-9e53-3d2ebe861bd2	1	80385406-6226-4097-bc4d-08a7e100f76b	taxista1@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista1@webdomum.com.br	f
+61af6260-2c27-4e73-92ed-3bcc458aef2f	1	a24ff5ae-c3df-4f92-84b9-16ed10bc533f	taxista2@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista2@webdomum.com.br	f
+161cffac-b55a-4279-a5af-8549903c1fe9	1	e79d3e6c-0c51-41bc-9506-07ad5b48a012	taxista5@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista5@webdomum.com.br	f
+9c8d38a2-05ef-45af-82cf-2894810dde5d	1	610c675a-845b-4af6-bd33-86bff32d16ca	taxista6@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista6@webdomum.com.br	f
+780df98a-b194-42be-8791-b61fc3cd9c47	1	3df2da8e-28ea-45f6-b82b-7aa29db797bd	taxista7@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista7@webdomum.com.br	f
+6d77f433-503b-4d35-932f-dff6ab9fdb67	1	152bd964-51fa-4878-82cd-08b7b33a035d	taxista8@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista8@webdomum.com.br	f
+8ed973bd-c805-4e7c-b8aa-3730842a56e9	1	85a73cb7-3022-4b8a-87d2-b7ab47441951	taxista9@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista9@webdomum.com.br	f
+2caf3cea-dd6c-4d6a-a57c-f8e8432d4ae8	1	f26d5f33-21d3-425e-af04-a4f4e81a42ae	taxista10@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista10@webdomum.com.br	f
+4bc572db-36c8-404e-9959-caeefd56ce77	1	49baeaeb-9209-4f8f-a0bd-71c12d50cf0f	taxista11@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista11@webdomum.com.br	f
+2ded530f-3e0d-494b-ba4e-31515c9ab78d	1	145a5579-1e2b-45f5-9024-5b3b6be2ba83	taxista12@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista12@webdomum.com.br	f
+b4546e6d-0f02-40d7-97af-c1627d003958	1	baa6cb01-fc4b-4b5a-babc-e728c8f12fe6	taxista13@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista13@webdomum.com.br	f
+4916d9d1-1c01-4984-a860-9f7ef85bc5bc	1	b4f6b32b-96c1-4b16-9d9a-cf45c660e72d	taxista14@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista14@webdomum.com.br	f
+ff8dc1bc-7e39-418b-a3f6-fa65c63e06af	1	54a4d003-91d8-47e2-8b3f-bce36a0a8d0d	taxista15@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista15@webdomum.com.br	f
+888da1ed-e81a-467d-9750-f8fa6a1c2c46	1	0265c60f-df52-40d8-bbfd-a1961248aea9	taxista16@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista16@webdomum.com.br	f
+231b827f-3377-4616-8063-b50b2715994c	1	fb7742cd-3014-41cc-93af-e9fbeb9ae42a	taxista17@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista17@webdomum.com.br	f
+09ca3b54-2328-441f-bf89-c1af4a950e68	1	54937738-49c6-47ed-a98c-90f131659322	taxista18@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista18@webdomum.com.br	f
+3dfeb0a2-012b-486b-a8f1-e6a59db51dda	1	b44292ad-f5a9-4e60-942e-6eb962296846	taxista19@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista19@webdomum.com.br	f
+454f76d1-5f3d-4b91-b7d6-58a6973894bf	1	1640d288-47b4-4d74-85dd-1ea62c945bf8	taxista20@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	taxista20@webdomum.com.br	f
+3f4f2768-80b5-4941-80e8-842e78e0218c	2	665d04fd-c333-4cea-add4-1d7e8bdcfb51	cliente2@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente2@webdomum.com.br	f
+35ea82e7-4d8e-479d-b800-7bbfb3b9a726	2	7b0f7724-984e-4aff-9b91-d30131b79bf3	cliente3@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente3@webdomum.com.br	f
+c5b3f39c-6427-4517-b2ec-34a3e3a752af	2	f62f7410-447a-4222-b35c-66d7bb61ab3f	cliente4@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente4@webdomum.com.br	f
+cc1645fb-c162-40f7-8392-ad1504122817	2	16d99d51-f9e3-40d2-b4e9-fc50b613e916	cliente5@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente5@webdomum.com.br	f
+255f1af1-d05e-49a8-aa91-9e787848d217	2	41c46949-5f24-4deb-bb39-40091b85570f	cliente6@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente6@webdomum.com.br	f
+67541277-f0fb-44ea-b1d2-48282086f536	2	89b0417b-7246-4ebb-999b-afa5277e2588	cliente7@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente7@webdomum.com.br	f
+e9124573-5dab-427e-9397-6f8dd77b6357	2	a1b40d58-6d5f-474a-9c4a-6f8a441c85e1	cliente8@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente8@webdomum.com.br	f
+dd0a4a5c-71d7-423f-851a-3d5b73e90b93	2	988f3a15-7c53-40e9-867b-4d2d172e1865	cliente9@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente9@webdomum.com.br	f
+e79fc298-0db9-41c7-a80b-1958fee779d8	2	fc916375-d6e9-45f4-af9d-c3b0cd3976f5	cliente10@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente10@webdomum.com.br	f
+f7e332ed-abc5-434a-a7ce-0667068c3ed6	2	e7cfd6b0-59c8-47ae-96cf-651f7c5d2193	cliente11@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente11@webdomum.com.br	f
+f914b24e-9492-40f6-bcf4-45452a6c3617	2	06d5565b-ef5f-4e0b-ac88-df199d24e56b	cliente12@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente12@webdomum.com.br	f
+b66775ae-5182-4c10-bda6-729b19a0281b	2	36d6db0b-80c2-4222-92ae-ba7adc7195e9	cliente13@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente13@webdomum.com.br	f
+a604f753-8ef1-4a15-9a0e-4e91013e2ae5	2	7688c861-acdb-4ad4-9e86-63d997381d04	cliente14@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente14@webdomum.com.br	f
+fb73379d-cd87-4d46-9e5b-01baf135efe8	2	a532f3cc-44f1-404f-8432-1c0fd8256e5a	cliente15@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente15@webdomum.com.br	f
+c76058f2-11d2-4e50-998a-70064e37a71a	2	3c87a096-0df3-4548-9046-88550277b853	cliente16@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente16@webdomum.com.br	f
+73a398ce-a3d1-4d87-885b-d622625643b8	2	b1c4eda6-33c6-4a6a-902a-132f39392677	cliente17@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente17@webdomum.com.br	f
+b12e87fa-e97e-43bb-96db-546a5d62039b	2	a52254e5-c98c-46a8-bb96-c62369becf66	cliente18@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente18@webdomum.com.br	f
+594773c6-0a5b-446f-8b2a-785983046c0c	2	57cc59bf-1c0e-4863-b5f1-f61d59dba213	cliente19@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente19@webdomum.com.br	f
+1fd2b4dd-9e3b-4e3d-9735-8645e1dc235c	2	4bf6b2e8-d79d-4ef9-8937-2a841664f58f	cliente20@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente20@webdomum.com.br	f
+5df9d5d5-a7d7-42fc-8f63-17fd1b10c666	2	3800de33-25bc-4c76-b639-270964ce7ad9	cliente21@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente21@webdomum.com.br	f
+0db0a6f6-e5a7-4cbd-a7f1-28ca76115494	2	878964ef-ca2b-49dd-aa74-2a88c2ef7bca	cliente22@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente22@webdomum.com.br	f
+319134d9-9c33-43ea-8d3e-a295c4b19f7d	2	e2d0e0c7-0769-47c6-9847-0822f864361a	cliente23@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente23@webdomum.com.br	f
+eeed3ebc-e00b-44e6-b016-8a87faaa94d8	2	587977ce-ee0a-46f4-aed5-328b664a2159	cliente24@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente24@webdomum.com.br	f
+aef5f025-0c1e-4277-9cd4-b27b69195b42	2	0e853a2f-ebac-40d1-a8eb-a4b74412f474	cliente25@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente25@webdomum.com.br	f
+566a9d2f-3b52-4517-bd27-f14f02242ac0	2	d092011b-ebf3-46ae-a52c-74e259bf8546	cliente26@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente26@webdomum.com.br	f
+a1488092-0a37-4598-b308-9c65f3dbefb9	2	bf65755c-8d5e-4bef-aff1-372d4733af6b	cliente27@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente27@webdomum.com.br	f
+96a86274-8f59-4f07-b758-5c08528d61f8	2	32c23b99-805b-4392-b3d2-2d5c63ffb2d2	cliente28@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente28@webdomum.com.br	f
+34ed9fa9-38e8-4faf-bbc2-92cfec5b1bb6	2	902cc399-4b82-4731-bca1-9a6d5906ad5d	cliente29@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente29@webdomum.com.br	f
+84aeac7a-13f1-4f3d-8076-0db8625ac86e	2	a26ee076-bc96-4cb1-b4e4-3df7b91c4e90	cliente30@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente30@webdomum.com.br	f
+a86d0cbd-52cf-44d2-b135-35dedd620e94	2	9afb6682-d7ea-45fc-af21-a19e7ea74a64	cliente31@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente31@webdomum.com.br	f
+8dfa2038-bb38-4733-8683-bc856a9c7b32	2	823edb7e-f03d-4def-a240-23f1b706e858	cliente32@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente32@webdomum.com.br	f
+88fbaad1-e9f1-4858-9d87-0662f8054baa	2	21e38fc0-90e0-4d66-8297-ec981a1d475c	cliente33@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente33@webdomum.com.br	f
+cf3e26a4-4ac9-422c-bcc9-d7df4f948c2c	2	5cf03c3b-409f-4c4d-859e-43097a184952	cliente34@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente34@webdomum.com.br	f
+e4d86f10-56c0-4e86-bddf-e84d6f7454d4	2	42e4f85d-2bd9-40d5-90e8-ea5f6556a99b	cliente35@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente35@webdomum.com.br	f
+f40a3fb3-ee29-4c2c-8ccb-5ba9e88601c5	2	4b94314e-729f-4207-bf62-f92fc43f9bc6	cliente36@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente36@webdomum.com.br	f
+c7daf4df-6978-41c4-b3e8-891662ff5aa5	2	b37b7421-bbcf-4d9a-93bc-8e3b7a54dcb2	cliente37@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente37@webdomum.com.br	f
+4cfce8a2-b855-419b-9cff-5bbc72cf24cb	2	89915f57-9f3f-41ca-9d72-21a6d8b9fcae	cliente38@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente38@webdomum.com.br	f
+c028d629-589e-4e52-9b75-6687680361c0	2	ac8e48ff-9c17-4844-be90-8d950321738c	cliente39@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente39@webdomum.com.br	f
+2e54aabd-376a-46d1-98f3-0613826d157a	2	d27cc6d6-99ef-4088-8638-d58698a15857	cliente40@falreis.eng.br	E10ADC3949BA59ABBE56E057F20F883E	cliente40@webdomum.com.br	f
+\.
+
+
+--
+-- TOC entry 2010 (class 0 OID 21607)
+-- Dependencies: 169
+-- Data for Name: veiculo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY veiculo (vei_id, mdv_id, vei_ano_fabricacao, vei_ano_modelo, vei_cor_predominante, vei_placa, vei_renavam, pes_id, vei_autorizacao_trafego, ras_id, vei_ativo) FROM stdin;
+a1a0271d-5739-40ec-b488-26adc1d39546	109	2005	2005	Prata	HCL6489	1234567890	fef8ef01-01a3-4950-ba49-0504627ceec1	AT001.0001	0373b353-c6ce-456b-8967-cb7befb34300	t
+62a77c30-fd0d-4051-b0c6-67393379fba6	6	2012	2012	Vermelho	DEL0001	1234567890	bbbc18fb-cede-4e0f-89a9-42cb73a7e7c1	AT001.0001	253d556e-4607-4846-aeaa-cddb11ea4e15	t
+914c241c-9fa5-455d-88ef-6d451587bf07	18	2010	2011	Preto	DIR0001	1234567890	a68cc65e-f9fe-47ec-8349-7a4c97422944	AT001.0001	1d3da9f2-1553-49e1-99bf-331bfc7ce1ec	t
+e1558cf5-f0bc-4a16-9de5-e1ad2902f145	181	2008	2008	Preto	SIL0001	1234567890	c747283b-1181-4cb8-b07a-c8b66c81cd65	AT001.0001	6ee7646f-ae4e-4a8c-82cd-9f5cd0e6a295	t
+5fd57f59-ac8b-4025-92a7-70c37aa8bda8	86	2009	2009	Branco	GEN0001	1234567890	cd01949b-f67a-40cd-9b08-2458020aea43	AT001.0001	9d20e076-28dd-4a79-868d-de04d4f90f77	t
+91b832fe-3be5-448f-b6bc-9fc8297ef999	94	2012	2012	Amarelo	VAL0001	1234567890	d0c6c8cf-fbaa-4cfc-9d31-83c21b0f7a4b	AT001.0001	14c6f176-a99d-46d7-820a-616301460cfe	t
+8f0a3e01-ade2-4297-b9d9-ae706c228701	53	2011	2011	Azul	DUD0001	1234567890	923039c0-1613-486d-8ef6-78f299ff105f	AT001.0001	e72226aa-2522-4eeb-84e5-e1d1f0acdd9e	t
+3bd14709-51ce-4d37-a5d3-56e92a948927	286	2012	2013	Verde	GUS0001	1234567890	85a22268-f925-480a-8ad4-6f9d932220a9	AT001.0001	131cb5e2-b075-44f0-b724-837245ae2684	t
+ec33c8c2-4153-4390-8436-39c1968f3372	186	2010	2010	Vermelho	COS0001	1234567890	3fde0706-d370-4188-b2ea-42c1c27bddfc	AT001.0001	9ff625e3-b9b7-4faa-b89e-080eb3adadda	t
+5e92e084-c303-42e7-9b7a-7f748266f7c1	295	2012	2012	Preto	JEF0001	1234567890	9175d07f-86d6-4dfa-af5e-062bf6b8202e	AT001.0001	55e85a6a-b699-4548-8b47-b7662d86a996	t
+eff864f6-cd68-4c81-9b02-1946b93e50c3	160	2012	2012	Vermelho PT	LUL0001	1234567890	4de9f08e-5434-40a8-b3e3-9014892efe91	AT001.0001	334c0dab-cc40-4102-b327-cf6f940b40ef	t
+4032ea01-fb45-4bd4-beb6-e11311b301bf	119	2000	2000	PRETO	TAX0001	A2193890123	80385406-6226-4097-bc4d-08a7e100f76b	2903134NFSD	143e1a9a-b35e-4f0d-8844-8052f2f57434	t
+a2dd1956-d516-4556-b36e-8db45a2476da	102	2003	2004	prata	TAX0002	1238148932	a24ff5ae-c3df-4f92-84b9-16ed10bc533f	213180743219	5acb3d4f-95f8-4497-9e7a-7683cb154a93	t
+ee6186d3-d16d-4a2c-b21d-20b033d174bc	46	2001	2001	prata	TAX0003	12984372	9e93964c-aa38-4bf5-8329-4a512a3742d7	120872342	07c134ce-2310-4d06-859d-d3b6c012a793	t
+507a8be5-41fa-47b0-8d47-82b5d95fd617	102	2012	2012	prata	TAX0004	215792301023	3a4ef49c-5792-4b8e-b1c4-e7a1f1baa4b7	SFJG872343127	0bcbaede-6c64-48ad-8a02-b206e606a24d	t
+5e92560a-e846-46cd-bad3-f481aaa06d30	108	2010	2011	PRETO	TAX0005	414123984-	e79d3e6c-0c51-41bc-9506-07ad5b48a012	34312894KFSD	a5b12651-d4fe-436e-bbb8-e28cac112d47	t
+a7be96dd-f338-4eca-9f12-59918c101fca	106	2010	2010	prata	TAX0006	241783249	610c675a-845b-4af6-bd33-86bff32d16ca	124733921BC34	2bb7401e-92fa-4dc5-998b-c1d22a2f90be	t
+48bad0e8-14b1-44d8-871a-e4c8de9b0fe6	114	2008	2008	prata	TAX0007	2187423	3df2da8e-28ea-45f6-b82b-7aa29db797bd	HDU23Y928103	5fb473c8-ae57-458b-9a0c-2a9b07b17aa1	t
+56af1000-0abf-4229-be49-801da2437f87	109	2011	2011	prata	TAX0008	21748324	152bd964-51fa-4878-82cd-08b7b33a035d	12367821CB3	75864359-97d2-409a-ac7c-77b46b4b7779	t
+4a9aeb4c-0d17-4c35-9090-d771dd4f79de	105	2006	2007	prata	TAX0009	263217	85a73cb7-3022-4b8a-87d2-b7ab47441951	74781324BC	21701c09-97c1-4a5a-a505-0dd680d734e4	t
+a0d4f417-69da-4554-a1d5-cee400098080	45	2006	2007	prata	TAX0010	136128472	f26d5f33-21d3-425e-af04-a4f4e81a42ae	1823709217	9b18ddce-8637-42d3-a77c-ed279510d9d4	t
+83812e9f-0945-464e-a843-37f8cbbb93eb	109	2010	2011	prata	TAX0011	123612893	49baeaeb-9209-4f8f-a0bd-71c12d50cf0f	128738123C	7e9fce26-bd72-4ada-af67-d62e7ad43e00	t
+dbe73028-9266-4333-8a56-bee4da131480	109	2011	2011	prata	TAX0012	13154325423543	145a5579-1e2b-45f5-9024-5b3b6be2ba83	987314890217	cc54eb20-9706-4267-a376-235ab83665af	t
+ddc613d3-e75f-4ad8-9842-b2048ab60ee1	109	2009	2009	prata	TAX0013	2109732423	baa6cb01-fc4b-4b5a-babc-e728c8f12fe6	1239812083	2e14159e-458b-4860-965c-2291ebec57f7	t
+fb7238fb-cc5b-4d3b-8d56-0b1df82d0460	121	2011	2011	prata	TAX0014	123921739	b4f6b32b-96c1-4b16-9d9a-cf45c660e72d	238712983	17e5b5ea-9e17-4f0e-80c9-3bf6de606433	t
+fe635903-85a9-46eb-9150-ab6d7f72fbf9	109	2012	2012	prata	TAX0015	1283710293	54a4d003-91d8-47e2-8b3f-bce36a0a8d0d	28370921C3	c83cecf8-aac3-4eaf-a7fd-be3a7f4fa83f	t
+ad9be629-a5b8-4f0e-aa9b-f4374b5a7ae1	109	2011	2012	prata	TAX0016	123987213	0265c60f-df52-40d8-bbfd-a1961248aea9	1729836217	cefb357a-c6fc-4a96-828a-782e250a1f43	t
+357a3144-9462-4637-95f5-7eb434713842	109	2010	2011	prata	TAX0017	17893621	fb7742cd-3014-41cc-93af-e9fbeb9ae42a	12371928	c4898181-489e-4623-8a5d-3a59d17a6255	t
+749a4dec-310f-4b50-bf6c-d02cf0314674	109	2008	2009	prata	TAX0018	17238123	54937738-49c6-47ed-a98c-90f131659322	21739812367	dced5459-9faf-479e-af0f-d66d7cfc4941	t
+8f1f145c-be28-40a8-b134-9f7b28f52a93	46	2009	2009	prata	TAX0019	2187303021	b44292ad-f5a9-4e60-942e-6eb962296846	218730219	5711600f-38e9-4b89-a3f6-d5e89075b1e1	t
+fa6d3793-c4df-41ba-baea-f00d93ffb3e6	105	2012	2012	prata	TAX0020	2183712391	1640d288-47b4-4d74-85dd-1ea62c945bf8	389012381	faa6360d-986b-4e5c-9f7c-69cb7f27149a	t
+\.
+
+
+--
+-- TOC entry 1977 (class 2606 OID 21673)
+-- Dependencies: 179 179
+-- Name: cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY cliente
+    ADD CONSTRAINT cliente_pkey PRIMARY KEY (cli_id);
+
+
+--
+-- TOC entry 1961 (class 2606 OID 21628)
+-- Dependencies: 172 172
+-- Name: endereco_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY endereco
+    ADD CONSTRAINT endereco_pkey PRIMARY KEY (end_id);
+
+
+--
+-- TOC entry 1939 (class 2606 OID 19073)
+-- Dependencies: 162 162
+-- Name: estado_civil_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY estado_civil
+    ADD CONSTRAINT estado_civil_pkey PRIMARY KEY (eci_id);
+
+
+--
+-- TOC entry 1957 (class 2606 OID 21618)
+-- Dependencies: 170 170
+-- Name: localizacao_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY localizacao
+    ADD CONSTRAINT localizacao_pkey PRIMARY KEY (loc_id);
+
+
+--
+-- TOC entry 1959 (class 2606 OID 21623)
+-- Dependencies: 171 171
+-- Name: modelo_veiculo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY modelo_veiculo
+    ADD CONSTRAINT modelo_veiculo_pkey PRIMARY KEY (mdv_id);
+
+
+--
+-- TOC entry 1981 (class 2606 OID 21683)
+-- Dependencies: 181 181
+-- Name: montadora_veiculo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY montadora_veiculo
+    ADD CONSTRAINT montadora_veiculo_pkey PRIMARY KEY (mnv_id);
+
+
+--
+-- TOC entry 1967 (class 2606 OID 21650)
+-- Dependencies: 175 175
+-- Name: pessoa_fisica_pfi_cpf_key; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY pessoa_fisica
+    ADD CONSTRAINT pessoa_fisica_pfi_cpf_key UNIQUE (pfi_cpf);
+
+
+--
+-- TOC entry 1969 (class 2606 OID 21648)
+-- Dependencies: 175 175
+-- Name: pessoa_fisica_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY pessoa_fisica
+    ADD CONSTRAINT pessoa_fisica_pkey PRIMARY KEY (pfi_id);
+
+
+--
+-- TOC entry 1971 (class 2606 OID 21658)
+-- Dependencies: 176 176
+-- Name: pessoa_juridica_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY pessoa_juridica
+    ADD CONSTRAINT pessoa_juridica_pkey PRIMARY KEY (pju_id);
+
+
+--
+-- TOC entry 1965 (class 2606 OID 21643)
+-- Dependencies: 174 174
+-- Name: pessoa_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY pessoa
+    ADD CONSTRAINT pessoa_pkey PRIMARY KEY (pes_id);
+
+
+--
+-- TOC entry 1941 (class 2606 OID 19078)
+-- Dependencies: 163 163
+-- Name: ramo_atividade_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY ramo_atividade
+    ADD CONSTRAINT ramo_atividade_pkey PRIMARY KEY (rat_id);
+
+
+--
+-- TOC entry 1973 (class 2606 OID 21663)
+-- Dependencies: 177 177
+-- Name: rastreador_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY rastreador
+    ADD CONSTRAINT rastreador_pkey PRIMARY KEY (ras_id);
+
+
+--
+-- TOC entry 1985 (class 2606 OID 21965)
+-- Dependencies: 183 183
+-- Name: requisicao_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY requisicao
+    ADD CONSTRAINT requisicao_pkey PRIMARY KEY (req_id);
+
+
+--
+-- TOC entry 1943 (class 2606 OID 19083)
+-- Dependencies: 164 164
+-- Name: sexo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY sexo
+    ADD CONSTRAINT sexo_pkey PRIMARY KEY (sex_id);
+
+
+--
+-- TOC entry 1945 (class 2606 OID 19093)
+-- Dependencies: 165 165
+-- Name: status_cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY status_cliente
+    ADD CONSTRAINT status_cliente_pkey PRIMARY KEY (stc_id);
+
+
+--
+-- TOC entry 1983 (class 2606 OID 21960)
+-- Dependencies: 182 182
+-- Name: status_requisicao_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY status_requisicao
+    ADD CONSTRAINT status_requisicao_pkey PRIMARY KEY (str_id);
+
+
+--
+-- TOC entry 1947 (class 2606 OID 19098)
+-- Dependencies: 166 166
+-- Name: status_taxista_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY status_taxista
+    ADD CONSTRAINT status_taxista_pkey PRIMARY KEY (stt_id);
+
+
+--
+-- TOC entry 1979 (class 2606 OID 21678)
+-- Dependencies: 180 180
+-- Name: taxista_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY taxista
+    ADD CONSTRAINT taxista_pkey PRIMARY KEY (tax_id);
+
+
+--
+-- TOC entry 1963 (class 2606 OID 21633)
+-- Dependencies: 173 173
+-- Name: telefone_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY telefone
+    ADD CONSTRAINT telefone_pkey PRIMARY KEY (tel_id);
+
+
+--
+-- TOC entry 1949 (class 2606 OID 19103)
+-- Dependencies: 167 167
+-- Name: tipo_pessoa_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tipo_pessoa
+    ADD CONSTRAINT tipo_pessoa_pkey PRIMARY KEY (tpe_id);
+
+
+--
+-- TOC entry 1951 (class 2606 OID 19108)
+-- Dependencies: 168 168
+-- Name: tipo_usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tipo_usuario
+    ADD CONSTRAINT tipo_usuario_pkey PRIMARY KEY (tus_id);
+
+
+--
+-- TOC entry 1937 (class 2606 OID 19068)
+-- Dependencies: 161 161
+-- Name: uf_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY uf
+    ADD CONSTRAINT uf_pkey PRIMARY KEY (uf_id);
+
+
+--
+-- TOC entry 1975 (class 2606 OID 21668)
+-- Dependencies: 178 178
+-- Name: usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (usr_id);
+
+
+--
+-- TOC entry 1953 (class 2606 OID 21611)
+-- Dependencies: 169 169
+-- Name: veiculo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY veiculo
+    ADD CONSTRAINT veiculo_pkey PRIMARY KEY (vei_id);
+
+
+--
+-- TOC entry 1955 (class 2606 OID 21613)
+-- Dependencies: 169 169
+-- Name: veiculo_vei_placa_key; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY veiculo
+    ADD CONSTRAINT veiculo_vei_placa_key UNIQUE (vei_placa);
+
+
+--
+-- TOC entry 1995 (class 2606 OID 21744)
+-- Dependencies: 178 1964 174
+-- Name: fk102b720e1bbe7190; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT fk102b720e1bbe7190 FOREIGN KEY (pes_id) REFERENCES pessoa(pes_id);
+
+
+--
+-- TOC entry 1993 (class 2606 OID 21734)
+-- Dependencies: 174 1964 175
+-- Name: fk5b8f7e0b5633102b; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pessoa_fisica
+    ADD CONSTRAINT fk5b8f7e0b5633102b FOREIGN KEY (pfi_id) REFERENCES pessoa(pes_id);
+
+
+--
+-- TOC entry 1991 (class 2606 OID 21714)
+-- Dependencies: 1964 173 174
+-- Name: fk5b9c5401bbe7190; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY telefone
+    ADD CONSTRAINT fk5b9c5401bbe7190 FOREIGN KEY (pes_id) REFERENCES pessoa(pes_id);
+
+
+--
+-- TOC entry 1994 (class 2606 OID 21739)
+-- Dependencies: 174 1964 176
+-- Name: fk6a51c803b3f25f0b; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pessoa_juridica
+    ADD CONSTRAINT fk6a51c803b3f25f0b FOREIGN KEY (pju_id) REFERENCES pessoa(pes_id);
+
+
+--
+-- TOC entry 1998 (class 2606 OID 21759)
+-- Dependencies: 169 1952 180
+-- Name: fk6b5b26987872028c; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY taxista
+    ADD CONSTRAINT fk6b5b26987872028c FOREIGN KEY (vei_id) REFERENCES veiculo(vei_id);
+
+
+--
+-- TOC entry 1997 (class 2606 OID 21754)
+-- Dependencies: 1974 178 180
+-- Name: fk6b5b2698af3ed598; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY taxista
+    ADD CONSTRAINT fk6b5b2698af3ed598 FOREIGN KEY (tax_id) REFERENCES usuario(usr_id);
+
+
+--
+-- TOC entry 1987 (class 2606 OID 21689)
+-- Dependencies: 174 169 1964
+-- Name: fk8e805acb1bbe7190; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY veiculo
+    ADD CONSTRAINT fk8e805acb1bbe7190 FOREIGN KEY (pes_id) REFERENCES pessoa(pes_id);
+
+
+--
+-- TOC entry 1986 (class 2606 OID 21684)
+-- Dependencies: 169 171 1958
+-- Name: fk8e805acb4114eba3; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY veiculo
+    ADD CONSTRAINT fk8e805acb4114eba3 FOREIGN KEY (mdv_id) REFERENCES modelo_veiculo(mdv_id);
+
+
+--
+-- TOC entry 1988 (class 2606 OID 21694)
+-- Dependencies: 1972 169 177
+-- Name: fk8e805acb72860e6a; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY veiculo
+    ADD CONSTRAINT fk8e805acb72860e6a FOREIGN KEY (ras_id) REFERENCES rastreador(ras_id);
+
+
+--
+-- TOC entry 2001 (class 2606 OID 21976)
+-- Dependencies: 183 182 1982
+-- Name: fk_requisicao_statusrequisicao; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY requisicao
+    ADD CONSTRAINT fk_requisicao_statusrequisicao FOREIGN KEY (str_id) REFERENCES status_requisicao(str_id);
+
+
+--
+-- TOC entry 1999 (class 2606 OID 21966)
+-- Dependencies: 183 180 1978
+-- Name: fkb791b6c5ada4e6c; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY requisicao
+    ADD CONSTRAINT fkb791b6c5ada4e6c FOREIGN KEY (tax_id) REFERENCES taxista(tax_id);
+
+
+--
+-- TOC entry 2000 (class 2606 OID 21971)
+-- Dependencies: 183 179 1976
+-- Name: fkb791b6c8220eb57; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY requisicao
+    ADD CONSTRAINT fkb791b6c8220eb57 FOREIGN KEY (cli_id) REFERENCES cliente(cli_id);
+
+
+--
+-- TOC entry 1996 (class 2606 OID 21749)
+-- Dependencies: 179 1974 178
+-- Name: fkda2270dcaf3ed598; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cliente
+    ADD CONSTRAINT fkda2270dcaf3ed598 FOREIGN KEY (cli_id) REFERENCES usuario(usr_id);
+
+
+--
+-- TOC entry 1990 (class 2606 OID 21709)
+-- Dependencies: 171 1980 181
+-- Name: fke61d4d0e38b814; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY modelo_veiculo
+    ADD CONSTRAINT fke61d4d0e38b814 FOREIGN KEY (mnv_id) REFERENCES montadora_veiculo(mnv_id);
+
+
+--
+-- TOC entry 1992 (class 2606 OID 21729)
+-- Dependencies: 172 1960 174
+-- Name: fke6a1fc233a68d729; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pessoa
+    ADD CONSTRAINT fke6a1fc233a68d729 FOREIGN KEY (end_id) REFERENCES endereco(end_id);
+
+
+--
+-- TOC entry 1989 (class 2606 OID 21699)
+-- Dependencies: 170 1972 177
+-- Name: fkf50a8a9a72860e6a; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY localizacao
+    ADD CONSTRAINT fkf50a8a9a72860e6a FOREIGN KEY (ras_id) REFERENCES rastreador(ras_id);
+
+
+--
+-- TOC entry 2029 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2013-01-12 15:36:13
+
+--
+-- PostgreSQL database dump complete
+--
+

@@ -1,0 +1,1403 @@
+<?xml version="1.0"?>
+<taxistas>
+  <taxista>
+    <id>82f9443d-13d7-4cfc-ae98-427908899f8e</id>
+    <latitude>-19,8791109893217</latitude>
+    <longitude>-43,9283571571826</longitude>
+    <endereco>Rua Silva Fortes, 56 - União, Belo Horizonte - Minas Gerais, 31160-320, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>a44c75b2-6699-47b6-a8ea-e75bf11db189</id>
+    <latitude>-19,874686488831</latitude>
+    <longitude>-43,9588357818005</longitude>
+    <endereco>Rua Alcobaça, 301-499 - Universidade Federal de Minas Gerais, Campus da UFMG, Belo Horizonte - Minas Gerais, 31255-210, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>9eb7a533-6c2c-43a4-b6b1-e9e085b0c3e0</id>
+    <latitude>-19,9109611411939</latitude>
+    <longitude>-43,9687920927507</longitude>
+    <endereco>Rua Icaraí, 884-1064 - Pedro II, Belo Horizonte - Minas Gerais, 30770-160, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>673a1f88-f907-4210-ab6f-6f13c377ac89</id>
+    <latitude>-19,9525358382933</latitude>
+    <longitude>-43,9593726584848</longitude>
+    <endereco>Rua do Mercado, 52-130 - São Bento, Belo Horizonte - Minas Gerais, 30380-810, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>764da812-3d6a-46c9-9506-a52658250e40</id>
+    <latitude>-19,9149268726033</latitude>
+    <longitude>-43,9732796506716</longitude>
+    <endereco>Rua Perdizes, 21 - Padre Eustáquio, Belo Horizonte - Minas Gerais, 30720-610, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>e7870ebd-693c-4c60-9715-a12094e706b3</id>
+    <latitude>-19,8614952940391</latitude>
+    <longitude>-43,8928510640831</longitude>
+    <endereco>Via de Acesso Ligação Rod BR-262 - Sabará - Pousada Santo Antônio, Belo Horizonte - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>8009b1ec-c2df-46af-a427-0d40a3bbb7b7</id>
+    <latitude>-19,9160684244858</latitude>
+    <longitude>-43,8825170921663</longitude>
+    <endereco>Rua São Cristóvão, 2-168 - Taquaril, Belo Horizonte - Minas Gerais, 30295-280, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>0c8e97e1-25d5-4c67-a705-5e27d2be3485</id>
+    <latitude>-19,9483582578435</latitude>
+    <longitude>-43,954116193079</longitude>
+    <endereco>Rua Professor João Martins, 1-27 - Luxemburgo, Belo Horizonte - Minas Gerais, 30380-580, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>5568a815-64b2-40f3-9e53-3d2ebe861bd2</id>
+    <latitude>-19,8829121073704</latitude>
+    <longitude>-43,9573510387365</longitude>
+    <endereco>Rua Pinto de Alpoim, 77 - Nova Cachoeirinha, Belo Horizonte - Minas Gerais, 31250-640, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>2caf3cea-dd6c-4d6a-a57c-f8e8432d4ae8</id>
+    <latitude>-19,9339432044887</latitude>
+    <longitude>-43,8842869379368</longitude>
+    <endereco>Rua Elisa Laura Scharper, 2-68 - Taquaril, Belo Horizonte - Minas Gerais, 30285-740, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>54d8ad99-b214-e4e0-e921-ce8209196c44</id>
+    <latitude>-19,9016693545356</latitude>
+    <longitude>-43,9197899971599</longitude>
+    <endereco>Rua Cabrobó, 215-279 - Sagrada Família, Belo Horizonte - Minas Gerais, 31035-350, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>7e0e8109-97a4-b558-7700-ec8c99a901d0</id>
+    <latitude>-19,9398384835833</latitude>
+    <longitude>-43,8912601772073</longitude>
+    <endereco>Rua Elisa Laura Scharper, 2 - Taquaril, Belo Horizonte - Minas Gerais, 30285-740, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>2e176e47-c12d-bbad-ea3b-51727447b933</id>
+    <latitude>-19,8839591878933</latitude>
+    <longitude>-43,9463407175948</longitude>
+    <endereco>Rua Gurupa, 159-193 - Cachoeirinha, Belo Horizonte - Minas Gerais, 31150-180, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>e8489254-5999-535c-e2de-2c5119bc078f</id>
+    <latitude>-19,9264354397509</latitude>
+    <longitude>-43,9596577611914</longitude>
+    <endereco>Avenida Francisco Sá, 442-536 - Prado, Belo Horizonte - Minas Gerais, 30410-060, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>5a184786-d0a9-2f44-bd63-13953e9f2097</id>
+    <latitude>-19,8757457340332</latitude>
+    <longitude>-43,8963907556243</longitude>
+    <endereco>Rua Carlos Chagas, 869 - Alvorada Belo Horizonte, Sabará - Minas Gerais, 34700-170, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>c0457672-7929-d062-f0d5-154f8ee02e1f</id>
+    <latitude>-19,8923494197934</latitude>
+    <longitude>-43,890007464944</longitude>
+    <endereco>Rua Mirante, 330 - Boa Vista, Belo Horizonte - Minas Gerais, 31070-390, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>fe8ead17-6667-367a-7613-97cbf0c273cb</id>
+    <latitude>-19,89935117977</latitude>
+    <longitude>-43,9472157688915</longitude>
+    <endereco>Rua Popular, 34-154 - São Cristóvão, Belo Horizonte - Minas Gerais, 31230-760, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>38a6cb9f-ff8c-a2d9-fee8-fcc2ba71366c</id>
+    <latitude>-19,9256825149488</latitude>
+    <longitude>-43,910224932728</longitude>
+    <endereco>Rua Itaberá, 1035 - Santa Efigênia, Belo Horizonte - Minas Gerais, 30260-320, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>e6a1c580-ffa4-8602-4bd1-a8e27ee75e74</id>
+    <latitude>-19,9408977287855</latitude>
+    <longitude>-43,8874156397826</longitude>
+    <endereco>Rua Elisa Laura Scharper, 2 - Taquaril, Belo Horizonte - Minas Gerais, 30285-740, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>a613468e-86f3-a283-9140-9f15aed2062d</id>
+    <latitude>-19,9096549759507</latitude>
+    <longitude>-43,9116566038862</longitude>
+    <endereco>Rua João Alfredo, 127-585 - Horto, Belo Horizonte - Minas Gerais, 31010-440, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>4bc572db-36c8-404e-9959-caeefd56ce77</id>
+    <latitude>-19,9109260701934</latitude>
+    <longitude>-43,9443388410236</longitude>
+    <endereco>Rua Alberto Gualberto, 20 - Bonfim, Belo Horizonte - Minas Gerais, 31210-130, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>07343e74-0380-e3ec-8bb6-eb279f606c41</id>
+    <latitude>-19,8703442950205</latitude>
+    <longitude>-43,9475736866811</longitude>
+    <endereco>Rua Sá E Benevides, 31-79 - Universitário, Belo Horizonte - Minas Gerais, 31255-300, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>0c168379-c748-b805-8212-d4224205e66d</id>
+    <latitude>-19,8821942535688</latitude>
+    <longitude>-43,8999835190713</longitude>
+    <endereco>Rua Musas, 2-72 - Sabará - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>8f6d7175-55d4-367f-c9d9-5c671352e79b</id>
+    <latitude>-19,9366850773352</latitude>
+    <longitude>-43,9342566430845</longitude>
+    <endereco>Rua Paraíba, 1156 - Savassi, Belo Horizonte - Minas Gerais, 30130-141, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>fd0909ce-12aa-b390-263a-3289277ecc5d</id>
+    <latitude>-19,8966093069236</latitude>
+    <longitude>-43,8870046500871</longitude>
+    <endereco>Rua Professora Alcidalia Lott, 2-64 - Casa Branca, Belo Horizonte - Minas Gerais, 31050-110, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>0fe39a4e-d6a4-a7dd-5f28-e53376daa631</id>
+    <latitude>-19,9153033350043</latitude>
+    <longitude>-43,8938520023687</longitude>
+    <endereco>Rua Demétrio Ribeiro, 933-1095 - Vera Cruz, Belo Horizonte - Minas Gerais, 30285-680, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>5fcdf173-9290-71b4-7be0-38778414c4cb</id>
+    <latitude>-19,8590003412335</latitude>
+    <longitude>-43,9504703577261</longitude>
+    <endereco>Rua Isabel Bueno, 1071-1077 - Jaraguá, Belo Horizonte - Minas Gerais, 31270-030, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>4c1062d6-a51b-2805-2d20-45505020b3da</id>
+    <latitude>-19,8713563045429</latitude>
+    <longitude>-43,9610166172665</longitude>
+    <endereco>Avenida Perimetral Sul, 321-451 - Universidade Federal de Minas Gerais, Campus da UFMG, Belo Horizonte - Minas Gerais, 31255-040, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>d9decf57-218b-3200-9ebb-3c4275718e68</id>
+    <latitude>-19,8783580645196</latitude>
+    <longitude>-43,904524148898</longitude>
+    <endereco>Rua Olimpus, 90 - Ana Lucia Belo Horizonte, Sabará - Minas Gerais, 34710-110, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>1126f5c5-2a90-c4e3-76d6-2baa81e21c61</id>
+    <latitude>-19,9229406421023</latitude>
+    <longitude>-43,8773865137494</longitude>
+    <endereco>Antiga Estr. de Nova Lima - Taquaril, Belo Horizonte - Minas Gerais, 30285-760, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>8056b12e-ff49-4bdb-c02a-60308072c6fa</id>
+    <latitude>-19,856811708828</latitude>
+    <longitude>-43,89431606397</longitude>
+    <endereco>Via de Acesso Ligação Rod BR-262 - Sabará - Pousada Santo Antônio, Belo Horizonte - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>2ded530f-3e0d-494b-ba4e-31515c9ab78d</id>
+    <latitude>-19,9346961292909</latitude>
+    <longitude>-43,9157862440175</longitude>
+    <endereco>Rua Doutor Camilo, 513-649 - Favela Aglomerado da Serra, Vila Cafezal, Belo Horizonte - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>c5e58581-56ef-8a2b-5534-84a05fde13f7</id>
+    <latitude>-19,9262708263903</latitude>
+    <longitude>-43,9261763217166</longitude>
+    <endereco>Rua dos Otoni, 621 - Santa Efigênia, Belo Horizonte - Minas Gerais, 30150-270, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>3be6da0d-e044-4abe-e063-3600a1e10ea2</id>
+    <latitude>-19,8715681535834</latitude>
+    <longitude>-43,9602477097815</longitude>
+    <endereco>Avenida Perimetral Sul, 320-450 - Universidade Federal de Minas Gerais, Campus da UFMG, Belo Horizonte - Minas Gerais, 31255-040, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>6b747198-d2fe-a504-2db6-04f57340bc90</id>
+    <latitude>-19,9306480912012</latitude>
+    <longitude>-43,9120145216757</longitude>
+    <endereco>Rua Rene Renault, 140-476 - Novo São Lucas, Belo Horizonte - Minas Gerais, 30240-520, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>8baf6b08-d383-1163-6232-ba60f5a9ee8e</id>
+    <latitude>-19,8821470178889</latitude>
+    <longitude>-43,882696051061</longitude>
+    <endereco>Rua das Acácias, 585 - Sabará - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>b903ed1c-fa77-a3f1-4833-d0946aff5604</id>
+    <latitude>-19,935625832133</latitude>
+    <longitude>-43,9304121056597</longitude>
+    <endereco>Rua Santa Rita Durão, 591-599 - Savassi, Belo Horizonte - Minas Gerais, 30140-110, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>c1c4939a-dad4-86f8-2c77-767912c239ea</id>
+    <latitude>-19,9319542564444</latitude>
+    <longitude>-43,9684341749612</longitude>
+    <endereco>Rua Camapua, 103 - Alto Barroca, Belo Horizonte - Minas Gerais, 30430-450, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>e244caa1-dfa4-2662-1eb2-4bd968a6938b</id>
+    <latitude>-19,9352493697319</latitude>
+    <longitude>-43,9461617587</longitude>
+    <endereco>Avenida do Contorno, 7368 - Santo Antônio, Belo Horizonte - Minas Gerais, 30110-048, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>3f01fd1a-619a-7fbc-3412-00393bf2d0e8</id>
+    <latitude>-19,8916788016716</latitude>
+    <longitude>-43,913247490762</longitude>
+    <endereco>Rua Gustavo da Silveira, 1152-1748 - Instituto Agronômico, Belo Horizonte - Minas Gerais, 31080-010, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>5588fe75-bf98-2048-dfa6-1d11831f49b1</id>
+    <latitude>-19,9024222793378</latitude>
+    <longitude>-43,9630913089207</longitude>
+    <endereco>Rua Gonçalves Figueira, 239 - Caiçaras, Belo Horizonte - Minas Gerais, 31230-260, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>82ea63ba-1c86-6d7f-21ba-eec0c3563d81</id>
+    <latitude>-19,9298951663991</latitude>
+    <longitude>-43,9708667844049</longitude>
+    <endereco>Rua Viamão, 300-326 - Barroca, Belo Horizonte - Minas Gerais, 30480-220, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>b4546e6d-0f02-40d7-97af-c1627d003958</id>
+    <latitude>-19,8620836054806</latitude>
+    <longitude>-43,9735116814722</longitude>
+    <endereco>Praça Eduardo Mendes Guimarães, 2 - São Luís, Belo Horizonte - Minas Gerais, 31275-250, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>01150276-2014-0186-b5c2-d8b8a99275d1</id>
+    <latitude>-19,9149741082831</latitude>
+    <longitude>-43,9108148813182</longitude>
+    <endereco>Rua Divinópolis, 407 - Santa Tereza, Belo Horizonte - Minas Gerais, 31010-370, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>2c2810b7-2ed3-c211-09b3-2011e8deb76b</id>
+    <latitude>-19,9278711473542</latitude>
+    <longitude>-43,9477526455758</longitude>
+    <endereco>Rua Rio Grande do Sul, 1311-1449 - Santo Agostinho, Belo Horizonte - Minas Gerais, 30170-111, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>8f411d1b-a49d-4dd6-604f-e32b207f49d8</id>
+    <latitude>-19,8743100264299</latitude>
+    <longitude>-43,9430861287602</longitude>
+    <endereco>Rua Luiz Castanhede, 733 - Santa Cruz, Belo Horizonte - Minas Gerais, 31155-140, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>6f82dfad-1d2a-e104-95a2-b8ca7a773e5f</id>
+    <latitude>-19,8822293245693</latitude>
+    <longitude>-43,9269452292016</longitude>
+    <endereco>Rua Silva Fortes, 288 - União, Belo Horizonte - Minas Gerais, 31160-320, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>a40dc86a-7f6a-57f4-dfd7-4ae0a29a716a</id>
+    <latitude>-19,9131147025989</latitude>
+    <longitude>-43,9004475806726</longitude>
+    <endereco>Rua Marquês de Barbacena, 105 - Vera Cruz, Belo Horizonte - Minas Gerais, 30285-060, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>05eeb3b7-441b-b6cf-22ca-228c8c5cc173</id>
+    <latitude>-19,8788640692808</latitude>
+    <longitude>-43,8978026836053</longitude>
+    <endereco>Rua Elói Mendes, 61 - Sabará - Minas Gerais, 34700-090, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>09eaacd3-b489-3d70-b586-7f455f9de45a</id>
+    <latitude>-19,8610243602783</latitude>
+    <longitude>-43,927356218897</longitude>
+    <endereco>Rua Acadêmico Coutinho, 529-787 - Providência, Belo Horizonte - Minas Gerais, 31810-520, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>c2075e3e-433b-5237-7443-912742ebaa3b</id>
+    <latitude>-19,8575295626297</latitude>
+    <longitude>-43,8883635061623</longitude>
+    <endereco>Rua Américo Alves Sardinha, 2-230 - Pousada Santo Antônio, Belo Horizonte - Minas Gerais, 31970-480, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>50c4163b-bb52-60ed-eb84-4f2bcaeaa395</id>
+    <latitude>-19,9475108616817</latitude>
+    <longitude>-43,9510405631392</longitude>
+    <endereco>Rua Gonçalves Veloso, 120 - Coração de Jesus, Belo Horizonte - Minas Gerais, 30380-620, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>1e51dd43-64bd-3f56-d613-8380459f7cf7</id>
+    <latitude>-19,8982096278875</latitude>
+    <longitude>-43,9085809739463</longitude>
+    <endereco>Rua Crockatt de Sá, 1-295 - Instituto Agronômico, Belo Horizonte - Minas Gerais, 31060-130, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>4916d9d1-1c01-4984-a860-9f7ef85bc5bc</id>
+    <latitude>-19,8896547826268</latitude>
+    <longitude>-43,9612486480672</longitude>
+    <endereco>Rua Manuel Ferreira Leal, 295 - Aparecida Sétima Seção, Belo Horizonte - Minas Gerais, 31250-700, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>5a9383f5-1875-44ec-3f82-5c85d2239b4a</id>
+    <latitude>-19,9374029311369</latitude>
+    <longitude>-43,9230779147233</longitude>
+    <endereco>Rua Professor Estêvão Pinto, 313 - Serra, Belo Horizonte - Minas Gerais, 30210-580, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>47e9ba2e-bcd7-9ea3-38b2-cda854faca1a</id>
+    <latitude>-19,9235289535438</latitude>
+    <longitude>-43,9590147406953</longitude>
+    <endereco>Rua Platina, 105 - Prado, Belo Horizonte - Minas Gerais, 30410-430, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>611ba484-b1a6-cfe5-845b-93fc74ad5b04</id>
+    <latitude>-19,8641076245254</latitude>
+    <longitude>-43,9503975426431</longitude>
+    <endereco>Rua Isabel Bueno, 845 - Liberdade, Belo Horizonte - Minas Gerais, 31270-030, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>8b6f3094-b205-8ad1-43e3-4bf59ce4ebcd</id>
+    <latitude>-19,8628365302827</latitude>
+    <longitude>-43,8963710124471</longitude>
+    <endereco>Rua Avestruz, 265 - Vila Brasília, Belo Horizonte - Minas Gerais, 31950-510, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>865c5597-46f8-d53a-302d-9760c6a00d5e</id>
+    <latitude>-19,9529123006944</latitude>
+    <longitude>-43,9077589945555</longitude>
+    <endereco>Rua Paschoal Riccio, 70-192 - Mangabeiras, Belo Horizonte - Minas Gerais, 30210-150, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>09276da5-cbe9-831b-ff61-ff98fa6d71d8</id>
+    <latitude>-19,8923966554733</latitude>
+    <longitude>-43,9440870670458</longitude>
+    <endereco>Rua Cônego Santana, 231 - Cachoeirinha, Belo Horizonte - Minas Gerais, 31130-450, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>648f988b-ee58-f489-31db-071cc89c982e</id>
+    <latitude>-19,9288008501963</latitude>
+    <longitude>-43,908813004747</longitude>
+    <endereco>Rua Ribeirão das Neves, 163-199 - Santa Efigênia, Belo Horizonte - Minas Gerais, 30260-390, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>01ee7dc9-1893-74b6-06c3-14dbb7f8624e</id>
+    <latitude>-19,9445220687943</latitude>
+    <longitude>-43,8927251770942</longitude>
+    <endereco>Rua Nossa Senhora de Fátima, 754-1030 - Favela Aglomerado da Serra, Vila Cafezal, Belo Horizonte - Minas Gerais, 30230-000, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>30e94028-08db-7fa0-6fd3-5efe98ac992a</id>
+    <latitude>-19,9229757131028</latitude>
+    <longitude>-43,9484487379778</longitude>
+    <endereco>Rua dos Guajajaras, 1540 - Barro Preto, Belo Horizonte - Minas Gerais, 30180-101, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>a55a946f-89f8-af7c-313f-8c099ad05421</id>
+    <latitude>-19,8839591878933</latitude>
+    <longitude>-43,9463407175948</longitude>
+    <endereco>Rua Gurupa, 159-193 - Cachoeirinha, Belo Horizonte - Minas Gerais, 31150-180, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>ff8dc1bc-7e39-418b-a3f6-fa65c63e06af</id>
+    <latitude>-19,9225992507017</latitude>
+    <longitude>-43,8871836089819</longitude>
+    <endereco>Antiga Estr. de Nova Lima - Taquaril, Belo Horizonte - Minas Gerais, 30285-760, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>7b83f161-32f8-644a-765b-34cc70afe395</id>
+    <latitude>-19,8716976959435</latitude>
+    <longitude>-43,951219522034</longitude>
+    <endereco>Rua Beira Alta, 375 - São Francisco, Belo Horizonte - Minas Gerais, 31255-240, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>b53da374-d4bc-75c3-8be7-4b27901f256a</id>
+    <latitude>-19,8757808050337</latitude>
+    <longitude>-43,9208440073514</longitude>
+    <endereco>Rua Professor Amaro Xisto de Queiroz, 564-592 - São Paulo, Belo Horizonte - Minas Gerais, 31170-810, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>042452e1-1d6f-c041-262c-08244a8f5212</id>
+    <latitude>-19,9501704278479</latitude>
+    <longitude>-43,9249205755768</longitude>
+    <endereco>Rua Odilon Braga, 705 - Anchieta, Belo Horizonte - Minas Gerais, 30310-390, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>817ad82b-fea0-4a70-22eb-05dc6013f1d6</id>
+    <latitude>-19,9417451249473</latitude>
+    <longitude>-43,8843400098427</longitude>
+    <endereco>Rua Elisa Laura Scharper, 2 - Taquaril, Belo Horizonte - Minas Gerais, 30285-740, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>bbbe35c4-d02c-eb18-2f72-fc33290379fd</id>
+    <latitude>-19,9061601783021</latitude>
+    <longitude>-43,9540631211731</longitude>
+    <endereco>Rua Capitólio, 275 - Santo André, Belo Horizonte - Minas Gerais, 31210-570, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>577ac285-af4d-9350-63f8-7826b29ef2b3</id>
+    <latitude>-19,9073368011851</latitude>
+    <longitude>-43,9741016300624</longitude>
+    <endereco>Rua Perdizes, 870-908 - Caiçara Adeláide, Belo Horizonte - Minas Gerais, 30770-270, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>7aa0d0cb-b78f-2249-c56f-263ac6861e73</id>
+    <latitude>-19,8786872912408</latitude>
+    <longitude>-43,9214870278475</longitude>
+    <endereco>Rua Johnson, 2-188 - União, Belo Horizonte - Minas Gerais, 31170-650, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>f62d1ed1-60f1-48a6-7211-7d75f3f826fa</id>
+    <latitude>-19,9472639416408</latitude>
+    <longitude>-43,9255635960729</longitude>
+    <endereco>Rua Ipatinga, 2-124 - Cruzeiro, Belo Horizonte - Minas Gerais, 30310-500, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>b086933c-cbdd-2c26-2d1e-e46ccb83f3e8</id>
+    <latitude>-19,8646136292866</latitude>
+    <longitude>-43,8942629920642</longitude>
+    <endereco>Rua Cuco, 748 - Vila Brasília, Belo Horizonte - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>94a121e3-a1a6-e25a-afe3-ae1dd1c608da</id>
+    <latitude>-19,8904077074289</latitude>
+    <longitude>-43,9086340458522</longitude>
+    <endereco>Rua Vicente Risola, 195 - Santa Inês, Belo Horizonte - Minas Gerais, 31080-160, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>888da1ed-e81a-467d-9750-f8fa6a1c2c46</id>
+    <latitude>-19,9107965278333</latitude>
+    <longitude>-43,935310653276</longitude>
+    <endereco>Rua Pedro Carvalho Mendes, 71 - Colégio Batista, Belo Horizonte - Minas Gerais, 31110-100, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>e9c60fe8-3148-e6f6-6ba2-3f2a12c49569</id>
+    <latitude>-19,8704738373807</latitude>
+    <longitude>-43,9128365010665</longitude>
+    <endereco>Beco São Alberto, 212-292 - São Marcos, Belo Horizonte - Minas Gerais, 31920-081, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>0e06e6c8-98ec-af45-d4ac-9b6f4c4f91d0</id>
+    <latitude>-19,8929377312349</latitude>
+    <longitude>-43,9263552806114</longitude>
+    <endereco>Rua Milton Vieira Pinto, 44 - Cidade Nova, Belo Horizonte - Minas Gerais, 31170-080, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>3a9bb1e4-8dba-21c9-3fbf-ef5767a24078</id>
+    <latitude>-19,9432159035511</latitude>
+    <longitude>-43,9295901262689</longitude>
+    <endereco>Rua Outono, 578 - Cruzeiro, Belo Horizonte - Minas Gerais, 30310-020, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>7e51c35f-e20e-967d-5c47-ae8d889fd58a</id>
+    <latitude>-19,8750278802316</latitude>
+    <longitude>-43,949038686568</longitude>
+    <endereco>Rua Itapetinga, 3375-3673 - Cachoeirinha, Belo Horizonte - Minas Gerais, 31150-170, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>d0ac03a8-3b69-84d3-0725-3d1c4c43e5e9</id>
+    <latitude>-19,8571881712291</latitude>
+    <longitude>-43,8785664109297</longitude>
+    <endereco>Rua Setecentos E Doze, 2-290 - Jardim Vitória, Belo Horizonte - Minas Gerais, 31970-524, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>bfa50ef4-4ca2-9cdb-6938-e3d29e638c37</id>
+    <latitude>-19,908560659748</latitude>
+    <longitude>-43,9614276069619</longitude>
+    <endereco>Rua Itanhomi, 160 - Carlos Prates, Belo Horizonte - Minas Gerais, 30710-370, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>978b6bc4-adbb-7930-1ace-7290edcfbc4d</id>
+    <latitude>-19,9204456892967</latitude>
+    <longitude>-43,9320560644414</longitude>
+    <endereco>Rua Itambé, 102-138 - Floresta, Belo Horizonte - Minas Gerais, 30150-150, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>e174e5d6-7ffb-3fd2-3381-43303c34c03c</id>
+    <latitude>-19,9120203863961</latitude>
+    <longitude>-43,9726366301755</longitude>
+    <endereco>Rua Piracicaba, 755 - Monsenhor Messias, Belo Horizonte - Minas Gerais, 30770-140, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>867f0dd9-af49-37ff-2212-0c25e1f8ead0</id>
+    <latitude>-19,8896547826268</latitude>
+    <longitude>-43,9612486480672</longitude>
+    <endereco>Rua Manuel Ferreira Leal, 295 - Aparecida Sétima Seção, Belo Horizonte - Minas Gerais, 31250-700, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>fc81c9d4-d8bd-60d7-2ba1-10e442988c61</id>
+    <latitude>-19,9184216702519</latitude>
+    <longitude>-43,8924400743877</longitude>
+    <endereco>Rua Sebastião Teodoro, 184 - Saudade, Belo Horizonte - Minas Gerais, 30285-470, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>231b827f-3377-4616-8063-b50b2715994c</id>
+    <latitude>-19,9362613792543</latitude>
+    <longitude>-43,9327188281146</longitude>
+    <endereco>Rua dos Inconfidentes, 611-757 - Savassi, Belo Horizonte - Minas Gerais, 30140-120, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>26394a92-5bb4-d3f8-38ce-8de22cbdeea7</id>
+    <latitude>-19,8858185935776</latitude>
+    <longitude>-43,8946739817596</longitude>
+    <endereco>Rua Porto Seguro, 1276-1494 - Sabará - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>2503f8f4-c8c4-7d75-55fc-5b5fde641c4b</id>
+    <latitude>-19,9120554573966</latitude>
+    <longitude>-43,9042921180974</longitude>
+    <endereco>Rua Mário Martins, 40 - Pompéia, Belo Horizonte - Minas Gerais, 30280-450, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>dc0adbae-7d3e-d9f1-e403-1f219dbcf41a</id>
+    <latitude>-19,9002336469323</latitude>
+    <longitude>-43,8816951127754</longitude>
+    <endereco>Avenida Borba Gato, 3528-4388 - Sabará - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>bb6d3446-db78-3fcf-70ed-bf76f511f645</id>
+    <latitude>-19,8562233973865</latitude>
+    <longitude>-43,9420851904746</longitude>
+    <endereco>Rua Orozimbo Nonato, 51-253 - Dona Clara, Belo Horizonte - Minas Gerais, 31260-230, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>e8098f33-1191-0f8a-69bc-cc80f103737e</id>
+    <latitude>-19,9374029311369</latitude>
+    <longitude>-43,9230779147233</longitude>
+    <endereco>Rua Professor Estêvão Pinto, 313 - Serra, Belo Horizonte - Minas Gerais, 30210-580, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>6ae8aa89-ed46-64ad-448c-573a7e9cc640</id>
+    <latitude>-19,8701324459801</latitude>
+    <longitude>-43,948342594166</longitude>
+    <endereco>Avenida Bueno Siqueira, 75-179 - Universitário, Belo Horizonte - Minas Gerais, 31255-450, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>e2aa05ba-0fd8-1bc1-6fb5-4f10b64ef987</id>
+    <latitude>-19,9018812035761</latitude>
+    <longitude>-43,9308230953551</longitude>
+    <endereco>Rua Coromandel, 242-294 - Bairro da Graça, Belo Horizonte - Minas Gerais, 31140-100, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>8f1d5a83-4683-2527-1ec7-4aa0cf8e615e</id>
+    <latitude>-19,9527476873338</latitude>
+    <longitude>-43,8912404340302</longitude>
+    <endereco>Rua José do Patrocínio Pontes, 1 - Mangabeiras, Belo Horizonte - Minas Gerais, 30210-090, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>535298a0-e665-b891-35f2-32805d248bf1</id>
+    <latitude>-19,8963974578831</latitude>
+    <longitude>-43,9651462573978</longitude>
+    <endereco>Avenida Presidente Carlos Luz, 1002-1762 - Caiçaras, Belo Horizonte - Minas Gerais, 31230-010, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>d64daba6-a4ab-1431-5840-a595ff4ac1aa</id>
+    <latitude>-19,8865364473792</latitude>
+    <longitude>-43,9626605760482</longitude>
+    <endereco>Rua Santa Josefina, 717 - Sumaré, Belo Horizonte - Minas Gerais, 31250-170, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>09ca3b54-2328-441f-bf89-c1af4a950e68</id>
+    <latitude>-19,869202743138</latitude>
+    <longitude>-43,9082230561568</longitude>
+    <endereco>Rua Santa Inês, 285 - São Marcos, Belo Horizonte - Minas Gerais, 31920-410, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>6befdc0d-1f36-87db-d29b-b081b6bb362c</id>
+    <latitude>-19,8767105078758</latitude>
+    <longitude>-43,9357216429714</longitude>
+    <endereco>Rua Luiz Castanhede, 28 - Palmares, Belo Horizonte - Minas Gerais, 31155-140, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>bd6554ab-5582-88e8-22a2-ee19f11ec50b</id>
+    <latitude>-19,9283299164356</latitude>
+    <longitude>-43,9737437122729</longitude>
+    <endereco>Rua Desembargador Barcelos, 450 - Nova Suíssa, Belo Horizonte - Minas Gerais, 30480-250, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>8f27b88e-e2b7-6764-60f1-2f0bfdbc8e85</id>
+    <latitude>-19,8936555850366</latitude>
+    <longitude>-43,9323078384192</longitude>
+    <endereco>Rua São Gonçalo, 971 - Nova Floresta, Belo Horizonte - Minas Gerais, 31140-360, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>0054023c-a6a2-9c78-dd77-bf60e56e383d</id>
+    <latitude>-19,9516884421315</latitude>
+    <longitude>-43,895084971455</longitude>
+    <endereco>Rua José do Patrocínio Pontes, 1 - Mangabeiras, Belo Horizonte - Minas Gerais, 30210-090, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>12a03568-dab1-be5b-9fc4-7322c6ae6358</id>
+    <latitude>-19,9462046964385</latitude>
+    <longitude>-43,8794081334977</longitude>
+    <endereco>Rua Seis, 1 - Taquaril, Belo Horizonte - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>795c9104-cc77-3d96-a3e6-559a0499235d</id>
+    <latitude>-19,8969857693246</latitude>
+    <longitude>-43,9212549970468</longitude>
+    <endereco>Rua Santo Agostinho, 552-620 - Sagrada Família, Belo Horizonte - Minas Gerais, 31035-480, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>138313a7-2b27-d928-bb67-9e52a0fe241b</id>
+    <latitude>-19,9246232697465</latitude>
+    <longitude>-43,9140694701528</longitude>
+    <endereco>Rua Estrela Dalva, 20-52 - Santa Efigênia, Belo Horizonte - Minas Gerais, 30260-240, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>0149bd64-a101-40c5-cc79-32b1dcf86dbe</id>
+    <latitude>-19,936002294534</latitude>
+    <longitude>-43,8867195473806</longitude>
+    <endereco>Rua Elisa Laura Scharper, 1 - Taquaril, Belo Horizonte - Minas Gerais, 30285-740, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>6a4031ea-8b56-134b-deaf-5ba3ac8269e5</id>
+    <latitude>-19,910714221153</latitude>
+    <longitude>-43,9078120664614</longitude>
+    <endereco>Rua Vinte e Oito de Setembro, 1208 - Pompéia, Belo Horizonte - Minas Gerais, 30280-050, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>1d614bbf-d75f-6a70-36f5-04f626b49fa4</id>
+    <latitude>-19,9182570568913</latitude>
+    <longitude>-43,8759215138624</longitude>
+    <endereco>Rua Água Branca, 1-141 - Taquaril, Belo Horizonte - Minas Gerais, 30290-520, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>3dfeb0a2-012b-486b-a8f1-e6a59db51dda</id>
+    <latitude>-19,8913023392705</latitude>
+    <longitude>-43,8789971438023</longitude>
+    <endereco>Rua Antônio Rodrigues da Costa, 555 - Casa Branca, Belo Horizonte - Minas Gerais, 31050-010, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>52172dd5-b4b1-a33d-22a4-b71ca3a13064</id>
+    <latitude>-19,86174221408</latitude>
+    <longitude>-43,9333087767048</longitude>
+    <endereco>Avenida Cristiano Machado, 7605 - Primeiro de Maio, Belo Horizonte - Minas Gerais, 31260-500, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>4fe040c9-183b-f345-19fa-3b4e8e4f237e</id>
+    <latitude>-19,9315777940433</latitude>
+    <longitude>-43,9171981719985</longitude>
+    <endereco>Rua Vera Cruz, 307 - Favela Aglomerado da Serra, Vila Cafezal, Belo Horizonte - Minas Gerais, 30240-600, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>630e0774-b8c1-7637-75d8-50d2b1345efe</id>
+    <latitude>-19,8985860902886</latitude>
+    <longitude>-43,958550679094</longitude>
+    <endereco>Rua São Braz do Suaçuí, 1245 - Nova Esperança, Belo Horizonte - Minas Gerais, 31230-520, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>4bd6dff5-a301-bc28-8fc2-30f217a8d189</id>
+    <latitude>-19,8560938550264</latitude>
+    <longitude>-43,9002686217778</longitude>
+    <endereco>Rua Maria de Fátima, 76-226 - Dom Silvério, Belo Horizonte - Minas Gerais, 31985-400, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>b0d3e75f-f8c1-b439-89d2-903a8ae3427d</id>
+    <latitude>-19,8786522202403</latitude>
+    <longitude>-43,9543482238797</longitude>
+    <endereco>Rua Algarve, 290 - São Francisco, Belo Horizonte - Minas Gerais, 31255-090, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>d9d5b955-855d-c5ad-c9db-97376557c1bf</id>
+    <latitude>-19,8904077074289</latitude>
+    <longitude>-43,9086340458522</longitude>
+    <endereco>Rua Vicente Risola, 195 - Santa Inês, Belo Horizonte - Minas Gerais, 31080-160, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>68a02bee-ae7f-56a4-9314-846828676a56</id>
+    <latitude>-19,8828648716906</latitude>
+    <longitude>-43,8767434932533</longitude>
+    <endereco>Rua Venezuela, 222 - Sabará - Minas Gerais, 34590-070, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>39735043-103b-84da-3e96-d8a267c43566</id>
+    <latitude>-19,8878426126224</latitude>
+    <longitude>-43,9177881205887</longitude>
+    <endereco>Avenida José Cândido da Silveira, 1190-1470 - União, Belo Horizonte - Minas Gerais, 31170-000, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>cfca2c79-e8fe-eb2b-ee71-a14476cbc917</id>
+    <latitude>-19,8748511021916</latitude>
+    <longitude>-43,9753543423258</longitude>
+    <endereco>Rua Professor Moacir Gomes de Freitas, 990-1096 - Universidade Federal de Minas Gerais, Campus da UFMG, Belo Horizonte - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>249a0e4b-8b2e-b92f-5d70-c1d935f9a635</id>
+    <latitude>-19,9176687454497</latitude>
+    <longitude>-43,9404412316929</longitude>
+    <endereco>Rua dos Tupinambás, 633 - Centro, Belo Horizonte - Minas Gerais, 30120-070, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>61af6260-2c27-4e73-92ed-3bcc458aef2f</id>
+    <latitude>-19,8768400502359</latitude>
+    <longitude>-43,9246885447762</longitude>
+    <endereco>Rua Artur de Sá, 855 - São Paulo, Belo Horizonte - Minas Gerais, 31170-710, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>454f76d1-5f3d-4b91-b7d6-58a6973894bf</id>
+    <latitude>-19,9507236682889</latitude>
+    <longitude>-43,9143545728593</longitude>
+    <endereco>Rua João Camilo de Oliveira Torres, 415 - Mangabeiras, Belo Horizonte - Minas Gerais, 30210-260, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>823d0d17-195c-ab37-47ff-8d2f1f5636cb</id>
+    <latitude>-19,9432159035511</latitude>
+    <longitude>-43,9295901262689</longitude>
+    <endereco>Rua Outono, 578 - Cruzeiro, Belo Horizonte - Minas Gerais, 30310-020, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>e5c4a24a-0466-ca8c-1073-c7ac97f2e55a</id>
+    <latitude>-19,8633074640434</latitude>
+    <longitude>-43,9361857045727</longitude>
+    <endereco>Rua Pequiá, 106-196 - Primeiro de Maio, Belo Horizonte - Minas Gerais, 31260-400, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>4218cea0-283f-3f0c-fa7d-13e7ec011e61</id>
+    <latitude>-19,9083960463874</latitude>
+    <longitude>-43,9279461674872</longitude>
+    <endereco>Rua Santa Bárbara, 13 - Sagrada Família, Belo Horizonte - Minas Gerais, 31030-150, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>4a614679-3324-7bf2-43d2-1613a5bb7834</id>
+    <latitude>-19,9279534540345</latitude>
+    <longitude>-43,9118886346868</longitude>
+    <endereco>Rua Gregório de Matos, 280 - Santa Efigênia, Belo Horizonte - Minas Gerais, 30260-340, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>92fe85af-303c-8481-7828-ea4b386b9c83</id>
+    <latitude>-19,9145854812027</latitude>
+    <longitude>-43,963482555439</longitude>
+    <endereco>Rua Riachuelo, 73-109 - Carlos Prates, Belo Horizonte - Minas Gerais, 30710-610, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>b401b97e-6939-f92b-60a9-b7109d8e9d1f</id>
+    <latitude>-19,9382853982992</latitude>
+    <longitude>-43,8955490330563</longitude>
+    <endereco>Rua São Miguel, 27 - Favela Aglomerado da Serra, Baleia, Belo Horizonte - Minas Gerais, 31710-350, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>8253d76d-bc5d-23ee-3579-d7b0e2079755</id>
+    <latitude>-19,8919729573924</latitude>
+    <longitude>-43,9057571179843</longitude>
+    <endereco>Rua Dona Libúrcia, 475-553 - Boa Vista, Belo Horizonte - Minas Gerais, 31060-280, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>9f874121-abec-ff87-2ae4-4e7ffe20b023</id>
+    <latitude>-19,953630154496</latitude>
+    <longitude>-43,9137115523633</longitude>
+    <endereco>Rua Engenheiro Bady Salum, 315 - Mangabeiras, Belo Horizonte - Minas Gerais, 30210-250, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>51f5b6cc-47b1-ee2f-3ca0-5e118c79d04c</id>
+    <latitude>-19,8788640692808</latitude>
+    <longitude>-43,8978026836053</longitude>
+    <endereco>Rua Elói Mendes, 61 - Sabará - Minas Gerais, 34700-090, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>ddddcfcb-bf6a-b8f7-58e7-2d647c041a44</id>
+    <latitude>-19,9282948454351</latitude>
+    <longitude>-43,9020915394543</longitude>
+    <endereco>Rua Ribeirão das Neves, 821 - Baleia, Belo Horizonte - Minas Gerais, 30260-390, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>02c77e4e-a8af-a4c1-f852-56e36b1a20e0</id>
+    <latitude>-19,9363436859346</latitude>
+    <longitude>-43,8769224521481</longitude>
+    <endereco>Rua Três, 1 - Taquaril, Belo Horizonte - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>56485933-8b65-ec21-2c40-25ee5da8b67b</id>
+    <latitude>-19,9308599402416</latitude>
+    <longitude>-43,9112456141907</longitude>
+    <endereco>Rua Rene Renault, 345 - Novo São Lucas, Belo Horizonte - Minas Gerais, 30240-520, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>320d2687-9a77-67dc-ba0f-7796c63c2d43</id>
+    <latitude>-19,9421215873484</latitude>
+    <longitude>-43,951292337117</longitude>
+    <endereco>Rua da Assembléia, 7 - Luxemburgo, Belo Horizonte - Minas Gerais, 30380-200, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>ef56750e-a073-4dc6-f3e4-0cd4897ff2ec</id>
+    <latitude>-19,8595535816745</latitude>
+    <longitude>-43,9114776449914</longitude>
+    <endereco>Rua Marcos Paulo de Vasconcelos, 107 - Eymard, Belo Horizonte - Minas Gerais, 31930-470, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>2bd7a391-ac77-6593-5fb8-ece112499c68</id>
+    <latitude>-19,9519475268518</latitude>
+    <longitude>-43,8770285959598</longitude>
+    <endereco>Rua Thales Assis das Chagas, 45 - Taquaril, Belo Horizonte - Minas Gerais, 30285-770, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>686b9b2f-4dc2-3206-a241-33d9006829af</id>
+    <latitude>-19,9416155825872</latitude>
+    <longitude>-43,9580138024097</longitude>
+    <endereco>Rua Estácio de Sá, 859-905 - Gutierrez, Belo Horizonte - Minas Gerais, 30430-010, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>7f37c042-bd45-5ab9-5954-f4d794723314</id>
+    <latitude>-19,869755983579</latitude>
+    <longitude>-43,9187890588743</longitude>
+    <endereco>Rua Queluzita, 56-276 - Fernão Dias, Belo Horizonte - Minas Gerais, 31910-000, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>ae2f858d-872b-6fd5-8afe-bc4bb354e085</id>
+    <latitude>-19,8616126717198</latitude>
+    <longitude>-43,9090450355476</longitude>
+    <endereco>Rua Barreiro Grande, 169-215 - Pirajá, Belo Horizonte - Minas Gerais, 31930-520, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>4fafdd18-6e26-6b5c-9c46-76029351ae8b</id>
+    <latitude>-19,8900312450278</latitude>
+    <longitude>-43,9269983011075</longitude>
+    <endereco>Rua Afonso Pena Júnior, 2-38 - Cidade Nova, Belo Horizonte - Minas Gerais, 31170-110, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>dbc0ddd2-5c86-feb4-460c-acd18e9dc0cc</id>
+    <latitude>-19,9096549759507</latitude>
+    <longitude>-43,9116566038862</longitude>
+    <endereco>Rua João Alfredo, 127-585 - Horto, Belo Horizonte - Minas Gerais, 31010-440, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>c685459b-a3c8-7b18-339f-67c3abaed293</id>
+    <latitude>-19,9333548930472</latitude>
+    <longitude>-43,9320758076185</longitude>
+    <endereco>Rua Cláudio Manoel, 750 - Savassi, Belo Horizonte - Minas Gerais, 30140-100, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>2614cae0-e63e-a4ce-3967-54ace78b193f</id>
+    <latitude>-19,8644840869265</latitude>
+    <longitude>-43,9661471956834</longitude>
+    <endereco>Rua Onze, 233-451 - Universidade Federal de Minas Gerais, Campus da UFMG, Belo Horizonte - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>98213558-c77c-ee34-c177-4749b0957dd4</id>
+    <latitude>-19,8929026602345</latitude>
+    <longitude>-43,9508085323385</longitude>
+    <endereco>Rua Bernardo Cisneiros, 57 - Aparecida, Belo Horizonte - Minas Gerais, 31235-110, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>318d7328-c7b8-5103-a656-57ff8526d5da</id>
+    <latitude>-19,9362613792543</latitude>
+    <longitude>-43,9327188281146</longitude>
+    <endereco>Rua dos Inconfidentes, 611-757 - Savassi, Belo Horizonte - Minas Gerais, 30140-120, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>c33cac84-30b0-a4dd-f542-76ba744cd855</id>
+    <latitude>-19,8740981773894</latitude>
+    <longitude>-43,9438550362452</longitude>
+    <endereco>Rua Carlos Campos, 37 - Santa Cruz, Belo Horizonte - Minas Gerais, 31155-100, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>2aaa37a5-4e58-9cf6-4d07-22619e2862c1</id>
+    <latitude>-19,9073017301846</latitude>
+    <longitude>-43,9496483783353</longitude>
+    <endereco>Rua Além Paraíba, 900 - Bonfim, Belo Horizonte - Minas Gerais, 31210-120, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>d6d9d5c9-a4a6-8967-756f-4797f5294aaa</id>
+    <latitude>-19,9400975683035</latitude>
+    <longitude>-43,9281781982878</longitude>
+    <endereco>Rua Minas Novas, 109 - Cruzeiro, Belo Horizonte - Minas Gerais, 30310-090, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>2deac9ae-9cb4-97f7-895d-cfcee3609d3c</id>
+    <latitude>-19,9073368011851</latitude>
+    <longitude>-43,9741016300624</longitude>
+    <endereco>Rua Perdizes, 870-908 - Caiçara Adeláide, Belo Horizonte - Minas Gerais, 30770-270, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>751fd3bb-7b37-07ca-dcc9-fdb5df090245</id>
+    <latitude>-19,8942438964781</latitude>
+    <longitude>-43,9040934160255</longitude>
+    <endereco>Rua Maria Francisca, 411-535 - Boa Vista, Belo Horizonte - Minas Gerais, 31060-330, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>0444b6c8-5c83-7af9-0030-2d15dfe01491</id>
+    <latitude>-19,9408977287855</latitude>
+    <longitude>-43,8874156397826</longitude>
+    <endereco>Rua Elisa Laura Scharper, 2 - Taquaril, Belo Horizonte - Minas Gerais, 30285-740, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>f44cd32f-ca3a-041a-0ac5-bc78302923d0</id>
+    <latitude>-19,8748160311911</latitude>
+    <longitude>-43,9498075940529</longitude>
+    <endereco>Rodovia Anel Rodoviário - São Francisco, Belo Horizonte - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>dd801aac-1060-8f39-3019-2f5bd3325061</id>
+    <latitude>-19,9274946849532</latitude>
+    <longitude>-43,9635022986161</longitude>
+    <endereco>Rua Safira, 779 - Prado, Belo Horizonte - Minas Gerais, 30410-100, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>272c7861-ed94-45f2-803c-f491ec39229f</id>
+    <latitude>-19,8984214769279</latitude>
+    <longitude>-43,9420321185687</longitude>
+    <endereco>Rua Purus, 624 - Concórdia, Belo Horizonte - Minas Gerais, 31110-740, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>ef16025d-1f75-17fa-a8c0-b4c39aa97997</id>
+    <latitude>-19,8661316435702</latitude>
+    <longitude>-43,924098596186</longitude>
+    <endereco>Rua do Campo, 2-100 - São Paulo, Belo Horizonte - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>e152af6f-2361-b2db-3b74-bde2328641c9</id>
+    <latitude>-19,9249646611471</latitude>
+    <longitude>-43,9471096250798</longitude>
+    <endereco>Rua Rio Grande do Sul, 1039-1137 - Santo Agostinho, Belo Horizonte - Minas Gerais, 30170-111, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>f59cc671-8094-92b8-dc27-29dc3c968b18</id>
+    <latitude>-19,8573177135892</latitude>
+    <longitude>-43,8875945986773</longitude>
+    <endereco>Rua Silveira, 13 - Pousada Santo Antônio, Belo Horizonte - Minas Gerais, 31970-136, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>d2ef3bc4-b509-5663-d0a6-c9abceee597b</id>
+    <latitude>-19,9244937273864</latitude>
+    <longitude>-43,9230976579004</longitude>
+    <endereco>Rua Álvares Maciel, 397 - Santa Efigênia, Belo Horizonte - Minas Gerais, 30150-250, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>6ba8715a-edd5-1b74-550d-cd0db22fb93a</id>
+    <latitude>-19,8931495802754</latitude>
+    <longitude>-43,8757956268736</longitude>
+    <endereco>Avenida Borba Gato, 2978-3244 - Sabará - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>9e20d088-9330-55ee-c6b0-ed579f86c85c</id>
+    <latitude>-19,9100786740316</latitude>
+    <longitude>-43,9412632110838</longitude>
+    <endereco>Avenida Presidente Antônio Carlos, 124-164 - Lagoinha, Belo Horizonte - Minas Gerais, 31210-000, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>20196b96-e86f-307d-65c5-97e996f99a50</id>
+    <latitude>-19,9263058973908</latitude>
+    <longitude>-43,9506295734438</longitude>
+    <endereco>Rua Araguari, 932 - Santo Agostinho, Belo Horizonte - Minas Gerais, 30190-111, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>62d030c6-edf9-25df-ba94-30bda0843408</id>
+    <latitude>-19,9421215873484</latitude>
+    <longitude>-43,951292337117</longitude>
+    <endereco>Rua da Assembléia, 7 - Luxemburgo, Belo Horizonte - Minas Gerais, 30380-200, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>a08a2ed7-ab57-c2e1-32d0-b86bbd640d88</id>
+    <latitude>-19,9443102197538</latitude>
+    <longitude>-43,8934940845792</longitude>
+    <endereco>Rua Nossa Senhora de Fátima, 754-1030 - Favela Aglomerado da Serra, Vila Cafezal, Belo Horizonte - Minas Gerais, 30230-000, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>37459037-6786-20b5-2ab5-88f65c482e64</id>
+    <latitude>-19,9024222793378</latitude>
+    <longitude>-43,9630913089207</longitude>
+    <endereco>Rua Gonçalves Figueira, 239 - Caiçaras, Belo Horizonte - Minas Gerais, 31230-260, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>3d720a18-8ca8-8756-bb19-cabe2b3165cd</id>
+    <latitude>-19,9201987692558</latitude>
+    <longitude>-43,8945480947707</longitude>
+    <endereco>Rua Sargento João Ovídio, 174 - Baleia, Belo Horizonte - Minas Gerais, 30285-385, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>5dc5233f-0d59-2058-226c-030cff0bb50f</id>
+    <latitude>-19,9379440068986</latitude>
+    <longitude>-43,9053461282889</longitude>
+    <endereco>Rua Nossa Senhora de Fátima, 755-1031 - Favela Aglomerado da Serra, Vila Cafezal, Belo Horizonte - Minas Gerais, 30230-000, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>a0b5ff56-bbcc-9051-647c-99b502c92c23</id>
+    <latitude>-19,8820174755288</latitude>
+    <longitude>-43,9236678633135</longitude>
+    <endereco>Rua Johnson, 366-544 - União, Belo Horizonte - Minas Gerais, 31170-650, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>dcf97cde-15f7-33a5-9c33-1261eaa0ae1d</id>
+    <latitude>-19,8803348478846</latitude>
+    <longitude>-43,9410311802831</longitude>
+    <endereco>Rua Antenor de Abreu, 248-422 - São João Batista, Belo Horizonte - Minas Gerais, 31150-560, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>20f7395e-c6c4-a912-9fdf-eee535ffa013</id>
+    <latitude>-19,8646136292866</latitude>
+    <longitude>-43,8942629920642</longitude>
+    <endereco>Rua Cuco, 748 - Vila Brasília, Belo Horizonte - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>94f2bd58-6be0-5423-7b4b-24b804e3042b</id>
+    <latitude>-19,8646487002871</latitude>
+    <longitude>-43,9326657562087</longitude>
+    <endereco>Rua dos Otoni, 51 - Primeiro de Maio, Belo Horizonte - Minas Gerais, 31260-000, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>c7223664-22fe-c42e-30f0-eba7315254af</id>
+    <latitude>-19,9022576659772</latitude>
+    <longitude>-43,9465727483955</longitude>
+    <endereco>Avenida Presidente Antônio Carlos, 995-1173 - São Cristóvão, Belo Horizonte - Minas Gerais, 31210-010, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>30e4ef45-70da-dcce-ae79-67dc4f576948</id>
+    <latitude>-19,9295537749985</latitude>
+    <longitude>-43,9610696891724</longitude>
+    <endereco>Rua Brumadinho, 135 - Prado, Belo Horizonte - Minas Gerais, 30410-120, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>afbf6b26-0f45-2619-4b54-4baf9a49b096</id>
+    <latitude>-19,9172922830487</latitude>
+    <longitude>-43,8951911152668</longitude>
+    <endereco>Rua Padre Júlio Maria, 670-744 - Saudade, Belo Horizonte - Minas Gerais, 30285-360, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>f3c6fc8c-bf21-680f-6225-cc7583433c51</id>
+    <latitude>-19,8721564650249</latitude>
+    <longitude>-43,8761535446631</longitude>
+    <endereco>BR-262 - Sabará - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>57ae9135-a942-f6eb-4e1d-0bfdea421e88</id>
+    <latitude>-19,8878426126224</latitude>
+    <longitude>-43,9177881205887</longitude>
+    <endereco>Avenida José Cândido da Silveira, 1190-1470 - União, Belo Horizonte - Minas Gerais, 31170-000, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>ea925d50-ec6a-c789-bc38-f666401dc0d2</id>
+    <latitude>-19,8549523031438</latitude>
+    <longitude>-43,9046833646157</longitude>
+    <endereco>Rua Lourenço Volpini, 227-283 - Dom Silvério, Belo Horizonte - Minas Gerais, 31985-230, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>fa08918a-1096-724d-efd6-f6d5f03a448f</id>
+    <latitude>-19,9490761116452</latitude>
+    <longitude>-43,9481636352713</longitude>
+    <endereco>Avenida Prudente de Morais, 1674-1714 - Vila Paris, Belo Horizonte - Minas Gerais, 30380-000, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>f3eb9729-fbef-9f5e-aa25-f73f7c7e1da5</id>
+    <latitude>-19,903105062139</latitude>
+    <longitude>-43,9434971184556</longitude>
+    <endereco>Rua Formiga, 423 - São Cristóvão, Belo Horizonte - Minas Gerais, 31110-430, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>175a1dd4-c034-9185-4c91-0b86ced96bfb</id>
+    <latitude>-19,895467755041</latitude>
+    <longitude>-43,891419392925</longitude>
+    <endereco>Rua Filomena Mendes de Menezes, 234-302 - São Geraldo, Belo Horizonte - Minas Gerais, 31050-330, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>2e0548e2-6ceb-e006-4fdc-b42ab9f52abf</id>
+    <latitude>-19,9406858797451</latitude>
+    <longitude>-43,8881845472675</longitude>
+    <endereco>Rua Elisa Laura Scharper, 2 - Taquaril, Belo Horizonte - Minas Gerais, 30285-740, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>56e78a58-1471-14dd-ded2-94611df4b031</id>
+    <latitude>-19,9249997321476</latitude>
+    <longitude>-43,8798191231931</longitude>
+    <endereco>Antiga Estr. de Nova Lima - Taquaril, Belo Horizonte - Minas Gerais, 30285-760, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>f18d33f5-1203-344b-c79d-4d893033ffd4</id>
+    <latitude>-19,8745569464708</latitude>
+    <longitude>-43,8835180304519</longitude>
+    <endereco>BR-262 - Sabará - Minas Gerais, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>0b33e273-81c1-6a32-bdae-8f905cefa6bf</id>
+    <latitude>-19,9189749106929</latitude>
+    <longitude>-43,8818740716702</longitude>
+    <endereco>Rua Luiz Vaz de Torres, 157 - Saudade, Belo Horizonte - Minas Gerais, 30290-070, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>01e3c9fa-561e-b39e-a82a-0ce73e60db21</id>
+    <latitude>-19,885230282136</latitude>
+    <longitude>-43,9096547273149</longitude>
+    <endereco>Rua Cassiterita, 800 - Santa Inês, Belo Horizonte - Minas Gerais, 31080-150, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>db26aac1-6c50-1079-b4b2-27b6957f75f3</id>
+    <latitude>-19,8877953769426</latitude>
+    <longitude>-43,9508813474215</longitude>
+    <endereco>Avenida Presidente Antônio Carlos, 2487-2607 - Aparecida, Belo Horizonte - Minas Gerais, 31210-810, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>83ded4b4-2a32-699b-8501-e7ea961fd457</id>
+    <latitude>-19,9225992507017</latitude>
+    <longitude>-43,8871836089819</longitude>
+    <endereco>Antiga Estr. de Nova Lima - Taquaril, Belo Horizonte - Minas Gerais, 30285-760, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>bc262122-03b1-d9be-a8e2-63c0330e9652</id>
+    <latitude>-19,906407098343</latitude>
+    <longitude>-43,9220967196148</longitude>
+    <endereco>Rua Genoveva de Souza, 995-1137 - Sagrada Família, Belo Horizonte - Minas Gerais, 31030-220, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>cf415725-9865-b429-6d7a-6ca061028968</id>
+    <latitude>-19,9382853982992</latitude>
+    <longitude>-43,8955490330563</longitude>
+    <endereco>Rua São Miguel, 27 - Favela Aglomerado da Serra, Baleia, Belo Horizonte - Minas Gerais, 31710-350, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>0e99328f-5f92-dfb6-2f4a-aaf1e577e258</id>
+    <latitude>-19,9424980497495</latitude>
+    <longitude>-43,9355426840766</longitude>
+    <endereco>Rua Major Lopes, 245 - São Pedro, Belo Horizonte - Minas Gerais, 30330-050, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>cab22b6b-19ca-cdd6-624e-8adc8f97e7d9</id>
+    <latitude>-19,9237758735847</latitude>
+    <longitude>-43,9171451000926</longitude>
+    <endereco>Rua Coronel Antônio Pereira da Silva, 77 - Santa Efigênia, Belo Horizonte - Minas Gerais, 30240-380, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>560a3b77-f0b7-41ad-5ef7-677b762b6cac</id>
+    <latitude>-19,9196927644946</latitude>
+    <longitude>-43,887826629478</longitude>
+    <endereco>Rua Fósforo, 235 - Taquaril, Belo Horizonte - Minas Gerais, 30290-035, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>fa02f959-7d82-823b-88ad-4a30bc48e573</id>
+    <latitude>-19,8557173926253</latitude>
+    <longitude>-43,9353637251819</longitude>
+    <endereco>Avenida Cristiano Machado, 8105-8437 - Aeroporto, Belo Horizonte - Minas Gerais, 31260-500, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>8577b20a-a40f-b085-f7cd-facb3a2fc80c</id>
+    <latitude>-19,9514415220906</latitude>
+    <longitude>-43,9310748693329</longitude>
+    <endereco>Rua Chile, 209 - Sion, Belo Horizonte - Minas Gerais, 30310-670, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>731e96b0-92ea-d8e0-b7ca-2c84d56381ff</id>
+    <latitude>-19,9191867597334</latitude>
+    <longitude>-43,8811051641853</longitude>
+    <endereco>Rua Funcionários, 1-227 - Taquaril, Belo Horizonte - Minas Gerais, 30290-140, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>935de55f-0367-b1c0-89e1-b26ac9683a96</id>
+    <latitude>-19,9150091792836</latitude>
+    <longitude>-43,8863616295911</longitude>
+    <endereco>Rua Nuno Tristão, 1-105 - Saudade, Belo Horizonte - Minas Gerais, 30295-230, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>61474222-1746-2375-e18e-d904fc574703</id>
+    <latitude>-19,9313308740024</latitude>
+    <longitude>-43,9589616687894</longitude>
+    <endereco>Rua Holanda Lima, 310 - Gutierrez, Belo Horizonte - Minas Gerais, 30430-100, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>a3e28a94-ba15-dfb6-3c95-5c51d4f86240</id>
+    <latitude>-19,9184689059317</latitude>
+    <longitude>-43,9251526063775</longitude>
+    <endereco>Rua Almandina, 33 - Santa Tereza, Belo Horizonte - Minas Gerais, 31010-080, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>276c1b63-95cf-76ff-2600-050e17b84402</id>
+    <latitude>-19,9288359211968</latitude>
+    <longitude>-43,8843597530198</longitude>
+    <endereco>Rua Luiz Pinto Valente, 459-649 - Taquaril, Belo Horizonte - Minas Gerais, 30285-745, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>9b2e39a7-9d9c-995b-77d6-f2aeda190a56</id>
+    <latitude>-19,8814291640873</latitude>
+    <longitude>-43,8886486088688</longitude>
+    <endereco>Rua Campanha, 173 - Sabará - Minas Gerais, 34700-040, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+  <taxista>
+    <id>23e74bc1-25bc-529a-f901-28f1d7b4af78</id>
+    <latitude>-19,9465460878391</latitude>
+    <longitude>-43,9196110382651</longitude>
+    <endereco>Rua Bambuí, 122 - Serra, Belo Horizonte - Minas Gerais, 30210-490, Brazil</endereco>
+    <status>SemStatus</status>
+  </taxista>
+</taxistas>

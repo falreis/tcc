@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="TCC_Domain" namespace="TCC_Domain.Domain">
+    <class name="Usuario" table="USUARIO">
+        <id name="ID" column="USR_ID" type="Guid">
+            <generator class="guid" />
+        </id>
+        <property name="TipoUsuario" column="TUS_ID" type="int" not-null="true"></property>
+        <many-to-one name="Pessoa" class="Pessoa" column="PES_ID" not-null="false" cascade="save-update" lazy="false" />
+        <property name="Login" column="USR_LOGIN" type="String" not-null="true" length="50" />
+        <property name="Senha" column="USR_SENHA" type="String" not-null="true" length="50" />
+        <property name="Email" column="USR_EMAIL" type="String" not-null="true" length="50" />
+        <property name="Ativo" column="USR_ATIVO" type="Boolean" not-null="true" />
+
+        <joined-subclass name="Cliente" table="CLIENTE">
+            <key column="CLI_ID"></key>
+            <property name="Status" column="STC_ID" type="int" />
+        </joined-subclass>
+
+        <joined-subclass name="Taxista" table="TAXISTA">
+            <key column="TAX_ID"></key>
+            <property name="CNH" column="TAX_CNH" type="String" not-null="false" length="20" />
+            <property name="NumeroLicenca" column="TAX_NUMERO_LICENCA" type="String" not-null="false" length="20" />
+            <many-to-one name="Veiculo" class="Veiculo" column="VEI_ID" not-null="false" lazy="false" />
+            <property name="Status" column="STT_ID" type="int" />
+        </joined-subclass>
+    </class>
+</hibernate-mapping>

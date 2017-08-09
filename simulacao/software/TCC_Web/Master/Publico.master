@@ -1,0 +1,19 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Master/Site.Master" AutoEventWireup="true" CodeBehind="Publico.master.cs" Inherits="TCC_Web.Master.Publico" %>
+
+<asp:Content ID="HeaderContent" ContentPlaceHolderID="HeadContent" runat="server">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:Menu ID="MenuSuperior" runat="server" CssClass="navigation" IncludeStyleBlock="true" EnableViewState="false">
+        <Items>
+            <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+            <asp:MenuItem NavigateUrl="~/About.aspx" Text="Sobre"/>
+            <asp:MenuItem NavigateUrl="~/Downloads.aspx" Text="Downloads" />
+            <asp:MenuItem NavigateUrl="~/Docs.aspx" Text="Docs" />
+            <asp:MenuItem NavigateUrl="~/ContactUs.aspx" Text="Contato" />
+        </Items>
+    </asp:Menu>
+    <div id="contents">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+    </div>
+</asp:Content>

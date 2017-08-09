@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{16740438-E9B2-4A80-88C0-6E0D29D0ADB0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TCC_Domain</RootNamespace>
+    <AssemblyName>TCC_Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\references\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\references\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\references\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=2.0.11.94, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\references\Npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Repository\Class1.cs" />
+    <Compile Include="Core\Repository\IRepositoryBase.cs" />
+    <Compile Include="Core\Repository\RepositoryBase.cs" />
+    <Compile Include="Domain\Requisicao.cs" />
+    <Compile Include="Domain\Cliente.cs" />
+    <Compile Include="Domain\Endereco.cs" />
+    <Compile Include="Domain\Estado.cs" />
+    <Compile Include="Domain\EstadoCivil.cs" />
+    <Compile Include="Domain\Localizacao.cs" />
+    <Compile Include="Domain\ModeloVeiculo.cs" />
+    <Compile Include="Domain\MontadoraVeiculo.cs" />
+    <Compile Include="Domain\Pessoa.cs" />
+    <Compile Include="Domain\PessoaFisica.cs" />
+    <Compile Include="Domain\PessoaJuridica.cs" />
+    <Compile Include="Domain\RamoAtividade.cs" />
+    <Compile Include="Domain\Rastreador.cs" />
+    <Compile Include="Domain\Sexo.cs" />
+    <Compile Include="Domain\StatusRequisicao.cs" />
+    <Compile Include="Domain\StatusCliente.cs" />
+    <Compile Include="Domain\StatusTaxista.cs" />
+    <Compile Include="Domain\Taxista.cs" />
+    <Compile Include="Domain\Telefone.cs" />
+    <Compile Include="Domain\TipoPessoa.cs" />
+    <Compile Include="Domain\TipoUsuario.cs" />
+    <Compile Include="Domain\Usuario.cs" />
+    <Compile Include="Domain\Veiculo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\RequisicaoRepository.cs" />
+    <Compile Include="Repository\ClienteRepository.cs" />
+    <Compile Include="Repository\EnderecoRepository.cs" />
+    <Compile Include="Repository\LocalizacaoRepository.cs" />
+    <Compile Include="Repository\ModeloVeiculoRepository.cs" />
+    <Compile Include="Repository\MontadoraVeiculoRepository.cs" />
+    <Compile Include="Repository\PessoaFisicaRepository.cs" />
+    <Compile Include="Repository\PessoaJuridicaRepository.cs" />
+    <Compile Include="Repository\PessoaRepository.cs" />
+    <Compile Include="Repository\RastreadorRepository.cs" />
+    <Compile Include="Repository\TaxistaRepository.cs" />
+    <Compile Include="Repository\TelefoneRepository.cs" />
+    <Compile Include="Repository\UsuarioRepository.cs" />
+    <Compile Include="Repository\VeiculoRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoogleMapsApi\GoogleMapsApi.csproj">
+      <Project>{61E9FC82-47B0-43C3-8749-95D3A9967060}</Project>
+      <Name>GoogleMapsApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TCC_Infrastructure\TCC_Infrastructure.csproj">
+      <Project>{D56BD510-47CA-4FA1-B3E5-6DBDF8EEC84A}</Project>
+      <Name>TCC_Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Mapping\_nhibernate-configuration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Mapping\_nhibernate-mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\Requisicao.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Endereco.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Localizacao.hbm.xml" />
+    <EmbeddedResource Include="Mapping\ModeloVeiculo.hbm.xml" />
+    <EmbeddedResource Include="Mapping\MontadoraVeiculo.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Pessoa.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Rastreador.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Telefone.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Usuario.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Veiculo.hbm.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
